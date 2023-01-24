@@ -1,14 +1,14 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Arrow))]
-public class ArrowEditor : Editor
+[CustomEditor(typeof(Vector))]
+public class VectorEditor : Editor
 {
-    private Arrow arrow;
+    private Vector vector;
 
     private void OnEnable()
     {
-        arrow = target as Arrow;
+        vector = target as Vector;
     }
 
     public override void OnInspectorGUI()
@@ -19,7 +19,7 @@ public class ArrowEditor : Editor
         // Check if the any fields have been changed
         if (GUI.changed)
         {
-            arrow.Redraw();
+            vector.Redraw();
         }
     }
 }

@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 2933747113860461630}
   - component: {fileID: 2933747113860461631}
   m_Layer: 0
-  m_Name: Simulation
+  m_Name: ExampleSimulation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

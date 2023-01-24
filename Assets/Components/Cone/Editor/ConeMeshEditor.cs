@@ -1,14 +1,14 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Arrow))]
-public class ArrowEditor : Editor
+[CustomEditor(typeof(ConeMesh))]
+public class ConeMeshEditor : Editor
 {
-    private Arrow arrow;
+    private ConeMesh coneMesh;
 
     private void OnEnable()
     {
-        arrow = target as Arrow;
+        coneMesh = target as ConeMesh;
     }
 
     public override void OnInspectorGUI()
@@ -19,7 +19,7 @@ public class ArrowEditor : Editor
         // Check if the any fields have been changed
         if (GUI.changed)
         {
-            arrow.Redraw();
+            coneMesh.Redraw();
         }
     }
 }

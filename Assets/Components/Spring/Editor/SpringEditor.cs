@@ -1,14 +1,14 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Arrow))]
-public class ArrowEditor : Editor
+[CustomEditor(typeof(Spring))]
+public class SpringEditor : Editor
 {
-    private Arrow arrow;
+    private Spring spring;
 
     private void OnEnable()
     {
-        arrow = target as Arrow;
+        spring = target as Spring;
     }
 
     public override void OnInspectorGUI()
@@ -19,7 +19,7 @@ public class ArrowEditor : Editor
         // Check if the any fields have been changed
         if (GUI.changed)
         {
-            arrow.Redraw();
+            spring.Redraw();
         }
     }
 }
