@@ -29,16 +29,13 @@ namespace Slides
         private void Awake()
         {
             // Set header visibility
-            if (header != null)
-            {
-                header.gameObject.SetActive(showHeader);
-            }
+            if (header) header.gameObject.SetActive(showHeader);
 
             // Get reference to the main camera (to pass on to camera controllers)
             mainCamera = Camera.main;
 
-            // Get reference to the Slides container if it exists
-            if (slideContainer == null)
+            // Do not proceed if no slide container has been assigned in the inspector
+            if (!slideContainer)
             {
                 Debug.LogWarning("A SlideContainer has not been assigned.");
                 return;
@@ -48,6 +45,7 @@ namespace Slides
             foreach (var canvasGroup in slideContainer.GetComponentsInChildren<CanvasGroup>())
             {
                 canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
                 canvasGroup.blocksRaycasts = false;
             }
 
@@ -55,20 +53,22 @@ namespace Slides
             foreach (var slideController in slideContainer.GetComponentsInChildren<SimulationSlideController>())
             {
                 slideController.DeactivateSimulation();
+                slideController.enabled = false;
             }
         }
 
         private void Start()
         {
             InitializeSlides();  // Activate the current slide and deactivate all others
-            GenerateNavigationUI();
+            GenerateNavigationUI();  // Dynamically create the navigation bubbles or progress bar
         }
 
         private void InitializeSlides()
         {
             // Do nothing if no slide container is assigned or if it has no slides
-            if (slideContainer == null) { return; }
+            if (!slideContainer) return;
 
+            // Check whether the slide container is empty
             if (slideContainer.childCount == 0)
             {
                 Debug.LogWarning("Slides GameObject does not contain any actual slides.");
@@ -80,12 +80,16 @@ namespace Slides
             if (slide.TryGetComponent(out CanvasGroup canvasGroup))
             {
                 canvasGroup.alpha = 1;
+                canvasGroup.interactable = true;
                 canvasGroup.blocksRaycasts = true;
             }
             if (slide.TryGetComponent(out CameraController cameraController))
             {
-                cameraController.AssignCameraReference(mainCamera);
-                cameraController.InitializeCamera();
+                if (cameraController.enabled)
+                {
+                    cameraController.AssignCameraReference(mainCamera);
+                    cameraController.InitializeCamera();
+                }
             }
             foreach (var simSlideController in slide.GetComponents<SimulationSlideController>())
             {
@@ -97,7 +101,7 @@ namespace Slides
         private void GenerateNavigationUI()
         {
             // Do not create navigation UI if there are no slides
-            if (slideContainer == null) { return; }
+            if (!slideContainer) return;
 
             if (navigation == null)
             {
@@ -136,6 +140,7 @@ namespace Slides
             Transform prevSlide = slideContainer.GetChild(currentSlideIndex);
             if (prevSlide.TryGetComponent(out CanvasGroup prevCG))
             {
+                prevCG.interactable = false;
                 prevCG.blocksRaycasts = false;
                 StartCoroutine(FadeSlide(prevCG, 0, fadeOutTime, fadeOutDelay));
             }
@@ -155,14 +160,18 @@ namespace Slides
             Transform nextSlide = slideContainer.GetChild(slideIndex);
             if (nextSlide.TryGetComponent(out CanvasGroup nextCG))
             {
+                nextCG.interactable = true;
                 nextCG.blocksRaycasts = true;
                 StartCoroutine(FadeSlide(nextCG, 1, fadeInTime, fadeInDelay));
             }
             // Pass the camera reference to the new slide and move it to the right place
             if (nextSlide.TryGetComponent(out CameraController nextCC))
             {
-                nextCC.AssignCameraReference(mainCamera);
-                nextCC.InitializeCamera();
+                if (nextCC.enabled)
+                {
+                    nextCC.AssignCameraReference(mainCamera);
+                    nextCC.InitializeCamera();
+                }
             }
             // Activate all simulations associated to this slide
             foreach (var nextSSC in nextSlide.GetComponents<SimulationSlideController>())

@@ -28,8 +28,8 @@ public class RotatingGunSimulationEditor : Editor
 
         if (GUI.changed)
         {
-            sim.SynchronizeReferenceFrame();
-            sim.SynchronizeTimeScale();
+            sim.SetTimeScale(sim.timeScale);
+            sim.SetReferenceFrame(sim.referenceFrame);
             sim.SetPerspective(sim.perspective);
         }
     }
