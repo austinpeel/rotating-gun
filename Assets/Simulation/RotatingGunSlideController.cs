@@ -1,11 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RotatingGunSlideController : Slides.SimulationSlideController
 {
     public float angularFrequency;
     public RotatingGunSimulation.ReferenceFrame referenceFrame;
+    public bool traceBulletPath;
+    public bool showPositionVector;
+
+    [Header("Inset Camera")]
+    public Camera insetCamera;
+    public bool showInsetCamera;
+
+    [Header("Ground")]
+    public Transform ground;
+    public bool showGround;
 
     private RotatingGunSimulation sim;
     private bool hasInitialized;
@@ -16,10 +24,14 @@ public class RotatingGunSlideController : Slides.SimulationSlideController
     public override void InitializeSlide()
     {
         sim = simulation as RotatingGunSimulation;
-
         sim.angularFrequency = angularFrequency;
         sim.referenceFrame = referenceFrame;
+        sim.traceBulletPath = traceBulletPath;
+        sim.showPositionVector = showPositionVector;
         sim.Pause();
+
+        if (insetCamera) insetCamera.gameObject.SetActive(false);
+        if (ground) ground.gameObject.SetActive(showGround);
 
         hasInitialized = true;
     }
@@ -44,6 +56,8 @@ public class RotatingGunSlideController : Slides.SimulationSlideController
             this.cameraPosition = cameraPosition;
             this.cameraRotation = cameraRotation;
             sim.Resume();
+
+            if (insetCamera) insetCamera.gameObject.SetActive(showInsetCamera);
         }
     }
 }
