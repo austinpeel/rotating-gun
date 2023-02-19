@@ -6,6 +6,11 @@ public class Gun : MonoBehaviour
     public Transform barrel;
     public LineRenderer bulletPath;
 
+    [Header("Vectors")]
+    public GameObject velocityVectorPrefab;
+    public GameObject centrifugalForceVectorPrefab;
+    public GameObject coriolisForceVectorPrefab;
+
     private List<Bullet> bullets;
 
     [HideInInspector] public bool inGunFrame;
@@ -42,8 +47,8 @@ public class Gun : MonoBehaviour
         bulletPath.SetPosition(bulletPath.positionCount - 1, newPosition);
     }
 
-    public void Fire(GameObject bulletPrefab, float speed, Transform parent, bool tracePath = false,
-                     bool showPositionVector = false)
+    public void Fire(GameObject bulletPrefab, float speed, Transform parent, float maxDistance,
+                     bool tracePath = false, bool showPositionVector = false)
     {
         if (bullets == null) bullets = new List<Bullet>();
 
@@ -57,7 +62,7 @@ public class Gun : MonoBehaviour
 
         Bullet bullet = Instantiate(bulletPrefab, parent).GetComponent<Bullet>();
         bullet.name = "Bullet";
-        bullet.Initialize(bulletSpawnPosition, speed * e1, showPositionVector);
+        bullet.Initialize(bulletSpawnPosition, speed * e1, maxDistance, showPositionVector);
 
         // Only show the latest bullet's position vector
         if (showPositionVector)

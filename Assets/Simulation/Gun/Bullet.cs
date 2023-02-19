@@ -4,6 +4,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public GameObject positionVectorPrefab;
+    public GameObject velocityVectorPrefab;
     public float maxDistance = 10;
 
     public static event Action<Bullet> OnOutOfBounds;
@@ -11,10 +12,11 @@ public class Bullet : MonoBehaviour
     private Vector3 velocity;
     private Vector positionVector;
 
-    public void Initialize(Vector3 position, Vector3 velocity, bool showPositionVector)
+    public void Initialize(Vector3 position, Vector3 velocity, float maxDistance, bool showPositionVector)
     {
         transform.position = position;
         this.velocity = velocity;
+        this.maxDistance = maxDistance;
 
         if (showPositionVector)
         {

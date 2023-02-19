@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Slides
+namespace Utils
 {
     [CustomEditor(typeof(CameraController))]
     public class CameraControllerEditor : Editor
@@ -19,11 +19,9 @@ namespace Slides
 
             EditorGUILayout.Space(10);
 
-            if (GUILayout.Button("Set Camera Position / Rotation"))
+            if (GUILayout.Button("Set Camera"))
             {
-                Transform camera = Camera.main.transform;
-                camera.position = controller.targetPosition;
-                camera.rotation = Quaternion.Euler(controller.targetRotation);
+                controller.SetCamera();
             }
         }
     }

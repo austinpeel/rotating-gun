@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,20 +15,22 @@ public class RotatingGunSimulationEditor : Editor
     {
         DrawDefaultInspector();
 
-        if (GUILayout.Button("Fire!"))
-        {
-            sim.Fire();
-        }
-        if (GUILayout.Button("Move Camera!"))
-        {
-            sim.TogglePerspective(1);
-        }
+        // EditorGUILayout.Space(10);
+
+        // if (GUILayout.Button("Fire!"))
+        // {
+        //     sim.Fire();
+        // }
+        // if (GUILayout.Button("Move Camera!"))
+        // {
+        //     sim.TogglePerspective(1);
+        // }
 
         if (GUI.changed)
         {
-            sim.SetTimeScale(sim.timeScale);
-            sim.SetReferenceFrame(sim.referenceFrame);
-            sim.SetPerspective(sim.perspective);
+            // sim.SetTimeScale(sim.timeScale);
+            sim.SetReferenceFrame(sim.referenceFrame, 0);
+            // sim.SetPerspective(sim.perspective);
         }
     }
 }
