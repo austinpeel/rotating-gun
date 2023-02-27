@@ -4,55 +4,39 @@ using UnityEngine;
 
 public class TheoryBasisVectors : MonoBehaviour
 {
-    public RectTransform labBasis;
-    public RectTransform gunBasis;
+    public GameObject labBasisVectors;
+    public GameObject gunBasisVectors;
+    public SimulationState simState;
 
-    private RotatingGunSimulation.ReferenceFrame currentReferenceFrame;
-    public float currentAngle;
-
-    private void OnEnable()
+    public void SetQuantitiesTabVisibility(bool tabIsActive)
     {
-        RotatingGunSimulation.OnChangeReferenceFrame += HandleChangedReferenceFrame;
-        RotatingGunSimulation.OnChangeAngle += HandleChangedAngle;
-    }
+        if (!simState) return;
 
-    private void OnDisable()
-    {
-        RotatingGunSimulation.OnChangeReferenceFrame -= HandleChangedReferenceFrame;
-        RotatingGunSimulation.OnChangeAngle -= HandleChangedAngle;
-    }
-
-    public void HandleChangedReferenceFrame(RotatingGunSimulation.ReferenceFrame referenceFrame)
-    {
-        Debug.Log("Heard reference frame " + referenceFrame);
-        switch (referenceFrame)
+        if (tabIsActive)
         {
-            case RotatingGunSimulation.ReferenceFrame.Lab:
-                if (labBasis) labBasis.localRotation = Quaternion.identity;
-                break;
-            case RotatingGunSimulation.ReferenceFrame.Gun:
-                if (gunBasis) gunBasis.localRotation = Quaternion.identity;
-                break;
-            default:
-                break;
+            switch (simState.referenceFrame)
+            {
+                case SimulationState.ReferenceFrame.Lab:
+                    SetLabBasisVisibility(true);
+                    SetGunBasisVisibility(false);
+                    break;
+                case SimulationState.ReferenceFrame.Gun:
+                    SetLabBasisVisibility(false);
+                    SetGunBasisVisibility(true);
+                    break;
+                default:
+                    break;
+            }
         }
-
-        currentReferenceFrame = referenceFrame;
     }
 
-    public void HandleChangedAngle(float angle)
+    public void SetLabBasisVisibility(bool isVisible)
     {
-        currentAngle = angle;
-        switch (currentReferenceFrame)
-        {
-            case RotatingGunSimulation.ReferenceFrame.Lab:
-                if (gunBasis) gunBasis.localRotation = Quaternion.Euler(0, 0, angle);
-                break;
-            case RotatingGunSimulation.ReferenceFrame.Gun:
-                if (labBasis) labBasis.localRotation = Quaternion.Euler(0, 0, -angle);
-                break;
-            default:
-                break;
-        }
+        if (labBasisVectors) labBasisVectors.SetActive(isVisible);
+    }
+
+    public void SetGunBasisVisibility(bool isVisible)
+    {
+        if (gunBasisVectors) gunBasisVectors.SetActive(isVisible);
     }
 }

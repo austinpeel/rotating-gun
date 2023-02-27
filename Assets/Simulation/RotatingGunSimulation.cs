@@ -6,7 +6,7 @@ public class RotatingGunSimulation : Slides.Simulation
 {
     public Gun gun;
     public GameObject bulletPrefab;
-    public SimulationState state;
+    public SimulationState simState;
 
     [Header("Camera")]
     public Transform mainCamera;
@@ -24,34 +24,56 @@ public class RotatingGunSimulation : Slides.Simulation
     [Range(0, 1)] public float timeScale = 1f;
     private float runningAngle;
 
-    public enum ReferenceFrame { Lab, Gun }
-    public enum Perspective { Side, Above }
-
-    public ReferenceFrame referenceFrame;
-    public Perspective perspective;
+    public SimulationState.ReferenceFrame referenceFrame;
+    public SimulationState.Perspective perspective;
 
     [Header("Options")]
     public bool cameraControlledExternally;
     public bool traceBulletPath;
-    public bool showPositionVector;
+    public bool showPosition;
+    public bool showVelocity;
+    public bool showCentrifugalForce;
+    public bool showCoriolisForce;
 
-    private Transform bullets;
+    private Transform bulletContainer;
 
-    public static event Action<ReferenceFrame> OnChangeReferenceFrame;
-    public static event Action<float> OnChangeAngle;
+    // public static event Action OnStartChangePerspective;
+    // public static event Action OnEndChangePerspective;
 
     private void Awake()
     {
         // Create a container for the bullets
-        bullets = new GameObject("Bullets").transform;
-        bullets.SetParent(transform);
-
-        // if (mainCamera) cameraSidePosition = mainCamera.position;
+        bulletContainer = new GameObject("Bullets").transform;
+        bulletContainer.SetParent(transform);
 
         // Initialize
         SetTimeScale(timeScale);
-        SetReferenceFrame(referenceFrame, 0);
-        SetPerspective(perspective, 0);
+
+        // Set simulation parameters according to SimulationState values
+        if (simState)
+        {
+            angularFrequency = simState.GetAngularFrequency();
+            runningAngle = simState.theta;
+            if (gun) gun.transform.rotation = Quaternion.Euler(0, -runningAngle, 0);
+            // Debug.Log("Sim Awake : frequency = " + angularFrequency);
+
+            SetReferenceFrame(simState.referenceFrame);
+            SetPerspective(simState.perspective);
+        }
+    }
+
+    private void OnEnable()
+    {
+        SimulationState.OnChangeOmega += HandleOmegaChange;
+        SimulationState.OnChangePerspective += HandlePerspectiveChange;
+        SimulationState.OnChangeReferenceFrame += HandleReferenceFrameChange;
+    }
+
+    private void OnDisable()
+    {
+        SimulationState.OnChangeOmega -= HandleOmegaChange;
+        SimulationState.OnChangePerspective -= HandlePerspectiveChange;
+        SimulationState.OnChangeReferenceFrame -= HandleReferenceFrameChange;
     }
 
     private void Update()
@@ -63,27 +85,46 @@ public class RotatingGunSimulation : Slides.Simulation
         runningAngle += deltaAngle;
         if (runningAngle >= 360) runningAngle -= 360;
         if (runningAngle <= 0) runningAngle += 360;
-        OnChangeAngle?.Invoke(runningAngle);
 
         // Increment the gun's rotation about the y-axis
         if (gun) gun.transform.RotateAround(gun.transform.position, Vector3.down, deltaAngle);
 
         // Rotate the camera if in the gun's reference frame
-        if (referenceFrame == ReferenceFrame.Gun)
+        if (referenceFrame == SimulationState.ReferenceFrame.Gun && mainCamera)
         {
             mainCamera.RotateAround(gun.transform.position, Vector3.down, deltaAngle);
+        }
+
+        if (simState)
+        {
+            simState.SetTheta(runningAngle);
+
+            // Update sim state's omega value if angular frequency is changed in the inspector
+            if (angularFrequency != simState.GetAngularFrequency())
+            {
+                simState.SetOmegaFromFrequency(angularFrequency);
+            }
         }
     }
 
     public void Fire()
     {
-        if (!bullets || IsPaused) return;
+        // Do nothing if there's no bullet container or if the simulation is paused
+        if (!bulletContainer || IsPaused) return;
 
         // Limit the number of bullets at a time
-        if (bullets.childCount >= maxNumBullets) return;
+        if (bulletContainer.childCount >= maxNumBullets) return;
 
         // Fire the gun
-        if (gun) gun.Fire(bulletPrefab, bulletSpeed, bullets, maxBulletDistance, traceBulletPath, showPositionVector);
+        if (gun) gun.Fire(bulletPrefab,
+                          bulletSpeed,
+                          bulletContainer,
+                          maxBulletDistance,
+                          traceBulletPath,
+                          showPosition,
+                          showVelocity,
+                          showCentrifugalForce,
+                          showCoriolisForce);
     }
 
     public void Reset(Vector3 cameraPosition, Quaternion cameraRotation)
@@ -101,49 +142,83 @@ public class RotatingGunSimulation : Slides.Simulation
         }
     }
 
+    public void HandleOmegaChange()
+    {
+        if (!simState) return;
+
+        angularFrequency = simState.GetAngularFrequency();
+        Debug.Log("Sim > heard angular frequency : " + angularFrequency);
+    }
+
+    public void HandlePerspectiveChange()
+    {
+        if (!simState) return;
+
+        Debug.Log("Sim > heard perspective : " + simState.perspective);
+        SetPerspective(simState.perspective);
+    }
+
+    public void HandleReferenceFrameChange()
+    {
+        if (!simState) return;
+
+        Debug.Log("Sim > heard reference : " + simState.referenceFrame);
+        SetReferenceFrame(simState.referenceFrame);
+    }
+
     public void SetTimeScale(float timeScale)
     {
         Time.timeScale = timeScale;
+        this.timeScale = timeScale;
     }
 
-    public void ToggleRotationDirection()
-    {
-        angularFrequency = -angularFrequency;
-    }
+    // public void SetRotationDirection(bool positive)
+    // {
+    //     Debug.Log("Sim SetRotationDirection() " + (positive ? "positive" : "negative"));
+    //     angularFrequency = (positive ? 1 : -1) * Mathf.Abs(angularFrequency);
+    //     if (simState) simState.omega = angularFrequency * 2 * Mathf.PI * Vector3.up;
+    //     OnChangeOmega?.Invoke();
+    // }
 
-    public void SetReferenceFrame(ReferenceFrame referenceFrame, float cameraMoveTime)
+    public void SetReferenceFrame(SimulationState.ReferenceFrame referenceFrame)
     {
         this.referenceFrame = referenceFrame;
 
         if (gun)
         {
-            gun.inGunFrame = referenceFrame == ReferenceFrame.Gun;
+            gun.inGunFrame = referenceFrame == SimulationState.ReferenceFrame.Gun;
             gun.ResetBulletPath();
         }
 
         // Move camera to correct position
-        SetPerspective(perspective, cameraMoveTime);
+        SetPerspective(perspective);
+
+        // Update simulation state
+        // if (simState) simState.SetReferenceFrame(referenceFrame);
 
         // Alert other scripts
-        OnChangeReferenceFrame?.Invoke(this.referenceFrame);
+        // OnChangeReferenceFrame?.Invoke();
     }
 
-    public void SetPerspective(Perspective perspective, float cameraMoveTime)
+    public void SetPerspective(SimulationState.Perspective perspective)
     {
         if (cameraControlledExternally || !mainCamera) return;
 
+        this.perspective = perspective;
+
+        // Compute camera position and rotation based on reference frame
         Vector3 targetPosition = cameraSidePosition;
         Quaternion targetRotation = Quaternion.Euler(cameraSideRotation);
-        if (perspective == Perspective.Above)
+        if (perspective == SimulationState.Perspective.Above)
         {
             targetPosition = cameraAbovePosition;
             targetRotation = Quaternion.Euler(cameraAboveRotation);
         }
 
-        // Align the camera's x-axis with the gun's
-        if (gun && referenceFrame == ReferenceFrame.Gun)
+        // Align the camera's x-axis with the gun's x-axis
+        if (gun && referenceFrame == SimulationState.ReferenceFrame.Gun)
         {
-            if (perspective == Perspective.Above)
+            if (perspective == SimulationState.Perspective.Above)
             {
                 targetRotation = Quaternion.AngleAxis(gun.transform.eulerAngles.y, Vector3.up) * targetRotation;
             }
@@ -154,36 +229,43 @@ public class RotatingGunSimulation : Slides.Simulation
             }
         }
 
-        this.perspective = perspective;
+        mainCamera.position = targetPosition;
+        mainCamera.rotation = targetRotation;
 
-        if (cameraMoveTime > 0)
-        {
-            cameraMovement = StartCoroutine(MoveCamera(targetPosition, targetRotation, cameraMoveTime));
-        }
-        else
-        {
-            mainCamera.position = targetPosition;
-            mainCamera.rotation = targetRotation;
-        }
+        // Update simulation state
+        // if (simState) simState.SetPerspective(perspective);
+
+        // Move camera to correct position
+        // if (cameraMoveTime > 0)
+        // {
+        //     cameraMovement = StartCoroutine(MoveCamera(targetPosition, targetRotation, cameraMoveTime));
+        // }
+        // else
+        // {
+        //     mainCamera.position = targetPosition;
+        //     mainCamera.rotation = targetRotation;
+        // }
     }
 
-    public void TogglePerspective(bool value)
-    {
-        Perspective newPerspective = value ? Perspective.Side : Perspective.Above;
+    // public void TogglePerspective(bool value)
+    // {
+    //     SimulationState.Perspective newPerspective = value ? SimulationState.Perspective.Side : SimulationState.Perspective.Above;
 
-        if (newPerspective != perspective) SetPerspective(newPerspective, 1);
-    }
+    //     // if (newPerspective != perspective) SetPerspective(newPerspective, 1);
+    // }
 
-    public void ToggleReferenceFrame(bool value)
-    {
-        ReferenceFrame newFrame = value ? ReferenceFrame.Lab : ReferenceFrame.Gun;
+    // public void ToggleReferenceFrame(bool value)
+    // {
+    //     SimulationState.ReferenceFrame newFrame = value ? SimulationState.ReferenceFrame.Lab : SimulationState.ReferenceFrame.Gun;
 
-        if (newFrame != referenceFrame) SetReferenceFrame(newFrame, 1);
-    }
+    //     // if (newFrame != referenceFrame) SetReferenceFrame(newFrame, 1);
+    // }
 
     private IEnumerator MoveCamera(Vector3 targetPosition, Quaternion targetRotation, float moveTime)
     {
         Pause();
+
+        // OnStartChangePerspective?.Invoke();
 
         Vector3 startPosition = mainCamera.position;
         Quaternion startRotation = mainCamera.rotation;
@@ -202,6 +284,8 @@ public class RotatingGunSimulation : Slides.Simulation
         mainCamera.position = targetPosition;
         mainCamera.rotation = targetRotation;
         cameraMovement = null;
+
+        // OnEndChangePerspective?.Invoke();
 
         Resume();
     }

@@ -3,9 +3,9 @@ using UnityEngine;
 public class RotatingGunSlideController : Slides.SimulationSlideController
 {
     public float angularFrequency;
-    public RotatingGunSimulation.ReferenceFrame referenceFrame;
+    public SimulationState.ReferenceFrame referenceFrame;
     public bool traceBulletPath;
-    public bool showPositionVector;
+    public bool showPosition;
 
     [Header("Inset Camera")]
     public Camera insetCamera;
@@ -27,7 +27,7 @@ public class RotatingGunSlideController : Slides.SimulationSlideController
         sim.angularFrequency = angularFrequency;
         sim.referenceFrame = referenceFrame;
         sim.traceBulletPath = traceBulletPath;
-        sim.showPositionVector = showPositionVector;
+        sim.showPosition = showPosition;
         sim.Pause();
 
         if (insetCamera) insetCamera.gameObject.SetActive(false);

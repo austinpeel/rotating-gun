@@ -2876,7 +2876,7 @@ PrefabInstance:
     - target: {fileID: 4822857849016072482, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
       propertyPath: mainCamera
       value: 
-      objectReference: {fileID: 465849218}
+      objectReference: {fileID: 465849219}
     - target: {fileID: 4822857849016072482, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
       propertyPath: bulletPrefab
       value: 
