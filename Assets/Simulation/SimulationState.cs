@@ -22,7 +22,7 @@ public class SimulationState : ScriptableObject
         referenceFrame = newReferenceFrame;
         OnChangeReferenceFrame?.Invoke();
 
-        Debug.Log("SimState > SetReferenceFrame()");
+        // Debug.Log("SimState > SetReferenceFrame()");
     }
 
     public void SetPerspective(Perspective newPerspective)
@@ -30,7 +30,7 @@ public class SimulationState : ScriptableObject
         perspective = newPerspective;
         OnChangePerspective?.Invoke();
 
-        Debug.Log("SimState > SetPerspective()");
+        // Debug.Log("SimState > SetPerspective()");
     }
 
     public void SetOmega(Vector3 omega)
@@ -38,7 +38,7 @@ public class SimulationState : ScriptableObject
         this.omega = omega;
         OnChangeOmega?.Invoke();
 
-        Debug.Log("SimState > SetOmega()");
+        // Debug.Log("SimState > SetOmega()");
     }
 
     public void SetOmegaFromFrequency(float angularFrequency)

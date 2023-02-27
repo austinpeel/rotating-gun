@@ -95,22 +95,20 @@ public class AngularVelocity : MonoBehaviour
             orientationLabel.gameObject.SetActive(cameraIsAbove);
         }
 
+        bool omegaIsPositive = angularFrequency > 0;
+
         if (omegaLabelLabFrame)
         {
-            bool positive = angularFrequency > 0;
             Vector3 position = omegaLabelLabFrame.transform.position;
-            position.y = cameraIsAbove ? 2 : (positive ? 2 : -2.5f);
+            position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -2.5f);
             omegaLabelLabFrame.transform.position = position;
             omegaLabelLabFrame.gameObject.SetActive(frameIsLab);
         }
 
         if (omegaLabelGunFrame)
         {
-
-            omegaLabelGunFrame.gameObject.SetActive(false);
-            bool positive = angularFrequency > 0;
             Vector3 position = omegaLabelGunFrame.transform.position;
-            position.y = cameraIsAbove ? 2 : (positive ? 2 : -2.5f);
+            position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -2.5f);
             omegaLabelGunFrame.transform.position = position;
             omegaLabelGunFrame.gameObject.SetActive(!frameIsLab);
         }
@@ -124,43 +122,4 @@ public class AngularVelocity : MonoBehaviour
         color.a = alpha;
         plinthMaterial.color = color;
     }
-
-    // public float GetMaterialAlpha()
-    // {
-    //     return plinthMaterial ? plinthMaterial.color.a : 1;
-    // }
-
-    // public void HandleStartPerspectiveChange()
-    // {
-    //     // Debug.Log("Heard starting " + perspective);
-    //     if (!simState) return;
-
-    //     if (simState.perspective == SimulationState.Perspective.Above)
-    //     {
-    //         SetOrientationLabel(false, simState.currentOmega.y >= 0);
-    //     }
-    // }
-
-    // public void HandleEndPerspectiveChange()
-    // {
-    //     // Debug.Log("Heard ending " + perspective);
-    //     if (!simState) return;
-
-    //     if (simState.perspective == SimulationState.Perspective.Side)
-    //     {
-    //         bool visible = simState.currentOmega.y < 0;
-    //         bool intoThePlane = simState.currentOmega.y < 0;
-
-    //         SetOrientationLabel(visible, intoThePlane);
-    //     }
-    // }
-
-    // private void SetOrientationLabel(bool visible, bool intoThePlane)
-    // {
-    //     if (!orientation || !intoPlane || !outOfPlane) return;
-
-    //     orientation.sprite = intoThePlane ? intoPlane : outOfPlane;
-    //     Debug.Log(intoThePlane ? "Into Plane" : "Out of Plane");
-    //     orientation.gameObject.SetActive(visible);
-    // }
 }

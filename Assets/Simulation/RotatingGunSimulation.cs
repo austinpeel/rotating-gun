@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -36,9 +35,6 @@ public class RotatingGunSimulation : Slides.Simulation
     public bool showCoriolisForce;
 
     private Transform bulletContainer;
-
-    // public static event Action OnStartChangePerspective;
-    // public static event Action OnEndChangePerspective;
 
     private void Awake()
     {
@@ -146,15 +142,15 @@ public class RotatingGunSimulation : Slides.Simulation
     {
         if (!simState) return;
 
+        // Debug.Log("Sim > heard angular frequency : " + angularFrequency);
         angularFrequency = simState.GetAngularFrequency();
-        Debug.Log("Sim > heard angular frequency : " + angularFrequency);
     }
 
     public void HandlePerspectiveChange()
     {
         if (!simState) return;
 
-        Debug.Log("Sim > heard perspective : " + simState.perspective);
+        // Debug.Log("Sim > heard perspective : " + simState.perspective);
         SetPerspective(simState.perspective);
     }
 
@@ -162,7 +158,7 @@ public class RotatingGunSimulation : Slides.Simulation
     {
         if (!simState) return;
 
-        Debug.Log("Sim > heard reference : " + simState.referenceFrame);
+        // Debug.Log("Sim > heard reference : " + simState.referenceFrame);
         SetReferenceFrame(simState.referenceFrame);
     }
 
@@ -171,14 +167,6 @@ public class RotatingGunSimulation : Slides.Simulation
         Time.timeScale = timeScale;
         this.timeScale = timeScale;
     }
-
-    // public void SetRotationDirection(bool positive)
-    // {
-    //     Debug.Log("Sim SetRotationDirection() " + (positive ? "positive" : "negative"));
-    //     angularFrequency = (positive ? 1 : -1) * Mathf.Abs(angularFrequency);
-    //     if (simState) simState.omega = angularFrequency * 2 * Mathf.PI * Vector3.up;
-    //     OnChangeOmega?.Invoke();
-    // }
 
     public void SetReferenceFrame(SimulationState.ReferenceFrame referenceFrame)
     {
@@ -192,12 +180,6 @@ public class RotatingGunSimulation : Slides.Simulation
 
         // Move camera to correct position
         SetPerspective(perspective);
-
-        // Update simulation state
-        // if (simState) simState.SetReferenceFrame(referenceFrame);
-
-        // Alert other scripts
-        // OnChangeReferenceFrame?.Invoke();
     }
 
     public void SetPerspective(SimulationState.Perspective perspective)
@@ -232,9 +214,6 @@ public class RotatingGunSimulation : Slides.Simulation
         mainCamera.position = targetPosition;
         mainCamera.rotation = targetRotation;
 
-        // Update simulation state
-        // if (simState) simState.SetPerspective(perspective);
-
         // Move camera to correct position
         // if (cameraMoveTime > 0)
         // {
@@ -265,8 +244,6 @@ public class RotatingGunSimulation : Slides.Simulation
     {
         Pause();
 
-        // OnStartChangePerspective?.Invoke();
-
         Vector3 startPosition = mainCamera.position;
         Quaternion startRotation = mainCamera.rotation;
         float time = 0;
@@ -284,8 +261,6 @@ public class RotatingGunSimulation : Slides.Simulation
         mainCamera.position = targetPosition;
         mainCamera.rotation = targetRotation;
         cameraMovement = null;
-
-        // OnEndChangePerspective?.Invoke();
 
         Resume();
     }
