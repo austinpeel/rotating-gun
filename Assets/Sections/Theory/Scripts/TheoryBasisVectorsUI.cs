@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TheoryBasisVectorsUI : MonoBehaviour
 {
@@ -6,33 +7,55 @@ public class TheoryBasisVectorsUI : MonoBehaviour
     public RectTransform gunBasis;
     public SimulationState simState;
 
+    [Header("Images")]
+    public Image omegaSign;
+    public Image omegaUnitVector;
+    public Image thetaSign;
+    public Sprite plus;
+    public Sprite minus;
+    public Sprite x3;
+    public Sprite y3;
+
     private SimulationState.ReferenceFrame currentReferenceFrame;
-    public float currentAngle;
+
+    private void Awake()
+    {
+        HandleOmegaChange();
+        HandleReferenceFrameChange();
+    }
 
     private void OnEnable()
     {
-        SimulationState.OnChangeReferenceFrame += HandleChangedReferenceFrame;
+        SimulationState.OnChangeReferenceFrame += HandleReferenceFrameChange;
+        SimulationState.OnChangeOmega += HandleOmegaChange;
     }
 
     private void OnDisable()
     {
-        SimulationState.OnChangeReferenceFrame -= HandleChangedReferenceFrame;
+        SimulationState.OnChangeReferenceFrame -= HandleReferenceFrameChange;
+        SimulationState.OnChangeOmega -= HandleOmegaChange;
     }
 
-    public void HandleChangedReferenceFrame()
+    public void HandleReferenceFrameChange()
     {
         if (!simState) return;
 
-        switch (simState.referenceFrame)
+        bool frameIsLab = simState.referenceFrame == SimulationState.ReferenceFrame.Lab;
+
+        if (labBasis && frameIsLab)
         {
-            case SimulationState.ReferenceFrame.Lab:
-                if (labBasis) labBasis.localRotation = Quaternion.identity;
-                break;
-            case SimulationState.ReferenceFrame.Gun:
-                if (gunBasis) gunBasis.localRotation = Quaternion.identity;
-                break;
-            default:
-                break;
+            labBasis.localRotation = Quaternion.identity;
+        }
+
+        if (gunBasis && !frameIsLab)
+        {
+            gunBasis.localRotation = Quaternion.identity;
+        }
+
+        if (omegaUnitVector)
+        {
+            omegaUnitVector.sprite = frameIsLab ? x3 : y3;
+            omegaUnitVector.SetNativeSize();
         }
 
         currentReferenceFrame = simState.referenceFrame;
@@ -42,17 +65,35 @@ public class TheoryBasisVectorsUI : MonoBehaviour
     {
         if (!simState) return;
 
-        currentAngle = simState.theta;
         switch (currentReferenceFrame)
         {
             case SimulationState.ReferenceFrame.Lab:
-                if (gunBasis) gunBasis.localRotation = Quaternion.Euler(0, 0, currentAngle);
+                if (gunBasis) gunBasis.localRotation = Quaternion.Euler(0, 0, simState.theta);
                 break;
             case SimulationState.ReferenceFrame.Gun:
-                if (labBasis) labBasis.localRotation = Quaternion.Euler(0, 0, -currentAngle);
+                if (labBasis) labBasis.localRotation = Quaternion.Euler(0, 0, -simState.theta);
                 break;
             default:
                 break;
+        }
+    }
+
+    public void HandleOmegaChange()
+    {
+        if (!simState) return;
+
+        float angularFrequency = simState.GetAngularFrequency();
+
+        if (omegaSign)
+        {
+            omegaSign.sprite = angularFrequency >= 0 ? plus : minus;
+            omegaSign.SetNativeSize();
+        }
+
+        if (thetaSign)
+        {
+            thetaSign.sprite = angularFrequency >= 0 ? plus : minus;
+            thetaSign.SetNativeSize();
         }
     }
 }

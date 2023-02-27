@@ -240,6 +240,37 @@ public class RotatingGunSimulation : Slides.Simulation
     //     // if (newFrame != referenceFrame) SetReferenceFrame(newFrame, 1);
     // }
 
+    public void SetAssumptionsTabVisibility(bool tabIsActive)
+    {
+        if (tabIsActive)
+        {
+            showPosition = false;
+            showVelocity = false;
+            showCentrifugalForce = false;
+            showCoriolisForce = false;
+        }
+    }
+
+    public void SetCoordinateTabVisibility(bool tabIsActive)
+    {
+        if (tabIsActive)
+        {
+            showPosition = false;
+            showVelocity = false;
+            showCentrifugalForce = false;
+            showCoriolisForce = false;
+        }
+    }
+
+    public void SetQuantitiesTabVisibility(bool tabIsActive)
+    {
+        if (tabIsActive)
+        {
+            showPosition = true;
+            showVelocity = true;
+        }
+    }
+
     private IEnumerator MoveCamera(Vector3 targetPosition, Quaternion targetRotation, float moveTime)
     {
         Pause();
