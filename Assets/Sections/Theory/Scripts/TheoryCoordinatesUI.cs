@@ -1,11 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TheoryBasisVectorsUI : MonoBehaviour
+public class TheoryCoordinatesUI : MonoBehaviour
 {
-    public RectTransform labBasis;
-    public RectTransform gunBasis;
     public SimulationState simState;
+
+    [Header("Basis Vectors")]
+    public RectTransform labBasisVectors;
+    public RectTransform gunBasisVectors;
+
+    [Header("Transformations")]
+    public RectTransform labBasisEquations;
+    public RectTransform gunBasisEquations;
 
     [Header("Images")]
     public Image omegaSign;
@@ -42,15 +48,18 @@ public class TheoryBasisVectorsUI : MonoBehaviour
 
         bool frameIsLab = simState.referenceFrame == SimulationState.ReferenceFrame.Lab;
 
-        if (labBasis && frameIsLab)
+        if (labBasisVectors && frameIsLab)
         {
-            labBasis.localRotation = Quaternion.identity;
+            labBasisVectors.localRotation = Quaternion.identity;
         }
 
-        if (gunBasis && !frameIsLab)
+        if (gunBasisVectors && !frameIsLab)
         {
-            gunBasis.localRotation = Quaternion.identity;
+            gunBasisVectors.localRotation = Quaternion.identity;
         }
+
+        if (labBasisEquations) labBasisEquations.gameObject.SetActive(frameIsLab);
+        if (gunBasisEquations) gunBasisEquations.gameObject.SetActive(!frameIsLab);
 
         if (omegaUnitVector)
         {
@@ -68,10 +77,10 @@ public class TheoryBasisVectorsUI : MonoBehaviour
         switch (currentReferenceFrame)
         {
             case SimulationState.ReferenceFrame.Lab:
-                if (gunBasis) gunBasis.localRotation = Quaternion.Euler(0, 0, simState.theta);
+                if (gunBasisVectors) gunBasisVectors.localRotation = Quaternion.Euler(0, 0, simState.theta);
                 break;
             case SimulationState.ReferenceFrame.Gun:
-                if (labBasis) labBasis.localRotation = Quaternion.Euler(0, 0, -simState.theta);
+                if (labBasisVectors) labBasisVectors.localRotation = Quaternion.Euler(0, 0, -simState.theta);
                 break;
             default:
                 break;

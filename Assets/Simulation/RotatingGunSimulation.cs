@@ -271,6 +271,21 @@ public class RotatingGunSimulation : Slides.Simulation
         }
     }
 
+    public void SetCoriolisForceVisibility(bool isVisible)
+    {
+        showCoriolisForce = isVisible;
+    }
+
+    public void SetCentrigugalForceVisibility(bool isVisible)
+    {
+        showCentrifugalForce = isVisible;
+    }
+
+    public void SetSlowMotion(bool isSlowMotion)
+    {
+        SetTimeScale(isSlowMotion ? 0.2f : 1);
+    }
+
     private IEnumerator MoveCamera(Vector3 targetPosition, Quaternion targetRotation, float moveTime)
     {
         Pause();

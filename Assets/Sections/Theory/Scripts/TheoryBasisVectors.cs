@@ -15,9 +15,14 @@ public class TheoryBasisVectors : MonoBehaviour
 
     public void SetCoordinatesTabVisibility(bool tabIsActive)
     {
-        HideAll();
-
-        if (tabIsActive) ShowAll();
+        if (tabIsActive)
+        {
+            ShowAll();
+        }
+        else
+        {
+            HideAll();
+        }
     }
 
     public void SetQuantitiesTabVisibility(bool tabIsActive)

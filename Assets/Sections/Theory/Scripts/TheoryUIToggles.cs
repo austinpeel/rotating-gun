@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TheoryUIControls : MonoBehaviour
+public class TheoryUIToggles : MonoBehaviour
 {
     public SimulationState simState;
     public Toggle rotationToggle;
