@@ -1,1 +1,1 @@
-# physics-app-template
+# rotating-gun
