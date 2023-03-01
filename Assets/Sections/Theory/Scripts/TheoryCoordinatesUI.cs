@@ -5,10 +5,6 @@ public class TheoryCoordinatesUI : MonoBehaviour
 {
     public SimulationState simState;
 
-    [Header("Basis Vectors")]
-    public RectTransform labBasisVectors;
-    public RectTransform gunBasisVectors;
-
     [Header("Transformations")]
     public RectTransform labBasisEquations;
     public RectTransform gunBasisEquations;
@@ -16,13 +12,13 @@ public class TheoryCoordinatesUI : MonoBehaviour
     [Header("Images")]
     public Image omegaSign;
     public Image omegaUnitVector;
-    public Image thetaSign;
+    public Image thetaDot;
     public Sprite plus;
     public Sprite minus;
     public Sprite x3;
     public Sprite y3;
-
-    private SimulationState.ReferenceFrame currentReferenceFrame;
+    public Sprite thetaDotPositive;
+    public Sprite thetaDotNegative;
 
     private void Awake()
     {
@@ -48,16 +44,6 @@ public class TheoryCoordinatesUI : MonoBehaviour
 
         bool frameIsLab = simState.referenceFrame == SimulationState.ReferenceFrame.Lab;
 
-        if (labBasisVectors && frameIsLab)
-        {
-            labBasisVectors.localRotation = Quaternion.identity;
-        }
-
-        if (gunBasisVectors && !frameIsLab)
-        {
-            gunBasisVectors.localRotation = Quaternion.identity;
-        }
-
         if (labBasisEquations) labBasisEquations.gameObject.SetActive(frameIsLab);
         if (gunBasisEquations) gunBasisEquations.gameObject.SetActive(!frameIsLab);
 
@@ -67,23 +53,11 @@ public class TheoryCoordinatesUI : MonoBehaviour
             omegaUnitVector.SetNativeSize();
         }
 
-        currentReferenceFrame = simState.referenceFrame;
-    }
-
-    private void LateUpdate()
-    {
-        if (!simState) return;
-
-        switch (currentReferenceFrame)
+        if (thetaDot)
         {
-            case SimulationState.ReferenceFrame.Lab:
-                if (gunBasisVectors) gunBasisVectors.localRotation = Quaternion.Euler(0, 0, simState.theta);
-                break;
-            case SimulationState.ReferenceFrame.Gun:
-                if (labBasisVectors) labBasisVectors.localRotation = Quaternion.Euler(0, 0, -simState.theta);
-                break;
-            default:
-                break;
+            bool omegaIsPositive = simState.GetAngularFrequency() >= 0;
+            thetaDot.sprite = !(frameIsLab ^ omegaIsPositive) ? thetaDotPositive : thetaDotNegative;
+            thetaDot.SetNativeSize();
         }
     }
 
@@ -99,10 +73,12 @@ public class TheoryCoordinatesUI : MonoBehaviour
             omegaSign.SetNativeSize();
         }
 
-        if (thetaSign)
+        if (thetaDot)
         {
-            thetaSign.sprite = angularFrequency >= 0 ? plus : minus;
-            thetaSign.SetNativeSize();
+            bool frameIsLab = simState.referenceFrame == SimulationState.ReferenceFrame.Lab;
+            bool omegaIsPositive = angularFrequency >= 0;
+            thetaDot.sprite = !(frameIsLab ^ omegaIsPositive) ? thetaDotPositive : thetaDotNegative;
+            thetaDot.SetNativeSize();
         }
     }
 }
