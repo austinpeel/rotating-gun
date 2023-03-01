@@ -89,6 +89,7 @@ namespace Slides
                 {
                     cameraController.AssignCameraReference(mainCamera);
                     cameraController.InitializeCamera();
+                    Debug.Log("Initializing camera");
                 }
             }
             foreach (var simSlideController in slide.GetComponents<SimulationSlideController>())

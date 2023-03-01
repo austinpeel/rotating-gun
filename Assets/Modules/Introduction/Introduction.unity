@@ -831,6 +831,7 @@ GameObject:
   - component: {fileID: 465849218}
   - component: {fileID: 465849217}
   - component: {fileID: 465849220}
+  - component: {fileID: 465849221}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -897,7 +898,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465849216}
   m_LocalRotation: {x: 0.16317593, y: 0.3368241, z: -0.059391174, w: 0.9254166}
-  m_LocalPosition: {x: -10, y: 7, z: -12}
+  m_LocalPosition: {x: -13, y: 8, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -936,6 +937,19 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &465849221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465849216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d0d39fac645e40ef929d82f6e28fe8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraState: {fileID: 11400000, guid: 4142d516b6c8d45ab98b9075babf832f, type: 2}
 --- !u!1 &471656064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1516,7 +1530,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2035036163}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!108 &623380189
 Light:
@@ -2859,11 +2873,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1419486989288022026, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4822857848003773582, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822857848487034107, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822857848902348928, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4822857849016072481, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
       propertyPath: m_Name
@@ -2877,10 +2899,6 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 465849219}
-    - target: {fileID: 4822857849016072482, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 3307435681122757228, guid: 67a9240cad35d4838b73827a95029df3, type: 3}
     - target: {fileID: 4822857849016072482, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
       propertyPath: traceBulletPath
       value: 0

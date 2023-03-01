@@ -100,7 +100,7 @@ public class AngularVelocity : MonoBehaviour
         if (omegaLabelLabFrame)
         {
             Vector3 position = omegaLabelLabFrame.transform.position;
-            position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -2.5f);
+            position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -1.8f);
             omegaLabelLabFrame.transform.position = position;
             omegaLabelLabFrame.gameObject.SetActive(frameIsLab);
         }
@@ -108,7 +108,7 @@ public class AngularVelocity : MonoBehaviour
         if (omegaLabelGunFrame)
         {
             Vector3 position = omegaLabelGunFrame.transform.position;
-            position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -2.5f);
+            position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -1.8f);
             omegaLabelGunFrame.transform.position = position;
             omegaLabelGunFrame.gameObject.SetActive(!frameIsLab);
         }

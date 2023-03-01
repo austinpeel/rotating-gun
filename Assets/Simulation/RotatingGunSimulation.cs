@@ -75,6 +75,11 @@ public class RotatingGunSimulation : Slides.Simulation
         SimulationState.OnChangeReferenceFrame -= HandleReferenceFrameChange;
     }
 
+    private void Start()
+    {
+        Debug.Log(IsPaused);
+    }
+
     private void Update()
     {
         if (IsPaused) return;
