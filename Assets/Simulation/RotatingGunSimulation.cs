@@ -16,12 +16,15 @@ public class RotatingGunSimulation : Slides.Simulation
     private Coroutine cameraMovement;
 
     [Header("Parameters")]
+    public bool autoFire;
+    [Tooltip("Bullets per second")] public float fireFrequency = 1;
     [Range(-2, 2), Tooltip("Rotations per second")] public float angularFrequency = 0f;
     public float bulletSpeed = 20;
     public int maxNumBullets = 10;
     public float maxBulletDistance = 10;
     [Range(0, 1)] public float timeScale = 1f;
     private float runningAngle;
+    private float autoFireClock;
 
     public SimulationState.ReferenceFrame referenceFrame;
     public SimulationState.Perspective perspective;
@@ -99,6 +102,17 @@ public class RotatingGunSimulation : Slides.Simulation
             if (angularFrequency != simState.GetAngularFrequency())
             {
                 simState.SetOmegaFromFrequency(angularFrequency);
+            }
+        }
+
+        if (autoFire)
+        {
+            autoFireClock += Time.deltaTime;
+
+            if (autoFireClock > 1f / fireFrequency)
+            {
+                Fire();
+                autoFireClock = 0;
             }
         }
     }

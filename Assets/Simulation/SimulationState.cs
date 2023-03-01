@@ -55,4 +55,12 @@ public class SimulationState : ScriptableObject
     {
         this.theta = theta;
     }
+
+    public void Reset()
+    {
+        theta = 0;
+        omega = Vector3.up;
+        referenceFrame = ReferenceFrame.Lab;
+        perspective = Perspective.Side;
+    }
 }

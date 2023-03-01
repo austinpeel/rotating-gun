@@ -490,9 +490,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 4822857848902348928}
   bulletPath: {fileID: 4822857849202469746}
+  simState: {fileID: 0}
+  positionVectorLabPrefab: {fileID: 0}
+  positionVectorGunPrefab: {fileID: 0}
   velocityVectorPrefab: {fileID: 0}
   centrifugalForceVectorPrefab: {fileID: 0}
   coriolisForceVectorPrefab: {fileID: 0}
+  vectorScaleFactor: 1
   inGunFrame: 0
 --- !u!1 &4822857848808226701
 GameObject:
@@ -817,10 +821,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 4822857848704392700}
   bulletPrefab: {fileID: 3307435681122757228, guid: 7d376bf8545cc4b1ca517365b40f5dfb, type: 3}
-  state: {fileID: 0}
+  simState: {fileID: 0}
   mainCamera: {fileID: 0}
   cameraSidePosition: {x: 0, y: 7, z: -20}
-  cameraTopDownPosition: {x: 0, y: 30, z: 0}
+  cameraSideRotation: {x: 20, y: 0, z: 0}
+  cameraAbovePosition: {x: 0, y: 30, z: 0}
+  cameraAboveRotation: {x: 90, y: 0, z: 0}
   angularFrequency: 0
   bulletSpeed: 20
   maxNumBullets: 10
@@ -830,7 +836,10 @@ MonoBehaviour:
   perspective: 0
   cameraControlledExternally: 0
   traceBulletPath: 0
-  showPositionVector: 0
+  showPosition: 0
+  showVelocity: 0
+  showCentrifugalForce: 0
+  showCoriolisForce: 0
 --- !u!1 &4822857849175633529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,10 +1529,10 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.3
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2

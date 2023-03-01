@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: Assets/Home/Home.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Sections/Introduction/Introduction.unity
+    path: Assets/Moduules/Introduction/Introduction.unity
     guid: dd35653107bdf4f6faecff0a7dba489a
   - enabled: 1
-    path: Assets/Sections/Theory/Theory.unity
+    path: Assets/Moduules/Theory/Theory.unity
     guid: fdea4f92135694b3392978b263ddd5f3
   - enabled: 1
-    path: Assets/Sections/Activities/Activities.unity
+    path: Assets/Moduules/Activities/Activities.unity
     guid: fe45f13095dd241b6bdb96c00e33ce8a
   - enabled: 1
-    path: Assets/Sections/Activities/Activity1/Activity1.unity
+    path: Assets/Moduules/Activities/Activity1/Activity1.unity
     guid: b251f21d91dfa4764858bdef26dfe801
   - enabled: 1
-    path: Assets/Sections/Sandbox/Sandbox.unity
+    path: Assets/Moduules/Sandbox/Sandbox.unity
     guid: 22b1786a54e57465ca08c0010a507aeb
   m_configObjects: {}

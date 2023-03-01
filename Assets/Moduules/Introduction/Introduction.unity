@@ -376,7 +376,7 @@ MonoBehaviour:
   angularFrequency: -0.2
   referenceFrame: 1
   traceBulletPath: 0
-  showPositionVector: 0
+  showPosition: 0
   insetCamera: {fileID: 1222572036}
   showInsetCamera: 0
   ground: {fileID: 299187369}
@@ -1503,7 +1503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &623380188
 Transform:
   m_ObjectHideFlags: 0
@@ -1714,7 +1714,7 @@ MonoBehaviour:
   angularFrequency: -0.2
   referenceFrame: 0
   traceBulletPath: 0
-  showPositionVector: 1
+  showPosition: 0
   insetCamera: {fileID: 1222572036}
   showInsetCamera: 0
   ground: {fileID: 299187369}
@@ -2983,7 +2983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7494492881671053231, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bccb19dfacfb3422b8a731c5ee9c8e4f, type: 3}
@@ -3060,7 +3060,7 @@ MonoBehaviour:
   angularFrequency: -0.2
   referenceFrame: 1
   traceBulletPath: 0
-  showPositionVector: 0
+  showPosition: 0
   insetCamera: {fileID: 1222572036}
   showInsetCamera: 1
   ground: {fileID: 299187369}
@@ -3724,7 +3724,7 @@ MonoBehaviour:
   angularFrequency: 0
   referenceFrame: 0
   traceBulletPath: 0
-  showPositionVector: 0
+  showPosition: 0
   insetCamera: {fileID: 1222572036}
   showInsetCamera: 0
   ground: {fileID: 299187369}
