@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -578,6 +578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 1564187647489558452, guid: 603c6b7fb101048f5bf04e3ff95bb708, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1564187647489558453, guid: 603c6b7fb101048f5bf04e3ff95bb708, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -750,7 +754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 1.5, y: 1.5, z: -18}
   targetRotation: {x: 6, y: 0, z: 0}
-  moveTime: 1
+  moveTime: 1.5
   canZoom: 0
   minZoom: 1
   maxZoom: 10
