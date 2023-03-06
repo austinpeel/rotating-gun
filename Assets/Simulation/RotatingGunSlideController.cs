@@ -7,6 +7,12 @@ public class RotatingGunSlideController : Slides.SimulationSlideController
     public bool traceBulletPath;
     public bool showPosition;
 
+    [Header("Lights")]
+    public GameObject labFrameLight;
+    public bool activateLabFrameLight;
+    public GameObject gunFrameLight;
+    public bool activateGunFrameLight;
+
     [Header("Inset Camera")]
     public Camera insetCamera;
     public bool showInsetCamera;
@@ -30,6 +36,8 @@ public class RotatingGunSlideController : Slides.SimulationSlideController
         sim.showPosition = showPosition;
         sim.Pause();
 
+        if (labFrameLight) labFrameLight.SetActive(activateLabFrameLight);
+        if (gunFrameLight) gunFrameLight.SetActive(activateGunFrameLight);
         if (insetCamera) insetCamera.gameObject.SetActive(false);
         if (ground) ground.gameObject.SetActive(showGround);
 

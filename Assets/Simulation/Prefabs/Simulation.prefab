@@ -240,7 +240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 36b9b5f362ad6459e96f1e4d13cc0f7d, type: 2}
+  - {fileID: 2100000, guid: 004e305af319a472cab491fc38bc755a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -665,8 +665,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e26e2fa38427b4749b23867f05babe42, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 14ff4c402ee0c4dd79a6bab3d11534b9, type: 3}
+  m_Color: {r: 0.98039216, g: 0.98039216, b: 0.98039216, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -827,6 +827,8 @@ MonoBehaviour:
   cameraSideRotation: {x: 20, y: 0, z: 0}
   cameraAbovePosition: {x: 0, y: 30, z: 0}
   cameraAboveRotation: {x: 90, y: 0, z: 0}
+  autoFire: 0
+  fireFrequency: 1
   angularFrequency: 0
   bulletSpeed: 20
   maxNumBullets: 10
