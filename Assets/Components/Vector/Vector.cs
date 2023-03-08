@@ -11,12 +11,12 @@ public class Vector : MonoBehaviour
 
     private const float headAngle = 30;
 
-    private void OnEnable()
+    public virtual void OnEnable()
     {
         Redraw();
     }
 
-    public void Redraw()
+    public virtual void Redraw()
     {
         Vector3 direction = components.normalized;
         float magnitude = components.magnitude;

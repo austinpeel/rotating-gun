@@ -59,6 +59,11 @@ public class RotatingGunSimulation : Slides.Simulation
             SetReferenceFrame(simState.referenceFrame);
             SetPerspective(simState.perspective);
         }
+        else
+        {
+            // SetReferenceFrame(referenceFrame);
+            SetPerspective(perspective);
+        }
     }
 
     private void OnEnable()

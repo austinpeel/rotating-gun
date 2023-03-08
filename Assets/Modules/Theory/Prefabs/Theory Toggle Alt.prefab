@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 8838591168734078437}
   - component: {fileID: 8838591168734078436}
   m_Layer: 0
-  m_Name: Theory Toggle V2
+  m_Name: Theory Toggle Alt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
