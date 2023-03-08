@@ -5741,8 +5741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42205f085adf4349ae4f68d9d960d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverCursor: {fileID: 2800000, guid: e51b8a9ff80cc4ff79a1878bcc7819f8, type: 3}
-  hotspot: {x: 14, y: 6}
+  customCursor: {fileID: 11400000, guid: 684d79e95eecf4b9197ede40cef826b0, type: 2}
 --- !u!114 &1282672058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7181,8 +7180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42205f085adf4349ae4f68d9d960d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverCursor: {fileID: 2800000, guid: e51b8a9ff80cc4ff79a1878bcc7819f8, type: 3}
-  hotspot: {x: 14, y: 6}
+  customCursor: {fileID: 11400000, guid: 684d79e95eecf4b9197ede40cef826b0, type: 2}
 --- !u!1001 &1486057747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9389,8 +9387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42205f085adf4349ae4f68d9d960d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverCursor: {fileID: 2800000, guid: e51b8a9ff80cc4ff79a1878bcc7819f8, type: 3}
-  hotspot: {x: 14, y: 6}
+  customCursor: {fileID: 11400000, guid: 684d79e95eecf4b9197ede40cef826b0, type: 2}
 --- !u!114 &878037621250616154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11077,8 +11074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42205f085adf4349ae4f68d9d960d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverCursor: {fileID: 2800000, guid: e51b8a9ff80cc4ff79a1878bcc7819f8, type: 3}
-  hotspot: {x: 14, y: 6}
+  customCursor: {fileID: 11400000, guid: 684d79e95eecf4b9197ede40cef826b0, type: 2}
 --- !u!222 &878037622371039521
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11448,8 +11444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42205f085adf4349ae4f68d9d960d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverCursor: {fileID: 2800000, guid: e51b8a9ff80cc4ff79a1878bcc7819f8, type: 3}
-  hotspot: {x: 14, y: 6}
+  customCursor: {fileID: 0}
 --- !u!224 &878037622609771681
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11658,8 +11653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42205f085adf4349ae4f68d9d960d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverCursor: {fileID: 2800000, guid: e51b8a9ff80cc4ff79a1878bcc7819f8, type: 3}
-  hotspot: {x: 14, y: 6}
+  customCursor: {fileID: 11400000, guid: 684d79e95eecf4b9197ede40cef826b0, type: 2}
 --- !u!114 &878037623051006977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12310,8 +12304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42205f085adf4349ae4f68d9d960d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverCursor: {fileID: 2800000, guid: e51b8a9ff80cc4ff79a1878bcc7819f8, type: 3}
-  hotspot: {x: 14, y: 6}
+  customCursor: {fileID: 11400000, guid: 684d79e95eecf4b9197ede40cef826b0, type: 2}
 --- !u!114 &5767193665310185276
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -152,7 +152,7 @@ MonoBehaviour:
   slideContainer: {fileID: 2866597029726937425}
   currentSlideIndex: 0
   navigation: {fileID: 668152092768172294}
-  clickableBubbles: 1
+  bubblesAreClickable: 1
   useProgressBar: 0
   fadeInTime: 0.3
   fadeInDelay: 0

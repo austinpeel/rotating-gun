@@ -207,8 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42205f085adf4349ae4f68d9d960d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverCursor: {fileID: 2800000, guid: e51b8a9ff80cc4ff79a1878bcc7819f8, type: 3}
-  hotspot: {x: 14, y: 6}
+  customCursor: {fileID: 11400000, guid: 684d79e95eecf4b9197ede40cef826b0, type: 2}
 --- !u!1 &1001247658477413320
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,8 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42205f085adf4349ae4f68d9d960d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverCursor: {fileID: 2800000, guid: e51b8a9ff80cc4ff79a1878bcc7819f8, type: 3}
-  hotspot: {x: 14, y: 6}
+  customCursor: {fileID: 11400000, guid: 684d79e95eecf4b9197ede40cef826b0, type: 2}
 --- !u!1 &1001247658841754029
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,3 +413,6 @@ MonoBehaviour:
   currentColor: {r: 1, g: 0, b: 0, a: 1}
   futureColor: {r: 0.84705883, g: 0.84705883, b: 0.84705883, a: 1}
   bubblesAreClickable: 1
+  progressBarBackground: {fileID: 0}
+  progressBarFill: {fileID: 0}
+  useProgressBar: 0
