@@ -10,6 +10,8 @@ public class Vector : MonoBehaviour
     public Color color = Color.black;
     [Min(0)] public float lineWidth = 0.2f;
 
+    private float currentHeadRadius;
+    private float currentHeadHeight;
     private const float headAngle = 30;
 
     public virtual void OnEnable()
@@ -29,7 +31,6 @@ public class Vector : MonoBehaviour
 
         if (head)
         {
-            // head.color = color;
             head.radius = 1.2f * headRadius;
             head.height = headHeight;
             head.transform.localPosition = components - headHeight * direction;
@@ -37,7 +38,14 @@ public class Vector : MonoBehaviour
             {
                 head.transform.localRotation = Quaternion.LookRotation(direction);
             }
-            // head.Redraw();
+
+            // Redraw the head mesh if necessary
+            if (currentHeadRadius != headRadius || currentHeadHeight != headHeight)
+            {
+                currentHeadRadius = headRadius;
+                currentHeadHeight = headHeight;
+                head.Redraw();
+            }
         }
 
         if (body)
@@ -46,6 +54,11 @@ public class Vector : MonoBehaviour
             body.endWidth = trueWidth;
             body.SetPositions(new Vector3[] { Vector3.zero, components - headHeight * direction });
         }
+    }
+
+    public void RedrawHead()
+    {
+        if (head) head.Redraw();
     }
 
     public void SetColor()

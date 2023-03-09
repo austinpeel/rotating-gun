@@ -8,6 +8,7 @@ public class DraggableVectorEditor : Editor
 
     private Vector3 components;
     private Color color;
+    private float lineWidth;
 
     private void OnEnable()
     {
@@ -24,6 +25,12 @@ public class DraggableVectorEditor : Editor
         {
             vector.Redraw();
             components = vector.components;
+        }
+
+        if (lineWidth != vector.lineWidth)
+        {
+            vector.Redraw();
+            lineWidth = vector.lineWidth;
         }
 
         if (color != vector.color)
