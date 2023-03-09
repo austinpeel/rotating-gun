@@ -32,25 +32,25 @@ public class DraggableVector : Vector
         VectorClickZone.OnZoneMouseUp -= HandleZoneMouseUp;
     }
 
-    public void HandleZoneMouseDown(string zoneName)
+    public void HandleZoneMouseDown(VectorClickZone clickZone)
     {
-        if (zoneName == "tail")
+        if (clickZone == tailClickZone)
         {
             draggingTail = true;
         }
-        else if (zoneName == "head")
+        else if (clickZone == headClickZone)
         {
             draggingHead = true;
         }
     }
 
-    public void HandleZoneMouseUp(string zoneName)
+    public void HandleZoneMouseUp(VectorClickZone clickZone)
     {
-        if (zoneName == "tail")
+        if (clickZone == tailClickZone)
         {
             draggingTail = false;
         }
-        else if (zoneName == "head")
+        else if (clickZone == headClickZone)
         {
             draggingHead = false;
         }

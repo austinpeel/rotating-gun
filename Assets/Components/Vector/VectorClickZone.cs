@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class VectorClickZone : MonoBehaviour
 {
-    [SerializeField] private string clickZoneName;
     [SerializeField] private Material defaultMaterial;
 
     [Header("Cursor")]
@@ -12,8 +11,8 @@ public class VectorClickZone : MonoBehaviour
 
     private MeshRenderer mesh;
 
-    public static event Action<string> OnZoneMouseDown;
-    public static event Action<string> OnZoneMouseUp;
+    public static event Action<VectorClickZone> OnZoneMouseDown;
+    public static event Action<VectorClickZone> OnZoneMouseUp;
 
     private void Awake()
     {
@@ -54,12 +53,12 @@ public class VectorClickZone : MonoBehaviour
 
     private void OnMouseDown()
     {
-        OnZoneMouseDown?.Invoke(clickZoneName);
+        OnZoneMouseDown?.Invoke(this);
     }
 
     private void OnMouseUp()
     {
-        OnZoneMouseUp?.Invoke(clickZoneName);
+        OnZoneMouseUp?.Invoke(this);
     }
 
     public void SetColor(Color color)

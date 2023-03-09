@@ -17,6 +17,9 @@ public class Vector : MonoBehaviour
     public virtual void OnEnable()
     {
         Redraw();
+
+        // Make sure colors and materials are synchronized
+        SetColor();
     }
 
     public virtual void Redraw()
