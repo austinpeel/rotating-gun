@@ -1678,11 +1678,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7568818136417489784, guid: deee45de5e80c47bd8a4e192483fbbd3, type: 3}
       propertyPath: textEN
-      value: Rotating Gun
+      value: Rotating Cannon
       objectReference: {fileID: 0}
     - target: {fileID: 7568818136417489784, guid: deee45de5e80c47bd8a4e192483fbbd3, type: 3}
       propertyPath: textFR
-      value: Fusil en Rotation
+      value: Canon Tournant
       objectReference: {fileID: 0}
     - target: {fileID: 9158236689183318759, guid: deee45de5e80c47bd8a4e192483fbbd3, type: 3}
       propertyPath: m_text

@@ -4041,11 +4041,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8838591167912391666, guid: 17173eeceb31b4113bd1e452162b4e0f, type: 3}
       propertyPath: textEN
-      value: Gun
+      value: Cannon
       objectReference: {fileID: 0}
     - target: {fileID: 8838591167912391666, guid: 17173eeceb31b4113bd1e452162b4e0f, type: 3}
       propertyPath: textFR
-      value: Fusil
+      value: Canon
       objectReference: {fileID: 0}
     - target: {fileID: 8838591167912391667, guid: 17173eeceb31b4113bd1e452162b4e0f, type: 3}
       propertyPath: m_text
@@ -11774,7 +11774,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022 Texte..."
+  m_text: "\u2022 We ignore gravity and air resistance\n\u2022 The cannon apparatus
+    rotates at constant angular speed\n\u2022 The bullet's motion is planar (i.e.
+    2-dimensional)\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -11893,7 +11895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441d0cd3b15db40fdad9b29a49044185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textEN: "\u2022 We ignore gravity and air resistance\n\u2022 The gun apparatus
+  textEN: "\u2022 We ignore gravity and air resistance\n\u2022 The cannon apparatus
     rotates at constant angular speed\n\u2022 The bullet's motion is planar (i.e.
     2-dimensional)\n"
   textFR: "\u2022 Texte..."

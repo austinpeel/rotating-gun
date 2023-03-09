@@ -1302,9 +1302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441d0cd3b15db40fdad9b29a49044185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textEN: In fact, the gun apparatus is simply rotating at constant speed relative
-    to the ground. In the gun's reference frame, however, there seems to be an external
-    force deflecting the bullet.
+  textEN: In fact, the cannon apparatus is simply rotating at constant speed relative
+    to the ground. In the cannon's reference frame, however, there seems to be an
+    external force deflecting the bullet.
   textFR: Texte...
   transformsEN: {fileID: 0}
   transformsFR: {fileID: 0}
@@ -1328,9 +1328,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: In fact, the gun apparatus is simply rotating at constant speed relative
-    to the ground. In the gun's reference frame, however, there seems to be an external
-    force deflecting the bullet.
+  m_text: In fact, the cannon apparatus is simply rotating at constant speed relative
+    to the ground. In the cannon's reference frame, however, there seems to be an
+    external force deflecting the bullet.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "r\xE9f\xE9rentiel absolu"
+  m_text: inertial reference frame
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
@@ -1852,7 +1852,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794149315}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -2012,8 +2012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441d0cd3b15db40fdad9b29a49044185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textEN: A parameter of the simulation has now been changed. Try shooting again.
-    Do you notice a difference?
+  textEN: A parameter of the simulation has now been changed. Try firing again. What
+    difference do you notice?
   textFR: Texte...
   transformsEN: {fileID: 0}
   transformsFR: {fileID: 0}
@@ -2037,8 +2037,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A parameter of the simulation has now been changed. Try shooting again.
-    Do you notice a difference?
+  m_text: A parameter of the simulation has now been changed. Try firing again. What
+    difference do you notice?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -3393,7 +3393,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826383029935153164}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -4035,7 +4035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441d0cd3b15db40fdad9b29a49044185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textEN: "In this idealized experiment, a gun sits on a table and fires horizontally.
+  textEN: "In this idealized experiment, a cannon sits on a table and fires horizontally.
     It is aimed directly at a target across the room. \nTry firing the gun yourself!"
   textFR: Texte...
   transformsEN: {fileID: 0}
@@ -4060,7 +4060,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Texte...
+  m_text: "In this idealized experiment, a cannon sits on a table and fires horizontally.
+    It is aimed directly at a target across the room. \nTry firing the gun yourself!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
