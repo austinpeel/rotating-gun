@@ -7929,6 +7929,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4757408490314283820, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: textEN
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408490314283820, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: textFR
+      value: Tirez
+      objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283823, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_text
       value: Tirez
@@ -11625,7 +11633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441d0cd3b15db40fdad9b29a49044185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textEN: Coordonates
+  textEN: Coordinates
   textFR: "Coordonn\xE9es"
   transformsEN: {fileID: 0}
   transformsFR: {fileID: 0}
@@ -11657,7 +11665,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Coordonates
+  m_text: Coordinates
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}

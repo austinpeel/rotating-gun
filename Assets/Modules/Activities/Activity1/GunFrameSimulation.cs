@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,10 @@ public class GunFrameSimulation : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform gunBarrel;
     public LineRenderer bulletPath;
+
+    [Header("Lab Frame Objects")]
+    public Transform directionalLight;
+    public Transform ground;
 
     [Header("Camera")]
     public Transform mainCamera;
@@ -22,19 +27,25 @@ public class GunFrameSimulation : MonoBehaviour
     public int maxNumBullets = 10;
     public float maxBulletDistance = 10;
     [Range(0, 1)] public float timeScale = 1f;
-    public float vectorScaleFactor = 1;
     private float autoFireClock;
 
     public SimulationState.Perspective perspective;
 
+    [Header("Play / Pause")]
+    public bool isPaused;
+    public float bulletPauseDistance = 5;
+    private bool hasPausedOnCurrentBullet;
+
+    public static event Action<Vector3> OnPause;
+
     [Header("Options")]
     public bool traceBulletPath;
 
+    // Bullets
     private List<Bullet> bullets;
     private Bullet currentBullet;
     private bool tracingBulletPath;
     private Transform bulletContainer;
-    private bool isPaused = false;
 
     private Vector3 Omega => angularFrequency * 2 * Mathf.PI * Vector3.up;
 
@@ -62,16 +73,31 @@ public class GunFrameSimulation : MonoBehaviour
     public void Pause()
     {
         isPaused = true;
+        if (currentBullet) currentBullet.Pause();
     }
 
     public void Resume()
     {
         isPaused = false;
+        if (currentBullet)
+        {
+            currentBullet.Resume();
+        }
     }
 
     private void Update()
     {
         if (isPaused) return;
+
+        if (currentBullet && !hasPausedOnCurrentBullet)
+        {
+            if (currentBullet.Position.magnitude > bulletPauseDistance)
+            {
+                Pause();
+                hasPausedOnCurrentBullet = true;
+                OnPause?.Invoke(currentBullet.Position);
+            }
+        }
 
         if (autoFire)
         {
@@ -79,63 +105,27 @@ public class GunFrameSimulation : MonoBehaviour
 
             if (autoFireClock > 1f / fireFrequency)
             {
-                Fire(bulletSpeed, maxBulletDistance, traceBulletPath);
+                Fire();
                 autoFireClock = 0;
             }
         }
 
-        if (!currentBullet) return;
+        float deltaTheta = Omega.y * Mathf.Rad2Deg * Time.deltaTime;
 
-        // Compute kinematical and dynamical quantities
-        Vector3 position = currentBullet.Position;
-        Vector3 velocity = currentBullet.Velocity;
-        Vector3 centrifugalForce = Vector3.zero;
-        Vector3 coriolisForce = Vector3.zero;
+        if (directionalLight)
+        {
+            directionalLight.RotateAround(directionalLight.position, Vector3.up, deltaTheta);
+        }
 
-        // Unity is left-handed, so add instead of subtract
-        velocity += Vector3.Cross(Omega, position);
-
-        // Assume bullet mass = 1 kg
-        centrifugalForce = -Vector3.Cross(Omega, Vector3.Cross(Omega, position));
-        coriolisForce = 2 * Vector3.Cross(Omega, velocity);
-
-        velocity *= vectorScaleFactor;
-        centrifugalForce *= vectorScaleFactor;
-        coriolisForce *= 0.5f * vectorScaleFactor;
+        if (ground)
+        {
+            ground.RotateAround(ground.position, Vector3.up, deltaTheta);
+        }
     }
 
     private void LateUpdate()
     {
         if (!currentBullet) return;
-
-        // // Update displayed vectors
-        // if (positionVector != null)
-        // {
-        //     Vector3 offset = 0.5f * currentBullet.transform.localScale.x * position.normalized;
-        //     positionVector.components = position - offset;
-        //     positionVector.Redraw();
-        // }
-
-        // if (velocityVector != null)
-        // {
-        //     velocityVector.transform.position = currentBullet.Position;
-        //     velocityVector.components = velocity;
-        //     velocityVector.Redraw();
-        // }
-
-        // if (centrifugalForceVector != null && inGunFrame)
-        // {
-        //     centrifugalForceVector.transform.position = currentBullet.Position;
-        //     centrifugalForceVector.components = centrifugalForce;
-        //     centrifugalForceVector.Redraw();
-        // }
-
-        // if (coriolisForceVector != null && inGunFrame)
-        // {
-        //     coriolisForceVector.transform.position = currentBullet.Position;
-        //     coriolisForceVector.components = coriolisForce;
-        //     coriolisForceVector.Redraw();
-        // }
 
         if (!tracingBulletPath || !bulletPath) return;
 
@@ -148,7 +138,7 @@ public class GunFrameSimulation : MonoBehaviour
         bulletPath.SetPosition(bulletPath.positionCount - 1, newPosition);
     }
 
-    public void Fire(float speed, float maxDistance, bool tracePath = false)
+    public void Fire()
     {
         // Do nothing if there's no bullet container or if the simulation is paused
         if (!bulletContainer || isPaused) return;
@@ -159,7 +149,7 @@ public class GunFrameSimulation : MonoBehaviour
         if (bullets == null) bullets = new List<Bullet>();
 
         ResetBulletPath();
-        tracingBulletPath = tracePath;
+        tracingBulletPath = traceBulletPath;
 
         // Determine where the bullet should spawn
         Vector3 bulletSpawnPosition = Vector3.zero;
@@ -167,18 +157,27 @@ public class GunFrameSimulation : MonoBehaviour
         if (gunBarrel) bulletSpawnPosition = gunBarrel.position + 0.5f * gunBarrel.localScale.y * e1;
 
         // Create the new bullet
-        Bullet bullet = Instantiate(bulletPrefab, transform).GetComponent<Bullet>();
+        Bullet bullet = Instantiate(bulletPrefab, bulletContainer).GetComponent<Bullet>();
         bullet.name = "Bullet";
-        bullet.Initialize(bulletSpawnPosition, speed * e1, maxDistance);
+        bullet.Initialize(bulletSpawnPosition, bulletSpeed * e1, maxBulletDistance, Omega);
 
         bullets.Add(bullet);
         currentBullet = bullet;
+
+        hasPausedOnCurrentBullet = false;
     }
 
-    public void SetTimeScale(float timeScale)
+    public void SetTimeScale(float value)
     {
-        Time.timeScale = timeScale;
-        this.timeScale = timeScale;
+        Time.timeScale = value;
+        timeScale = value;
+    }
+
+    public void SetOmega(float value)
+    {
+        angularFrequency = value / (2 * Mathf.PI);
+
+        if (currentBullet) currentBullet.SetOmega(Omega);
     }
 
     public void SetPerspective(SimulationState.Perspective perspective)

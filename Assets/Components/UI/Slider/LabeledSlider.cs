@@ -8,14 +8,18 @@ public class LabeledSlider : MonoBehaviour
     [SerializeField] private TextMeshProUGUI valueTMP;
     [SerializeField, Range(1, 3)] private int numDecimalDigits = 1;
     [SerializeField] private bool snapToDecimal;
+    [SerializeField] private bool controlValuePosition = true;
 
     private Slider slider;
 
     private void Awake()
     {
-        var rect = valueTMP.GetComponent<RectTransform>();
-        rect.sizeDelta = (30 + 10 * numDecimalDigits) * Vector2.right + rect.sizeDelta.y * Vector2.up;
-        rect.anchoredPosition = (40 + 10 * numDecimalDigits) * Vector2.right + rect.anchoredPosition.y * Vector2.up;
+        if (controlValuePosition)
+        {
+            var valueRect = valueTMP.GetComponent<RectTransform>();
+            valueRect.sizeDelta = (30 + 10 * numDecimalDigits) * Vector2.right + valueRect.sizeDelta.y * Vector2.up;
+            valueRect.anchoredPosition = (45 + 10 * numDecimalDigits) * Vector2.right + valueRect.anchoredPosition.y * Vector2.up;
+        }
 
         if (valueTMP)
         {
