@@ -13,7 +13,7 @@ public class RotatingGunSimulation : Slides.Simulation
     public Vector3 cameraSideRotation = new Vector3(20, 0, 0);
     public Vector3 cameraAbovePosition = new Vector3(0, 30, 0);
     public Vector3 cameraAboveRotation = new Vector3(90, 0, 0);
-    private Coroutine cameraMovement;
+    // private Coroutine cameraMovement;
 
     [Header("Parameters")]
     public bool autoFire;
@@ -80,10 +80,10 @@ public class RotatingGunSimulation : Slides.Simulation
         SimulationState.OnChangeReferenceFrame -= HandleReferenceFrameChange;
     }
 
-    private void Start()
-    {
-        Debug.Log(IsPaused);
-    }
+    // private void Start()
+    // {
+    //     Debug.Log(IsPaused);
+    // }
 
     private void Update()
     {
@@ -310,28 +310,28 @@ public class RotatingGunSimulation : Slides.Simulation
         SetTimeScale(isSlowMotion ? 0.2f : 1);
     }
 
-    private IEnumerator MoveCamera(Vector3 targetPosition, Quaternion targetRotation, float moveTime)
-    {
-        Pause();
+    // private IEnumerator MoveCamera(Vector3 targetPosition, Quaternion targetRotation, float moveTime)
+    // {
+    //     Pause();
 
-        Vector3 startPosition = mainCamera.position;
-        Quaternion startRotation = mainCamera.rotation;
-        float time = 0;
+    //     Vector3 startPosition = mainCamera.position;
+    //     Quaternion startRotation = mainCamera.rotation;
+    //     float time = 0;
 
-        while (time < moveTime)
-        {
-            time += Time.unscaledDeltaTime;
-            float t = time / moveTime;
-            t = t * t * (3f - 2f * t);
-            mainCamera.position = Vector3.Slerp(startPosition, targetPosition, t);
-            mainCamera.rotation = Quaternion.Slerp(startRotation, targetRotation, t);
-            yield return null;
-        }
+    //     while (time < moveTime)
+    //     {
+    //         time += Time.unscaledDeltaTime;
+    //         float t = time / moveTime;
+    //         t = t * t * (3f - 2f * t);
+    //         mainCamera.position = Vector3.Slerp(startPosition, targetPosition, t);
+    //         mainCamera.rotation = Quaternion.Slerp(startRotation, targetRotation, t);
+    //         yield return null;
+    //     }
 
-        mainCamera.position = targetPosition;
-        mainCamera.rotation = targetRotation;
-        cameraMovement = null;
+    //     mainCamera.position = targetPosition;
+    //     mainCamera.rotation = targetRotation;
+    //     cameraMovement = null;
 
-        Resume();
-    }
+    //     Resume();
+    // }
 }

@@ -174,6 +174,8 @@ public class Gun : MonoBehaviour
 
     public void HandleBulletOutOfBounds(Bullet bullet)
     {
+        if (bullets == null) return;
+
         bullets.Remove(bullet);
         bullet.Destroy();
 
