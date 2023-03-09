@@ -8,9 +8,9 @@ public class TabPanel : MonoBehaviour
 
     [SerializeField] private float yHidden = -200;
     [SerializeField] private float yShowing = -40;
-    private float xPosition;
+    [SerializeField] private bool startHidden = false;
 
-    private bool isHidden;
+    private float xPosition;
 
     protected void Awake()
     {
@@ -20,7 +20,14 @@ public class TabPanel : MonoBehaviour
 
     private void Start()
     {
-        Hide(0);
+        if (startHidden)
+        {
+            Hide(0);
+        }
+        else
+        {
+            Show(0);
+        }
     }
 
     public void SetVisibility(bool visible)
@@ -35,22 +42,20 @@ public class TabPanel : MonoBehaviour
         }
     }
 
-    public virtual void Hide(float lerpTime)
+    public void Hide(float lerpTime)
     {
         StopAllCoroutines();
 
         // Vector2 targetPosition = new Vector2(xPosition, -rectTransform.rect.height);
         Vector2 targetPosition = new Vector2(xPosition, yHidden);
         StartCoroutine(LerpPosition(rectTransform, targetPosition, lerpTime, 2));
-        isHidden = true;
     }
 
-    public virtual void Show(float lerpTime)
+    public void Show(float lerpTime)
     {
         StopAllCoroutines();
         Vector2 targetPosition = new Vector2(xPosition, yShowing);
         StartCoroutine(LerpPosition(rectTransform, targetPosition, lerpTime, 2));
-        isHidden = false;
     }
 
     private IEnumerator LerpPosition(RectTransform rectTransform,

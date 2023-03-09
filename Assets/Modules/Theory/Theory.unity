@@ -1021,7 +1021,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!222 &248243482
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6637,7 +6637,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!222 &1265117336
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8155,6 +8155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yHidden: -170
   yShowing: -20
+  startHidden: 0
 --- !u!114 &1387031502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8406,7 +8407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9133,7 +9134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11773,9 +11774,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2022 We ignore gravity and air resistance\n\u2022 The gun apparatus
-    rotates at constant angular speed\n\u2022 The bullet's motion is planar (i.e.
-    2-dimensional)\n"
+  m_text: "\u2022 Texte..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -11897,7 +11896,7 @@ MonoBehaviour:
   textEN: "\u2022 We ignore gravity and air resistance\n\u2022 The gun apparatus
     rotates at constant angular speed\n\u2022 The bullet's motion is planar (i.e.
     2-dimensional)\n"
-  textFR: "\u2022 Duis aute irure dolor in reprehenderit in voluptate velit esse"
+  textFR: "\u2022 Texte..."
   transformsEN: {fileID: 0}
   transformsFR: {fileID: 0}
 --- !u!222 &878037621435336799

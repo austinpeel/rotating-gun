@@ -1418,6 +1418,7 @@ GameObject:
   - component: {fileID: 594193186}
   - component: {fileID: 594193188}
   - component: {fileID: 594193187}
+  - component: {fileID: 594193189}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1464,7 +1465,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ground reference frame
+  m_text: "r\xE9f\xE9rentiel absolu"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
@@ -1541,6 +1542,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594193185}
   m_CullTransparentMesh: 1
+--- !u!114 &594193189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594193185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441d0cd3b15db40fdad9b29a49044185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textEN: inertial reference frame
+  textFR: "r\xE9f\xE9rentiel absolu"
+  transformsEN: {fileID: 0}
+  transformsFR: {fileID: 0}
 --- !u!1 &623380187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2609,7 +2626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7750582857793131830, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
       propertyPath: textFR
-      value: Voici une astuce !
+      value: Texte...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
@@ -4020,8 +4037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textEN: "In this idealized experiment, a gun sits on a table and fires horizontally.
     It is aimed directly at a target across the room. \nTry firing the gun yourself!"
-  textFR: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat ...
+  textFR: Texte...
   transformsEN: {fileID: 0}
   transformsFR: {fileID: 0}
 --- !u!114 &6396344727223047240
@@ -4044,8 +4060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "In this idealized experiment, a gun sits on a table and fires horizontally.
-    It is aimed directly at a target across the room. \nTry firing the gun yourself!"
+  m_text: Texte...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
