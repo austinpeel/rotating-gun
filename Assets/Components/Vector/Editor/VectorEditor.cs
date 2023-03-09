@@ -6,6 +6,9 @@ public class VectorEditor : Editor
 {
     private Vector vector;
 
+    private Vector3 components;
+    private Color color;
+
     private void OnEnable()
     {
         vector = target as Vector;
@@ -17,9 +20,22 @@ public class VectorEditor : Editor
         DrawDefaultInspector();
 
         // Check if the any fields have been changed
-        if (GUI.changed)
+        // if (GUI.changed)
+        // {
+        //     vector.Redraw();
+        //     vector.SetColor();
+        // }
+
+        if (components != vector.components)
         {
             vector.Redraw();
+            components = vector.components;
+        }
+
+        if (color != vector.color)
+        {
+            vector.SetColor();
+            color = vector.color;
         }
     }
 }

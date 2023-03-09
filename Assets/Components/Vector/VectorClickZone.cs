@@ -5,6 +5,7 @@ using UnityEngine;
 public class VectorClickZone : MonoBehaviour
 {
     [SerializeField] private string clickZoneName;
+    [SerializeField] private Material defaultMaterial;
 
     [Header("Cursor")]
     [SerializeField] private CustomCursor customCursor;
@@ -59,5 +60,16 @@ public class VectorClickZone : MonoBehaviour
     private void OnMouseUp()
     {
         OnZoneMouseUp?.Invoke(clickZoneName);
+    }
+
+    public void SetColor(Color color)
+    {
+        if (defaultMaterial)
+        {
+            Material material = new Material(defaultMaterial);
+            material.color = color;
+            material.name = "Copy of " + defaultMaterial;
+            GetComponent<MeshRenderer>().sharedMaterial = material;
+        }
     }
 }

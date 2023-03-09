@@ -106,8 +106,10 @@ public class ConeMesh : MonoBehaviour
         material.color = color;
     }
 
-    public Material GetMaterial()
+    public void SetMaterial(Material material)
     {
-        return material;
+        GetComponent<MeshRenderer>().sharedMaterial = material;
+        color = material.color;
+        this.material = material;
     }
 }

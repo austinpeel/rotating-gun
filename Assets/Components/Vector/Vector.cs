@@ -4,6 +4,7 @@ public class Vector : MonoBehaviour
 {
     public LineRenderer body;
     public ConeMesh head;
+    public Material defaultMaterial;
 
     public Vector3 components;
     public Color color = Color.black;
@@ -28,7 +29,7 @@ public class Vector : MonoBehaviour
 
         if (head)
         {
-            head.color = color;
+            // head.color = color;
             head.radius = 1.2f * headRadius;
             head.height = headHeight;
             head.transform.localPosition = components - headHeight * direction;
@@ -36,15 +37,27 @@ public class Vector : MonoBehaviour
             {
                 head.transform.localRotation = Quaternion.LookRotation(direction);
             }
-            head.Redraw();
+            // head.Redraw();
         }
 
         if (body)
         {
-            body.sharedMaterial = head.GetMaterial();
             body.startWidth = trueWidth;
             body.endWidth = trueWidth;
             body.SetPositions(new Vector3[] { Vector3.zero, components - headHeight * direction });
+        }
+    }
+
+    public void SetColor()
+    {
+        if (defaultMaterial)
+        {
+            Material material = new Material(defaultMaterial);
+            material.color = color;
+            material.name = "Copy of " + defaultMaterial;
+
+            if (body) body.GetComponent<LineRenderer>().sharedMaterial = material;
+            if (head) head.SetMaterial(material);
         }
     }
 }

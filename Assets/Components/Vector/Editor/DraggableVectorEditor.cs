@@ -2,9 +2,12 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(DraggableVector))]
-public class VectorEditorEditor : Editor
+public class DraggableVectorEditor : Editor
 {
-    private Vector vector;
+    private DraggableVector vector;
+
+    private Vector3 components;
+    private Color color;
 
     private void OnEnable()
     {
@@ -16,10 +19,18 @@ public class VectorEditorEditor : Editor
         // Draw the default inspector fields
         DrawDefaultInspector();
 
-        // Check if the any fields have been changed
-        if (GUI.changed)
+        // Check if properties have been changed in the inspector
+        if (components != vector.components)
         {
             vector.Redraw();
+            components = vector.components;
+        }
+
+        if (color != vector.color)
+        {
+            vector.SetColor();
+            vector.SetClickZoneColors();
+            color = vector.color;
         }
     }
 }

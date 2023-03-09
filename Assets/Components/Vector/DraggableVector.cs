@@ -101,4 +101,11 @@ public class DraggableVector : Vector
             }
         }
     }
+
+    public void SetClickZoneColors()
+    {
+        Color clickZoneColor = color - new Color(0, 0, 0, 0.8f);
+        if (tailClickZone) tailClickZone.SetColor(clickZoneColor);
+        if (headClickZone) headClickZone.SetColor(clickZoneColor);
+    }
 }
