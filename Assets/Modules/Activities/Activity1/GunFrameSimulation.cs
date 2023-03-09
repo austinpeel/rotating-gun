@@ -175,6 +175,9 @@ public class GunFrameSimulation : MonoBehaviour
 
     public void SetOmega(float value)
     {
+        // Round to nearest tenth
+        value = Mathf.Round(10 * value) / 10f;
+
         angularFrequency = value / (2 * Mathf.PI);
 
         if (currentBullet) currentBullet.SetOmega(Omega);

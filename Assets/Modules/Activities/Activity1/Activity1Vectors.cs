@@ -40,16 +40,22 @@ public class Activity1Vectors : MonoBehaviour
         {
             velocity.transform.position = initialiVelocityPosition;
             velocity.components = initialiVelocityComponents;
+            velocity.Redraw();
+            velocity.useStickyPoint = false;
         }
         if (centrifugalForce)
         {
             centrifugalForce.transform.position = initialiCentrifugalPosition;
             centrifugalForce.components = initialiCentrifugalComponents;
+            centrifugalForce.Redraw();
+            centrifugalForce.useStickyPoint = false;
         }
         if (coriolisForce)
         {
             coriolisForce.transform.position = initialiCoriolisPosition;
             coriolisForce.components = initialiCoriolisComponents;
+            coriolisForce.Redraw();
+            coriolisForce.useStickyPoint = false;
         }
     }
 
@@ -65,6 +71,20 @@ public class Activity1Vectors : MonoBehaviour
 
     public void HandleGunFrameSimulationPaused(Vector3 bulletPosition)
     {
-        Debug.Log("Bullet at " + bulletPosition);
+        if (velocity)
+        {
+            velocity.useStickyPoint = true;
+            velocity.stickyPoint = bulletPosition;
+        }
+        if (centrifugalForce)
+        {
+            centrifugalForce.useStickyPoint = true;
+            centrifugalForce.stickyPoint = bulletPosition;
+        }
+        if (coriolisForce)
+        {
+            coriolisForce.useStickyPoint = true;
+            coriolisForce.stickyPoint = bulletPosition;
+        }
     }
 }

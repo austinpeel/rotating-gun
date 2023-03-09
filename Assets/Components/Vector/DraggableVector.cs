@@ -8,6 +8,16 @@ public class DraggableVector : Vector
     [SerializeField] private VectorClickZone tailClickZone;
     [SerializeField] private VectorClickZone headClickZone;
 
+    [Header("Sticky Point")]
+    public bool useStickyPoint;
+    public Vector3 stickyPoint;
+    public float stickyPointRadius = 0.5f;
+
+    [Header("Magnitude")]
+    public bool clampMagnitude;
+    public float minMagnitude = 0.2f;
+    public float maxMagnitude = 3f;
+
     private Vector3 initialPosition;
     private Vector3 dragStartPosition;
     private Camera mainCamera;
@@ -91,11 +101,27 @@ public class DraggableVector : Vector
                 {
                     // Move the vector to the clicked point
                     transform.position = hitPoint;
+                    if (useStickyPoint)
+                    {
+                        if (Vector3.Distance(hitPoint, stickyPoint) <= stickyPointRadius)
+                        {
+                            transform.position = stickyPoint;
+                        }
+                    }
                 }
                 else
                 {
                     // Update components
-                    components = hitPoint - transform.position;
+                    Vector3 newComponents = hitPoint - transform.position;
+                    if (clampMagnitude)
+                    {
+                        newComponents = Vector3.ClampMagnitude(newComponents, maxMagnitude);
+                        if (newComponents.magnitude < minMagnitude)
+                        {
+                            newComponents = minMagnitude * newComponents.normalized;
+                        }
+                    }
+                    components = newComponents;
                     Redraw();
                 }
             }
