@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757408489246835521, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_Name
-      value: Resume Button
+      value: Check Button
       objectReference: {fileID: 0}
     - target: {fileID: 4757408489246835522, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_Color.b
