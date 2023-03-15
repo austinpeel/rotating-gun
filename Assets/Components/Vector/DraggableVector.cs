@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DraggableVector : Vector
 {
+    [SerializeField] private bool interactable = true;
     [SerializeField] private float dragPlaneDistance = 10f;
 
     [Header("Interaction Zones")]
@@ -44,6 +45,8 @@ public class DraggableVector : Vector
 
     public void HandleZoneMouseDown(VectorClickZone clickZone)
     {
+        if (!interactable) return;
+
         if (clickZone == tailClickZone)
         {
             draggingTail = true;
@@ -133,5 +136,10 @@ public class DraggableVector : Vector
         Color clickZoneColor = color - new Color(0, 0, 0, 0.8f);
         if (tailClickZone) tailClickZone.SetColor(clickZoneColor);
         if (headClickZone) headClickZone.SetColor(clickZoneColor);
+    }
+
+    public void SetInteractable()
+    {
+        interactable = true;
     }
 }
