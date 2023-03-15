@@ -52,9 +52,12 @@ public class AngularVelocity : MonoBehaviour
         vector.components = scaleFactor * components;
         if (simState)
         {
-            float angularFrequency = simState.GetAngularFrequency();
+            // Always hide the vector if viewing from above
+
+            // float angularFrequency = simState.GetAngularFrequency();
             bool cameraIsAbove = simState.perspective == SimulationState.Perspective.Above;
-            if (angularFrequency > 0 && cameraIsAbove) vector.components = Vector3.zero;
+            // if (angularFrequency > 0 && cameraIsAbove) vector.components = Vector3.zero;
+            if (cameraIsAbove) vector.components = Vector3.zero;
         }
         vector.Redraw();
 
@@ -99,17 +102,17 @@ public class AngularVelocity : MonoBehaviour
 
         if (omegaLabelLabFrame)
         {
-            Vector3 position = omegaLabelLabFrame.transform.position;
-            position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -1.8f);
-            omegaLabelLabFrame.transform.position = position;
+            // Vector3 position = omegaLabelLabFrame.transform.position;
+            // position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -1.8f);
+            // omegaLabelLabFrame.transform.position = position;
             omegaLabelLabFrame.gameObject.SetActive(frameIsLab);
         }
 
         if (omegaLabelGunFrame)
         {
-            Vector3 position = omegaLabelGunFrame.transform.position;
-            position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -1.8f);
-            omegaLabelGunFrame.transform.position = position;
+            // Vector3 position = omegaLabelGunFrame.transform.position;
+            // position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -1.8f);
+            // omegaLabelGunFrame.transform.position = position;
             omegaLabelGunFrame.gameObject.SetActive(!frameIsLab);
         }
     }
