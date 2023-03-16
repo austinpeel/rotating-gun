@@ -36,7 +36,7 @@ public class GunFrameSimulation : MonoBehaviour
     public float bulletPauseDistance = 5;
     private bool hasPausedOnCurrentBullet;
 
-    public static event Action<Vector3, Vector3> OnPause;
+    public static event Action<Vector3, Vector3, Vector3, Vector3> OnPause;
 
     [Header("Options")]
     public bool traceBulletPath;
@@ -95,7 +95,7 @@ public class GunFrameSimulation : MonoBehaviour
             {
                 Pause();
                 hasPausedOnCurrentBullet = true;
-                OnPause?.Invoke(currentBullet.Position, currentBullet.Velocity);
+                OnPause?.Invoke(transform.position, currentBullet.Position, currentBullet.GetV(), Omega);
             }
         }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DraggableVector : Vector
@@ -13,6 +14,10 @@ public class DraggableVector : Vector
     public bool useStickyPoint;
     public Vector3 stickyPoint;
     public float stickyPointRadius = 0.5f;
+
+    [Header("Sticky Directions")]
+    public bool useStickyDirections;
+    public List<Vector3> stickyDirections;
 
     [Header("Magnitude")]
     public bool clampMagnitude;
@@ -127,6 +132,22 @@ public class DraggableVector : Vector
                 {
                     // Update components
                     Vector3 newComponents = hitPoint - transform.position;
+
+                    // Snap the direction
+                    if (useStickyDirections)
+                    {
+                        foreach (var direction in stickyDirections)
+                        {
+                            float cosAngle = Vector3.Dot(newComponents, direction);
+                            cosAngle /= (newComponents.magnitude * direction.magnitude);
+                            if (cosAngle > 0.98f)
+                            {
+                                newComponents = newComponents.magnitude * direction.normalized;
+                                break;
+                            }
+                        }
+                    }
+
                     if (clampMagnitude)
                     {
                         newComponents = Vector3.ClampMagnitude(newComponents, maxMagnitude);
@@ -135,6 +156,7 @@ public class DraggableVector : Vector
                             newComponents = minMagnitude * newComponents.normalized;
                         }
                     }
+
                     components = newComponents;
                     Redraw();
                 }
