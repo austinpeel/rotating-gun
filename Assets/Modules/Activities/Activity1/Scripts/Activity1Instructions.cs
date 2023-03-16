@@ -11,7 +11,7 @@ public class Activity1Instructions : MonoBehaviour
     {
         foreach (var step in steps)
         {
-            step.HideAllPanels();
+            step.Hide();
         }
 
         LoadStep(currentStepIndex);
@@ -21,7 +21,7 @@ public class Activity1Instructions : MonoBehaviour
     {
         if (currentStep != null)
         {
-            currentStep.HideAllPanels();
+            currentStep.Hide();
             currentStep = null;
         }
 
@@ -29,7 +29,7 @@ public class Activity1Instructions : MonoBehaviour
         {
             Debug.Log("Loading step index " + stepIndex);
             currentStep = steps[stepIndex];
-            currentStep.ShowAllPanels();
+            currentStep.Show();
             currentStepIndex = stepIndex;
         }
     }
@@ -37,5 +37,13 @@ public class Activity1Instructions : MonoBehaviour
     public void LoadNextStep()
     {
         LoadStep(currentStepIndex + 1);
+    }
+
+    public void EndInstructions()
+    {
+        foreach (var step in steps)
+        {
+            step.Hide();
+        }
     }
 }

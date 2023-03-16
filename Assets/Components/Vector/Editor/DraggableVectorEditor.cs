@@ -6,6 +6,7 @@ public class DraggableVectorEditor : Editor
 {
     private DraggableVector vector;
 
+    private bool interactable;
     private Vector3 components;
     private Color color;
     private float lineWidth;
@@ -21,6 +22,12 @@ public class DraggableVectorEditor : Editor
         DrawDefaultInspector();
 
         // Check if properties have been changed in the inspector
+        if (interactable != vector.interactable)
+        {
+            vector.SetInteractable(vector.interactable);
+            interactable = vector.interactable;
+        }
+
         if (components != vector.components)
         {
             vector.Redraw();
