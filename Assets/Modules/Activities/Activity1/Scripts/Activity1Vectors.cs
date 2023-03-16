@@ -69,12 +69,15 @@ public class Activity1Vectors : MonoBehaviour
         GunFrameSimulation.OnPause -= HandleGunFrameSimulationPaused;
     }
 
-    public void HandleGunFrameSimulationPaused(Vector3 bulletPosition)
+    public void HandleGunFrameSimulationPaused(Vector3 bulletPosition, Vector3 bulletVelocity)
     {
         if (velocity)
         {
             velocity.useStickyPoint = true;
             velocity.stickyPoint = bulletPosition;
+
+            // velocity.useStickyDirections
+            // velocity.addStickyDirection
         }
         if (centrifugalForce)
         {
