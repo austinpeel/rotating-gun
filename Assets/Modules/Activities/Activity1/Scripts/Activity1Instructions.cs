@@ -27,7 +27,7 @@ public class Activity1Instructions : MonoBehaviour
 
         if (stepIndex >= 0 && stepIndex < steps.Length)
         {
-            Debug.Log("Loading step index " + stepIndex);
+            // Debug.Log("Loading step " + (stepIndex + 1));
             currentStep = steps[stepIndex];
             currentStep.Show();
             currentStepIndex = stepIndex;

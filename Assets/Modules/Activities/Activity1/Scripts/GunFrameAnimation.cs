@@ -19,9 +19,9 @@ public class GunFrameAnimation : MonoBehaviour
     public Vector3 cameraRotation = new Vector3(20, 0, 0);
 
     [Header("Animated Objects")]
-    public Vector velocity;
-    public Vector centrifugalForce;
-    public Vector coriolisForce;
+    public DraggableVector velocity;
+    public DraggableVector centrifugalForce;
+    public DraggableVector coriolisForce;
     public Slider omegaSlider;
     public Button fireButton;
     public Button checkButton;
@@ -30,15 +30,11 @@ public class GunFrameAnimation : MonoBehaviour
     public float omegaMax = 0.6f;
     public float bulletSpeed = 20;
     private float angularFrequency;
-
-    [Header("Play / Pause")]
-    public bool isPaused;
     public float bulletPauseDistance = 4;
-    private bool hasPausedOnCurrentBullet;
+    private bool isPaused;
 
-    public enum InstructionsAnimation { Animation1, Animation2, Animation3, None }
-    [Header("Animations")]
-    public InstructionsAnimation anim;
+    private enum InstructionsAnimation { Animation1, Animation2, Animation3, None }
+    private InstructionsAnimation anim = InstructionsAnimation.Animation1;
     private Coroutine currentAnimation;
 
     // Bullets
@@ -63,8 +59,13 @@ public class GunFrameAnimation : MonoBehaviour
 
     private void OnDisable()
     {
+        if (currentAnimation != null)
+        {
+            StopCoroutine(currentAnimation);
+            currentAnimation = null;
+        }
+
         Reset();
-        StartAnimation(InstructionsAnimation.None);
     }
 
     private void Start()
@@ -93,7 +94,16 @@ public class GunFrameAnimation : MonoBehaviour
         if (fireButton) fireButton.interactable = true;
         if (checkButton) checkButton.interactable = false;
 
+        if (velocity) velocity.Reset();
+        if (centrifugalForce) centrifugalForce.Reset();
+        if (coriolisForce) coriolisForce.Reset();
+
         Resume();
+    }
+
+    public void StartAnimation(int animationID)
+    {
+        StartAnimation((InstructionsAnimation)(animationID - 1));
     }
 
     private void StartAnimation(InstructionsAnimation animation)
@@ -129,39 +139,7 @@ public class GunFrameAnimation : MonoBehaviour
     public void Resume()
     {
         isPaused = false;
-        if (currentBullet)
-        {
-            currentBullet.Resume();
-        }
-    }
-
-    private void Update()
-    {
-        if (isPaused) return;
-
-        if (currentBullet && !hasPausedOnCurrentBullet)
-        {
-            if (currentBullet.Position.magnitude > bulletPauseDistance)
-            {
-                Pause();
-                hasPausedOnCurrentBullet = true;
-            }
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (!currentBullet) return;
-
-        if (!bulletPath) return;
-
-        bulletPath.positionCount++;
-        Vector3 newPosition = currentBullet.transform.position;
-        // Compute position relative to the gun
-        bulletPath.useWorldSpace = false;
-        newPosition = transform.InverseTransformPoint(newPosition);
-
-        bulletPath.SetPosition(bulletPath.positionCount - 1, newPosition);
+        if (currentBullet) currentBullet.Resume();
     }
 
     public void Fire()
@@ -181,12 +159,12 @@ public class GunFrameAnimation : MonoBehaviour
         // Create the new bullet
         Bullet bullet = Instantiate(bulletPrefab, bulletContainer).GetComponent<Bullet>();
         bullet.name = "Bullet";
-        bullet.Initialize(bulletSpawnPosition, bulletSpeed * e1, 100, Omega);
+        // By passing omega to the bullet, it knows that this is a gun frame simulation
+        // and that it should solve the equations of motion numerically
+        bullet.Initialize(bulletSpawnPosition, bulletSpeed * e1, 100, Omega, true);
 
         bullets.Add(bullet);
         currentBullet = bullet;
-
-        hasPausedOnCurrentBullet = false;
     }
 
     public void SetOmega(float value)
@@ -226,65 +204,210 @@ public class GunFrameAnimation : MonoBehaviour
 
         if (omegaSlider) omegaSlider.value = 0;
 
+        // First increase omega from 0 to its max value
         float time = 0;
         float omega = 0;
-        float sliderTime = 1;
+        float sliderMoveTime = 2;
 
-        while (time < sliderTime)
+        while (time < sliderMoveTime)
         {
-            time += Time.deltaTime;
-            omega = Mathf.Lerp(0, omegaMax, time / sliderTime);
-            angularFrequency = omega / (2 * Mathf.PI);
-            float deltaTheta = omega * Mathf.Rad2Deg * Time.deltaTime;
+            time += Time.fixedDeltaTime;
 
-            if (omegaSlider) omegaSlider.value = omega;
+            // Increment omega
+            omega = Mathf.Lerp(0, omegaMax, time / sliderMoveTime);
+            angularFrequency = omega / (2 * Mathf.PI);
+            float deltaTheta = omega * Mathf.Rad2Deg * Time.fixedDeltaTime;
             RotateLight(deltaTheta);
             RotateGround(deltaTheta);
+
+            // Update the actual slider
+            if (omegaSlider) omegaSlider.value = omega;
+
             yield return null;
         }
 
+        // Hold on the rotating animation for a short time
         time = 0;
-        float holdTime = 1;
+        float holdTime = 2;
         while (time < holdTime)
         {
-            time += Time.deltaTime;
-            float deltaTheta = omega * Mathf.Rad2Deg * Time.deltaTime;
+            time += Time.fixedDeltaTime;
+            float deltaTheta = omega * Mathf.Rad2Deg * Time.fixedDeltaTime;
             RotateLight(deltaTheta);
             RotateGround(deltaTheta);
             yield return null;
         }
 
+        // Fire the gun
         Fire();
         if (fireButton) fireButton.interactable = false;
         if (checkButton) checkButton.interactable = true;
 
+        // Integrate the equation of motion to a given distance
         time = 0;
-        holdTime = 3;
+        holdTime = 10;
+        int numSubsteps = 10;
         while (time < holdTime)
         {
-            time += Time.deltaTime;
-            float deltaTheta = omega * Mathf.Rad2Deg * Time.deltaTime;
+            time += Time.fixedDeltaTime;
+            float deltaTheta = omega * Mathf.Rad2Deg * Time.fixedDeltaTime;
             RotateLight(deltaTheta);
             RotateGround(deltaTheta);
 
-            // Break out once paused
-            if (isPaused) time = holdTime;
+            // Move the bullet to its next position
+            float deltaTime = Time.fixedDeltaTime / numSubsteps;
+            for (int i = 0; i < numSubsteps; i++)
+            {
+                currentBullet.TakeLeapfrogStep(deltaTime);
+            }
+            currentBullet.transform.position = currentBullet.GetX();
+
+            // Trace the bullet
+            if (bulletPath)
+            {
+                bulletPath.positionCount++;
+                Vector3 newPosition = currentBullet.transform.position;
+                // Compute position relative to the gun
+                // bulletPath.useWorldSpace = false;
+                newPosition = transform.InverseTransformPoint(newPosition);
+                bulletPath.SetPosition(bulletPath.positionCount - 1, newPosition);
+            }
+
+            // Break out once the bullet has reached its max allowed distance
+            if (currentBullet.Position.magnitude > bulletPauseDistance) break;
 
             yield return null;
         }
 
+        // Pause for a few seconds
         yield return new WaitForSeconds(3);
 
+        // Restart the animation
         yield return Animation1();
     }
 
     private IEnumerator Animation2()
     {
-        yield return null;
+        Reset();
+
+        // Set up simulation to match the end of animation 1
+        if (omegaSlider) omegaSlider.value = omegaMax;
+        if (fireButton) fireButton.interactable = false;
+        if (checkButton) checkButton.interactable = true;
+
+        Fire();
+
+        int numSubsteps = 10;
+        float deltaTime = Time.fixedDeltaTime / numSubsteps;
+        float deltaTheta = omegaMax * Mathf.Rad2Deg * Time.fixedDeltaTime;
+        while (currentBullet.GetX().magnitude < bulletPauseDistance)
+        {
+            // Update the bullet position (its x variable) by a time step
+            for (int i = 0; i < numSubsteps; i++)
+            {
+                currentBullet.TakeLeapfrogStep(deltaTime);
+            }
+
+            RotateLight(deltaTheta);
+            RotateGround(deltaTheta);
+
+            // Trace the bullet
+            if (bulletPath)
+            {
+                bulletPath.positionCount++;
+                Vector3 newPosition = currentBullet.GetX();
+                // Compute position relative to the gun
+                // bulletPath.useWorldSpace = false;
+                newPosition = transform.InverseTransformPoint(newPosition);
+                bulletPath.SetPosition(bulletPath.positionCount - 1, newPosition);
+            }
+        }
+
+        // Move the bullet to its final position
+        currentBullet.transform.position = currentBullet.GetX();
+
+        yield return new WaitForSeconds(1);
+
+        // Animate translating the velocity vector to the bullet
+        if (velocity)
+        {
+            velocity.ShowTailClickZone(false);
+
+            float time = 0;
+            float vectorMoveTime = 2;
+            Vector3 startPosition = velocity.transform.position;
+            Vector3 endPosition = currentBullet.transform.position;
+            while (time < vectorMoveTime)
+            {
+                time += Time.fixedDeltaTime;
+                velocity.transform.position = Vector3.Lerp(startPosition, endPosition, time / vectorMoveTime);
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(1);
+
+            velocity.HideTailClickZone();
+            velocity.ShowHeadClickZone(false);
+
+            time = 0;
+            float vectorRotateTime = 2;
+            Vector3 startComponents = velocity.components;
+            Vector3 endComponents = startComponents.magnitude * currentBullet.GetV().normalized;
+            endComponents = Quaternion.Euler(0, -25, 0) * endComponents;
+            while (time < vectorRotateTime)
+            {
+                time += Time.fixedDeltaTime;
+                velocity.components = Vector3.Slerp(startComponents, endComponents, time / vectorRotateTime);
+                velocity.Redraw();
+                yield return null;
+            }
+        }
+
+        // Pause for a few seconds
+        yield return new WaitForSeconds(2);
+
+        yield return Animation2();
     }
 
     private IEnumerator Animation3()
     {
-        yield return null;
+        // Set up simulation to match the end of animation 2
+        if (fireButton) fireButton.interactable = false;
+        if (checkButton) checkButton.interactable = true;
+
+        if (velocity)
+        {
+            velocity.Reset();
+            velocity.transform.position = currentBullet.transform.position;
+            Vector3 components = velocity.components.magnitude * currentBullet.GetV().normalized;
+            velocity.components = Quaternion.Euler(0, -25, 0) * components;
+            velocity.Redraw();
+        }
+
+        if (centrifugalForce)
+        {
+            centrifugalForce.Reset();
+            centrifugalForce.transform.position = currentBullet.transform.position;
+            centrifugalForce.components = Vector3.forward;
+            centrifugalForce.Redraw();
+        }
+
+        if (coriolisForce)
+        {
+            coriolisForce.Reset();
+            coriolisForce.transform.position = currentBullet.transform.position;
+            coriolisForce.components = Vector3.left;
+            coriolisForce.Redraw();
+        }
+
+        // Pause for a few seconds
+        yield return new WaitForSeconds(1);
+
+        if (checkButton) checkButton.interactable = false;
+
+        // Pause for a few seconds
+        yield return new WaitForSeconds(2);
+
+        yield return Animation3();
     }
 }

@@ -19,6 +19,7 @@ public class DraggableVector : Vector
     public float minMagnitude = 0.2f;
     public float maxMagnitude = 3f;
 
+    // For interactions
     private Vector3 initialPosition;
     private Vector3 dragStartPosition;
     private Camera mainCamera;
@@ -26,6 +27,16 @@ public class DraggableVector : Vector
 
     private bool draggingTail;
     private bool draggingHead;
+
+    // For resetting
+    private Vector3 resetPosition;
+    private Vector3 resetComponents;
+
+    private void Awake()
+    {
+        resetPosition = transform.position;
+        resetComponents = components;
+    }
 
     public override void OnEnable()
     {
@@ -149,5 +160,53 @@ public class DraggableVector : Vector
 
         if (headClickZone) headClickZone.gameObject.SetActive(interactable);
         if (tailClickZone) tailClickZone.gameObject.SetActive(interactable);
+    }
+
+    public void Reset()
+    {
+        transform.position = resetPosition;
+        components = resetComponents;
+        Redraw();
+
+        HideTailClickZone();
+        HideHeadClickZone();
+    }
+
+    public void ShowTailClickZone(bool interactable)
+    {
+        if (tailClickZone)
+        {
+            tailClickZone.gameObject.SetActive(true);
+            tailClickZone.interactable = interactable;
+            tailClickZone.GetComponent<MeshRenderer>().enabled = true;
+        }
+    }
+
+    public void HideTailClickZone()
+    {
+        if (tailClickZone)
+        {
+            tailClickZone.gameObject.SetActive(false);
+            tailClickZone.GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
+
+    public void ShowHeadClickZone(bool interactable)
+    {
+        if (headClickZone)
+        {
+            headClickZone.gameObject.SetActive(true);
+            headClickZone.interactable = interactable;
+            headClickZone.GetComponent<MeshRenderer>().enabled = true;
+        }
+    }
+
+    public void HideHeadClickZone()
+    {
+        if (headClickZone)
+        {
+            headClickZone.gameObject.SetActive(false);
+            headClickZone.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 }

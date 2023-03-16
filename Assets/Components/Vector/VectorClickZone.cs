@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class VectorClickZone : MonoBehaviour
 {
+    [HideInInspector] public bool interactable;
     [SerializeField] private Material defaultMaterial;
 
     [Header("Cursor")]
@@ -29,6 +30,8 @@ public class VectorClickZone : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        if (!interactable) return;
+
         // Display the cursor while hovering
         if (customCursor) Cursor.SetCursor(customCursor.texture, customCursor.hotspot, CursorMode.Auto);
 
@@ -37,6 +40,8 @@ public class VectorClickZone : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if (!interactable) return;
+
         RestoreDefaultCursor();
     }
 

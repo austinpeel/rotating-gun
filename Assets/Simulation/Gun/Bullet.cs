@@ -13,7 +13,9 @@ public class Bullet : MonoBehaviour
     public Vector3 Velocity => velocity;
 
     private Vector3 omega;
+    // Whether to solve the non-inertial frame equations of motion numerically
     [HideInInspector] public bool gunFrameSim = false;
+    [HideInInspector] public bool isAnimation = false;
 
     // Arrays for numerical integration
     private float[] x;
@@ -28,8 +30,12 @@ public class Bullet : MonoBehaviour
         this.maxDistance = maxDistance;
     }
 
-    // Used by GunFrameSimulation
-    public void Initialize(Vector3 position, Vector3 velocity, float maxDistance, Vector3 omega)
+    // Used by GunFrameSimulation and GunFrameAnimation
+    public void Initialize(Vector3 position,
+                           Vector3 velocity,
+                           float maxDistance,
+                           Vector3 omega,
+                           bool isAnimation = false)
     {
         gunFrameSim = true;
 
@@ -40,11 +46,12 @@ public class Bullet : MonoBehaviour
 
         this.omega = omega;
         this.maxDistance = maxDistance;
+        this.isAnimation = isAnimation;
     }
 
     private void Update()
     {
-        if (isPaused) return;
+        if (isPaused || isAnimation) return;
 
         if (!gunFrameSim)
         {
@@ -57,7 +64,7 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         // Solve the equations of motion in the Gun Frame
-        if (!gunFrameSim || isPaused) return;
+        if (!gunFrameSim || isPaused || isAnimation) return;
 
         // Evolve equations by a time step
         int numSubsteps = 10;
@@ -84,7 +91,7 @@ public class Bullet : MonoBehaviour
         return totalAcceleration;
     }
 
-    private void TakeLeapfrogStep(float deltaTime)
+    public void TakeLeapfrogStep(float deltaTime)
     {
         // Update positions with current velocities and accelerations
         x[0] += deltaTime * (xdot[0] + 0.5f * xdot[3] * deltaTime);
@@ -132,5 +139,15 @@ public class Bullet : MonoBehaviour
     public void Resume()
     {
         isPaused = false;
+    }
+
+    public Vector3 GetX()
+    {
+        return new Vector3(x[0], x[1], x[2]);
+    }
+
+    public Vector3 GetV()
+    {
+        return new Vector3(xdot[0], xdot[1], xdot[2]);
     }
 }
