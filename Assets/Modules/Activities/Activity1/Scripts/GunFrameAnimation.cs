@@ -66,6 +66,11 @@ public class GunFrameAnimation : MonoBehaviour
         }
 
         Reset();
+
+        // Make sure that the vectors (and click zones) are interactable
+        if (velocity) velocity.MakeInteractable();
+        if (centrifugalForce) centrifugalForce.MakeInteractable();
+        if (coriolisForce) coriolisForce.MakeInteractable();
     }
 
     private void Start()

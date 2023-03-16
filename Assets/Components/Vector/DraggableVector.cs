@@ -158,8 +158,17 @@ public class DraggableVector : Vector
     {
         interactable = value;
 
-        if (headClickZone) headClickZone.gameObject.SetActive(interactable);
-        if (tailClickZone) tailClickZone.gameObject.SetActive(interactable);
+        if (headClickZone)
+        {
+            headClickZone.gameObject.SetActive(interactable);
+            headClickZone.interactable = interactable;
+        }
+
+        if (tailClickZone)
+        {
+            tailClickZone.gameObject.SetActive(interactable);
+            tailClickZone.interactable = interactable;
+        }
     }
 
     public void Reset()
@@ -168,8 +177,8 @@ public class DraggableVector : Vector
         components = resetComponents;
         Redraw();
 
-        HideTailClickZone();
         HideHeadClickZone();
+        HideTailClickZone();
     }
 
     public void ShowTailClickZone(bool interactable)
