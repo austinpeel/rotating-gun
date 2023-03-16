@@ -85,7 +85,7 @@ public class GunFrameSimulation : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isPaused) return;
 
@@ -159,7 +159,11 @@ public class GunFrameSimulation : MonoBehaviour
         // Create the new bullet
         Bullet bullet = Instantiate(bulletPrefab, bulletContainer).GetComponent<Bullet>();
         bullet.name = "Bullet";
-        bullet.Initialize(bulletSpawnPosition, bulletSpeed * e1, maxBulletDistance, Omega);
+        // Account for the velocity of the gun relative to the origin
+        bullet.Initialize(bulletSpawnPosition,
+                          bulletSpeed * e1 + Vector3.Cross(Omega, bulletSpawnPosition - transform.position),
+                          maxBulletDistance,
+                          Omega);
 
         bullets.Add(bullet);
         currentBullet = bullet;

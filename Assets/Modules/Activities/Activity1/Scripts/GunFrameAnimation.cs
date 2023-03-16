@@ -166,7 +166,11 @@ public class GunFrameAnimation : MonoBehaviour
         bullet.name = "Bullet";
         // By passing omega to the bullet, it knows that this is a gun frame simulation
         // and that it should solve the equations of motion numerically
-        bullet.Initialize(bulletSpawnPosition, bulletSpeed * e1, 100, Omega, true);
+        bullet.Initialize(bulletSpawnPosition,
+                          bulletSpeed * e1 + Vector3.Cross(Omega, bulletSpawnPosition - transform.position),
+                          100,
+                          Omega,
+                          true);
 
         bullets.Add(bullet);
         currentBullet = bullet;
@@ -246,7 +250,7 @@ public class GunFrameAnimation : MonoBehaviour
         // Fire the gun
         Fire();
         if (fireButton) fireButton.interactable = false;
-        if (checkButton) checkButton.interactable = true;
+        // if (checkButton) checkButton.interactable = true;
 
         // Integrate the equation of motion to a given distance
         time = 0;
