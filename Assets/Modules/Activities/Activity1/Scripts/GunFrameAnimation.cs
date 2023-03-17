@@ -73,10 +73,10 @@ public class GunFrameAnimation : MonoBehaviour
         if (coriolisForce) coriolisForce.MakeInteractable();
     }
 
-    private void Start()
-    {
-        StartAnimation(anim);
-    }
+    // private void Start()
+    // {
+    //     StartAnimation(anim);
+    // }
 
     private void Reset()
     {
