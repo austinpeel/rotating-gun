@@ -13,6 +13,8 @@ public class Activity1Vectors : MonoBehaviour
     public Button fireButton;
     public Button checkButton;
     public Slider omegaSlider;
+    public RectTransform winPanel;
+    public RectTransform losePanel;
 
     private Vector3 initialVelocityPosition;
     private Vector3 initialVelocityComponents;
@@ -28,7 +30,7 @@ public class Activity1Vectors : MonoBehaviour
     private Vector3 centrifugalDirection;
     private Vector3 coriolisDirection;
 
-    public static event Action<bool> OnCheckVectors;
+    public static event Action OnAllVectorsCorrect;
 
     private void Awake()
     {
@@ -47,6 +49,9 @@ public class Activity1Vectors : MonoBehaviour
             initialCoriolisPosition = coriolisForce.transform.position;
             initialCoriolisComponents = coriolisForce.components;
         }
+
+        if (winPanel) winPanel.gameObject.SetActive(false);
+        if (losePanel) losePanel.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -59,7 +64,7 @@ public class Activity1Vectors : MonoBehaviour
         GunFrameSimulation.OnPause -= HandleGunFrameSimulationPaused;
     }
 
-    public void Reset(bool resetTruth)
+    public void ResetFromWin()
     {
         ResetVector(velocity, initialVelocityPosition, initialVelocityComponents);
         ResetVector(centrifugalForce, initialCentrifugalPosition, initialCentrifugalComponents);
@@ -67,30 +72,53 @@ public class Activity1Vectors : MonoBehaviour
 
         if (fireButton)
         {
-            fireButton.interactable = resetTruth;
+            fireButton.interactable = true;
             if (fireButton.TryGetComponent(out CursorHoverUI cursor))
             {
-                cursor.enabled = resetTruth;
+                cursor.enabled = true;
             }
         }
         if (checkButton)
         {
-            checkButton.interactable = !resetTruth;
+            checkButton.interactable = false;
             if (checkButton.TryGetComponent(out CursorHoverUI cursor))
             {
-                cursor.enabled = !resetTruth;
+                cursor.enabled = false;
             }
         }
         if (omegaSlider)
         {
-            omegaSlider.interactable = resetTruth;
+            omegaSlider.interactable = true;
             if (omegaSlider.TryGetComponent(out CursorHoverUI cursor))
             {
-                cursor.enabled = resetTruth;
+                cursor.enabled = true;
             }
         }
 
-        if (resetTruth) truthIsKnown = false;
+        truthIsKnown = false;
+
+        OnAllVectorsCorrect?.Invoke();
+    }
+
+    private void CheckForWin(bool velocityCorrect, bool centrifugalCorrect, bool coriolisCorrect)
+    {
+        bool allCorrect = velocityCorrect & centrifugalCorrect & coriolisCorrect;
+
+        if (!velocityCorrect)
+        {
+            ResetVector(velocity, initialVelocityPosition, initialVelocityComponents);
+        }
+        if (!centrifugalCorrect)
+        {
+            ResetVector(centrifugalForce, initialCentrifugalPosition, initialCentrifugalComponents);
+        }
+        if (!coriolisCorrect)
+        {
+            ResetVector(coriolisForce, initialCoriolisPosition, initialCoriolisComponents);
+        }
+
+        if (winPanel) winPanel.gameObject.SetActive(allCorrect);
+        if (losePanel) losePanel.gameObject.SetActive(!allCorrect);
     }
 
     private void ResetVector(DraggableVector vector, Vector3 initialPosition, Vector3 initialComponents)
@@ -144,13 +172,6 @@ public class Activity1Vectors : MonoBehaviour
         }
     }
 
-    private bool VectorsAreAligned(Vector3 vector1, Vector3 vector2)
-    {
-        float angle = Vector3.Angle(vector1, vector2);
-        Debug.Log(angle);
-        return angle == 0;
-    }
-
     public void CheckAnswers()
     {
         if (!truthIsKnown)
@@ -161,13 +182,10 @@ public class Activity1Vectors : MonoBehaviour
 
         // TODO What if Omega = 0?
 
-        bool allVectorsCorrect = VectorsAreAligned(velocityDirection, velocity.components);
-        allVectorsCorrect &= VectorsAreAligned(centrifugalDirection, centrifugalForce.components);
-        allVectorsCorrect &= VectorsAreAligned(coriolisDirection, coriolisForce.components);
+        bool velocityCorrect = Vector3.Angle(velocityDirection, velocity.components) == 0;
+        bool centrifugalCorrect = Vector3.Angle(centrifugalDirection, centrifugalForce.components) == 0;
+        bool coriolisCorrect = Vector3.Angle(coriolisDirection, coriolisForce.components) == 0;
 
-        // Debug.Log("All correct ? " + allVectorsCorrect);
-        Reset(allVectorsCorrect);
-
-        OnCheckVectors?.Invoke(allVectorsCorrect);
+        CheckForWin(velocityCorrect, centrifugalCorrect, coriolisCorrect);
     }
 }

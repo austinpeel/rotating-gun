@@ -63,13 +63,13 @@ public class GunFrameSimulation : MonoBehaviour
     private void OnEnable()
     {
         Bullet.OnOutOfBounds += HandleBulletOutOfBounds;
-        Activity1Vectors.OnCheckVectors += HandleCheckVectors;
+        Activity1Vectors.OnAllVectorsCorrect += HandleAllVectorsCorrect;
     }
 
     private void OnDisable()
     {
         Bullet.OnOutOfBounds -= HandleBulletOutOfBounds;
-        Activity1Vectors.OnCheckVectors -= HandleCheckVectors;
+        Activity1Vectors.OnAllVectorsCorrect -= HandleAllVectorsCorrect;
     }
 
     public void Pause()
@@ -227,8 +227,8 @@ public class GunFrameSimulation : MonoBehaviour
         }
     }
 
-    public void HandleCheckVectors(bool allVectorsCorrect)
+    public void HandleAllVectorsCorrect()
     {
-        if (allVectorsCorrect) Resume();
+        Resume();
     }
 }
