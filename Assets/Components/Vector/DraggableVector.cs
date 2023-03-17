@@ -134,7 +134,7 @@ public class DraggableVector : Vector
                     Vector3 newComponents = hitPoint - transform.position;
 
                     // Snap the direction
-                    if (useStickyDirections)
+                    if (useStickyDirections && transform.position == stickyPoint)
                     {
                         foreach (var direction in stickyDirections)
                         {
@@ -143,7 +143,6 @@ public class DraggableVector : Vector
                             if (cosAngle > 0.98f)
                             {
                                 newComponents = newComponents.magnitude * direction.normalized;
-                                break;
                             }
                         }
                     }
