@@ -143,6 +143,7 @@ public class DraggableVector : Vector
                             if (cosAngle > 0.98f)
                             {
                                 newComponents = newComponents.magnitude * direction.normalized;
+                                break;
                             }
                         }
                     }
