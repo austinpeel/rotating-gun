@@ -17720,8 +17720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441d0cd3b15db40fdad9b29a49044185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textEN: Fictitious forces
-  textFR: Forces d'inertie
+  textEN: Show the fictitious forces
+  textFR: Montrer les forces d'inertie
   transformsEN: {fileID: 0}
   transformsFR: {fileID: 0}
 --- !u!114 &2026780899
@@ -17744,7 +17744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fictitious forces
+  m_text: Montrer les forces d'inertie
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7bea0ee510519418e83160323e771f52, type: 2}
   m_sharedMaterial: {fileID: -4219023752200370933, guid: 7bea0ee510519418e83160323e771f52, type: 2}

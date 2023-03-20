@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4265403495773799367}
     m_Modifications:
+    - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: textEN
+      value: Coming soon.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: textFR
+      value: "\xC0 venir."
+      objectReference: {fileID: 0}
     - target: {fileID: 6630728238529657200, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -422,6 +430,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4265403495773799367}
     m_Modifications:
+    - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: textEN
+      value: Test your understanding of fictitious forces by determining their orientations
+        along the bullet's flight path.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: textFR
+      value: Texte...
+      objectReference: {fileID: 0}
     - target: {fileID: 6630728238529657200, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
