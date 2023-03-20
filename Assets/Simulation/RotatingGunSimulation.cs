@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class RotatingGunSimulation : Slides.Simulation
@@ -79,11 +78,6 @@ public class RotatingGunSimulation : Slides.Simulation
         SimulationState.OnChangePerspective -= HandlePerspectiveChange;
         SimulationState.OnChangeReferenceFrame -= HandleReferenceFrameChange;
     }
-
-    // private void Start()
-    // {
-    //     Debug.Log(IsPaused);
-    // }
 
     private void Update()
     {

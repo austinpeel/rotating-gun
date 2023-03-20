@@ -98,23 +98,8 @@ public class AngularVelocity : MonoBehaviour
             orientationLabel.gameObject.SetActive(cameraIsAbove);
         }
 
-        bool omegaIsPositive = angularFrequency > 0;
-
-        if (omegaLabelLabFrame)
-        {
-            // Vector3 position = omegaLabelLabFrame.transform.position;
-            // position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -1.8f);
-            // omegaLabelLabFrame.transform.position = position;
-            omegaLabelLabFrame.gameObject.SetActive(frameIsLab);
-        }
-
-        if (omegaLabelGunFrame)
-        {
-            // Vector3 position = omegaLabelGunFrame.transform.position;
-            // position.y = cameraIsAbove ? 2 : (omegaIsPositive ? 2 : -1.8f);
-            // omegaLabelGunFrame.transform.position = position;
-            omegaLabelGunFrame.gameObject.SetActive(!frameIsLab);
-        }
+        if (omegaLabelLabFrame) omegaLabelLabFrame.gameObject.SetActive(frameIsLab);
+        if (omegaLabelGunFrame) omegaLabelGunFrame.gameObject.SetActive(!frameIsLab);
     }
 
     public void SetMaterialAlpha(float alpha)

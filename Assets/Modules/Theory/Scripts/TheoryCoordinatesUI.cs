@@ -11,12 +11,10 @@ public class TheoryCoordinatesUI : MonoBehaviour
 
     [Header("Images")]
     public Image omegaSign;
-    public Image omegaUnitVector;
+    public Image thetaSign;
     public Image thetaDot;
     public Sprite plus;
     public Sprite minus;
-    public Sprite x3;
-    public Sprite y3;
     public Sprite thetaDotPositive;
     public Sprite thetaDotNegative;
 
@@ -47,16 +45,19 @@ public class TheoryCoordinatesUI : MonoBehaviour
         if (labBasisEquations) labBasisEquations.gameObject.SetActive(frameIsLab);
         if (gunBasisEquations) gunBasisEquations.gameObject.SetActive(!frameIsLab);
 
-        if (omegaUnitVector)
+        float angularFrequency = simState.GetAngularFrequency();
+        bool omegaIsPositive = angularFrequency >= 0;
+        bool thetaDotIsPositive = !(frameIsLab ^ omegaIsPositive);
+
+        if (thetaSign)
         {
-            omegaUnitVector.sprite = frameIsLab ? x3 : y3;
-            omegaUnitVector.SetNativeSize();
+            thetaSign.sprite = thetaDotIsPositive ? plus : minus;
+            thetaSign.SetNativeSize();
         }
 
         if (thetaDot)
         {
-            bool omegaIsPositive = simState.GetAngularFrequency() >= 0;
-            thetaDot.sprite = !(frameIsLab ^ omegaIsPositive) ? thetaDotPositive : thetaDotNegative;
+            thetaDot.sprite = thetaDotIsPositive ? thetaDotPositive : thetaDotNegative;
             thetaDot.SetNativeSize();
         }
     }
@@ -73,11 +74,19 @@ public class TheoryCoordinatesUI : MonoBehaviour
             omegaSign.SetNativeSize();
         }
 
+        bool frameIsLab = simState.referenceFrame == SimulationState.ReferenceFrame.Lab;
+        bool omegaIsPositive = angularFrequency >= 0;
+        bool thetaDotIsPositive = !(frameIsLab ^ omegaIsPositive);
+
+        if (thetaSign)
+        {
+            thetaSign.sprite = thetaDotIsPositive ? plus : minus;
+            thetaSign.SetNativeSize();
+        }
+
         if (thetaDot)
         {
-            bool frameIsLab = simState.referenceFrame == SimulationState.ReferenceFrame.Lab;
-            bool omegaIsPositive = angularFrequency >= 0;
-            thetaDot.sprite = !(frameIsLab ^ omegaIsPositive) ? thetaDotPositive : thetaDotNegative;
+            thetaDot.sprite = thetaDotIsPositive ? thetaDotPositive : thetaDotNegative;
             thetaDot.SetNativeSize();
         }
     }

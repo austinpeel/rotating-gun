@@ -75,11 +75,5 @@ public class TheoryDynamicsUI : MonoBehaviour
         if (fictitiousForces) fictitiousForces.gameObject.SetActive(!frameIsLab);
         if (noFictitiousForces) noFictitiousForces.gameObject.SetActive(frameIsLab);
         if (verticalDivider) verticalDivider.gameObject.SetActive(!frameIsLab);
-
-        // if (omegaUnitVector)
-        // {
-        //     omegaUnitVector.sprite = frameIsLab ? x3 : y3;
-        //     omegaUnitVector.SetNativeSize();
-        // }
     }
 }
