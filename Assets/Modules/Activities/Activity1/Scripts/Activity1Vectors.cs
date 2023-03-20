@@ -16,6 +16,9 @@ public class Activity1Vectors : MonoBehaviour
     public RectTransform winPanel;
     public RectTransform losePanel;
 
+    [Header("Celebration")]
+    public ParticleSystem particles;
+
     private Vector3 initialVelocityPosition;
     private Vector3 initialVelocityComponents;
 
@@ -52,6 +55,8 @@ public class Activity1Vectors : MonoBehaviour
 
         if (winPanel) winPanel.gameObject.SetActive(false);
         if (losePanel) losePanel.gameObject.SetActive(false);
+
+        if (particles) particles.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -119,6 +124,8 @@ public class Activity1Vectors : MonoBehaviour
 
         if (winPanel) winPanel.gameObject.SetActive(allCorrect);
         if (losePanel) losePanel.gameObject.SetActive(!allCorrect);
+
+        if (particles) particles.gameObject.SetActive(allCorrect);
     }
 
     private void ResetVector(DraggableVector vector, Vector3 initialPosition, Vector3 initialComponents)
