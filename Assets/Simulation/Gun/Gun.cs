@@ -56,7 +56,7 @@ public class Gun : MonoBehaviour
         }
 
         velocity *= vectorScaleFactor;
-        centrifugalForce *= vectorScaleFactor;
+        centrifugalForce *= 2 * vectorScaleFactor;
         coriolisForce *= 0.5f * vectorScaleFactor;
 
         // Update displayed vectors
@@ -88,7 +88,7 @@ public class Gun : MonoBehaviour
             coriolisForceVector.Redraw();
         }
 
-        if (!tracingBulletPath || !bulletPath || !inGunFrame) return;
+        if (!tracingBulletPath || !bulletPath) return;
 
         bulletPath.positionCount++;
         Vector3 newPosition = currentBullet.transform.position;

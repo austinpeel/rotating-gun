@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1690950797526546671}
   - component: {fileID: 1690950797526546668}
   m_Layer: 0
-  m_Name: Vector
+  m_Name: e1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,8 +147,8 @@ MonoBehaviour:
   head: {fileID: 2669256120055475757}
   defaultMaterial: {fileID: 2100000, guid: eb530278d6e614093963bd2574c7a45a, type: 2}
   components: {x: 1.5, y: 0, z: 0}
-  color: {r: 0.35686275, g: 0.67058825, b: 0.94509804, a: 1}
-  lineWidth: 0.15
+  color: {r: 0.6745098, g: 0.6745098, b: 0.6745098, a: 1}
+  lineWidth: 0.18
 --- !u!1 &1690950798571969965
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 1690950798571969967}
   - component: {fileID: 1690950798571969964}
   m_Layer: 0
-  m_Name: Vector
+  m_Name: e3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,8 +198,8 @@ MonoBehaviour:
   head: {fileID: 2669256121100897133}
   defaultMaterial: {fileID: 2100000, guid: eb530278d6e614093963bd2574c7a45a, type: 2}
   components: {x: 0, y: 1.5, z: 0}
-  color: {r: 0.35686275, g: 0.67058825, b: 0.94509804, a: 1}
-  lineWidth: 0.15
+  color: {r: 0.6745098, g: 0.6745098, b: 0.6745098, a: 1}
+  lineWidth: 0.18
 --- !u!1 &1690950799334133699
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 1690950799334133697}
   - component: {fileID: 1690950799334133698}
   m_Layer: 0
-  m_Name: Vector
+  m_Name: e2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,8 +249,8 @@ MonoBehaviour:
   head: {fileID: 2669256121888495875}
   defaultMaterial: {fileID: 2100000, guid: eb530278d6e614093963bd2574c7a45a, type: 2}
   components: {x: 0, y: 0, z: 1.5}
-  color: {r: 0.35686275, g: 0.67058825, b: 0.94509804, a: 1}
-  lineWidth: 0.15
+  color: {r: 0.6745098, g: 0.6745098, b: 0.6745098, a: 1}
+  lineWidth: 0.18
 --- !u!1 &2007649714920341333
 GameObject:
   m_ObjectHideFlags: 0
