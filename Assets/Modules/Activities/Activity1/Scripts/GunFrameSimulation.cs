@@ -36,6 +36,7 @@ public class GunFrameSimulation : MonoBehaviour
     public float bulletPauseDistance = 5;
     private bool hasPausedOnCurrentBullet;
 
+    // Send gun position, bullet position, bullet velocity, angular velocity
     public static event Action<Vector3, Vector3, Vector3, Vector3> OnPause;
 
     [Header("Options")]
@@ -163,7 +164,7 @@ public class GunFrameSimulation : MonoBehaviour
         bullet.name = "Bullet";
         // Account for the velocity of the gun relative to the origin
         bullet.Initialize(bulletSpawnPosition,
-                          bulletSpeed * e1 + Vector3.Cross(Omega, bulletSpawnPosition - transform.position),
+                          bulletSpeed * e1, // + Vector3.Cross(Omega, bulletSpawnPosition - transform.position),
                           maxBulletDistance,
                           Omega);
 

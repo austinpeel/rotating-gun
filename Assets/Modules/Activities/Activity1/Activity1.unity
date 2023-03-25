@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 9953e0c8cfc0b4372b7e9a29be396035, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 61cafcf1f73ec4698bcf8fce482fcd67, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1109,9 +1109,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bravo !
+  m_text: 'Well done!
 
-    Toutes les orientations de vecteurs sont correctes.'
+    All of the vector orientations are correct.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
@@ -3094,8 +3094,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Testez votre compr\xE9hension des forces d'inertie             en d\xE9terminant
-    leurs directions d'action."
+  m_text: Test your understanding of fictitious forces by determining their directions
+    of action.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
@@ -10128,8 +10128,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ne vous d\xE9couragez pas.\nCertaines des orientations de vecteurs sont
-    incorrectes."
+  m_text: 'Keep trying.
+
+    Some of the vector orientations are incorrect.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
@@ -12528,7 +12529,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Passer les instructions
+  m_text: Skip the instructions
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -15246,6 +15247,10 @@ PrefabInstance:
     - target: {fileID: 5778017670028056196, guid: a56daf505c2224e5ca89017cecbc5df2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778017670028056197, guid: a56daf505c2224e5ca89017cecbc5df2, type: 3}
+      propertyPath: omegaMax
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5778017670028056197, guid: a56daf505c2224e5ca89017cecbc5df2, type: 3}
       propertyPath: velocity

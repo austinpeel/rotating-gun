@@ -167,7 +167,7 @@ public class GunFrameAnimation : MonoBehaviour
         // By passing omega to the bullet, it knows that this is a gun frame simulation
         // and that it should solve the equations of motion numerically
         bullet.Initialize(bulletSpawnPosition,
-                          bulletSpeed * e1 + Vector3.Cross(Omega, bulletSpawnPosition - transform.position),
+                          bulletSpeed * e1, // + Vector3.Cross(Omega, bulletSpawnPosition - transform.position),
                           100,
                           Omega,
                           true);
@@ -216,7 +216,7 @@ public class GunFrameAnimation : MonoBehaviour
         // First increase omega from 0 to its max value
         float time = 0;
         float omega = 0;
-        float sliderMoveTime = 2;
+        float sliderMoveTime = 1;
 
         while (time < sliderMoveTime)
         {
@@ -237,7 +237,7 @@ public class GunFrameAnimation : MonoBehaviour
 
         // Hold on the rotating animation for a short time
         time = 0;
-        float holdTime = 2;
+        float holdTime = 1;
         while (time < holdTime)
         {
             time += Time.fixedDeltaTime;
@@ -289,7 +289,7 @@ public class GunFrameAnimation : MonoBehaviour
         }
 
         // Pause for a few seconds
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
 
         // Restart the animation
         yield return Animation1();
@@ -343,7 +343,7 @@ public class GunFrameAnimation : MonoBehaviour
             velocity.ShowTailClickZone(false);
 
             float time = 0;
-            float vectorMoveTime = 2;
+            float vectorMoveTime = 1;
             Vector3 startPosition = velocity.transform.position;
             Vector3 endPosition = currentBullet.transform.position;
             while (time < vectorMoveTime)
@@ -353,7 +353,7 @@ public class GunFrameAnimation : MonoBehaviour
                 yield return null;
             }
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.8f);
 
             velocity.HideTailClickZone();
             velocity.ShowHeadClickZone(false);
@@ -373,7 +373,7 @@ public class GunFrameAnimation : MonoBehaviour
         }
 
         // Pause for a few seconds
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.2f);
 
         yield return Animation2();
     }
@@ -410,12 +410,12 @@ public class GunFrameAnimation : MonoBehaviour
         }
 
         // Pause for a few seconds
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.8f);
 
         if (checkButton) checkButton.interactable = false;
 
         // Pause for a few seconds
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.2f);
 
         yield return Animation3();
     }

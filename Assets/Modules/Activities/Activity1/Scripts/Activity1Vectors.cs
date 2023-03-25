@@ -148,7 +148,8 @@ public class Activity1Vectors : MonoBehaviour
     public void HandleGunFrameSimulationPaused(Vector3 simPosition, Vector3 bulletPosition, Vector3 bulletVelocity, Vector3 omega)
     {
         velocityDirection = bulletVelocity.normalized;
-        centrifugalDirection = (bulletPosition - simPosition).normalized;
+        // centrifugalDirection = (bulletPosition - simPosition).normalized;
+        centrifugalDirection = bulletPosition.normalized;
         coriolisDirection = Vector3.Cross(omega, bulletVelocity).normalized;  // Unity is left-handed
         List<Vector3> stickyDirections = new List<Vector3>
         {
