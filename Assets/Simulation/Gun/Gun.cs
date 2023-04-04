@@ -26,6 +26,9 @@ public class Gun : MonoBehaviour
     private Vector centrifugalForceVector;
     private Vector coriolisForceVector;
 
+    // Use when no SimulationState is assigned
+    [HideInInspector] public Vector3 omega;
+
     private void OnEnable()
     {
         Bullet.OnOutOfBounds += HandleBulletOutOfBounds;
@@ -45,14 +48,16 @@ public class Gun : MonoBehaviour
         Vector3 velocity = currentBullet.Velocity;
         Vector3 centrifugalForce = Vector3.zero;
         Vector3 coriolisForce = Vector3.zero;
-        if (inGunFrame && simState)
+        if (inGunFrame)
         {
+            Vector3 currentOmega = simState ? simState.omega : omega;
+
             // Unity is left-handed, so add instead of subtract
-            velocity += Vector3.Cross(simState.omega, position);
+            velocity += Vector3.Cross(currentOmega, position);
 
             // Assume bullet mass = 1 kg
-            centrifugalForce = -Vector3.Cross(simState.omega, Vector3.Cross(simState.omega, position));
-            coriolisForce = 2 * Vector3.Cross(simState.omega, velocity);
+            centrifugalForce = -Vector3.Cross(currentOmega, Vector3.Cross(currentOmega, position));
+            coriolisForce = 2 * Vector3.Cross(currentOmega, velocity);
         }
 
         velocity *= vectorScaleFactor;
@@ -92,9 +97,16 @@ public class Gun : MonoBehaviour
 
         bulletPath.positionCount++;
         Vector3 newPosition = currentBullet.transform.position;
-        // Compute position relative to the gun
-        bulletPath.useWorldSpace = false;
-        newPosition = transform.InverseTransformPoint(newPosition);
+        if (inGunFrame)
+        {
+            // Compute position relative to the gun
+            bulletPath.useWorldSpace = false;
+            newPosition = transform.InverseTransformPoint(newPosition);
+        }
+        else
+        {
+            bulletPath.useWorldSpace = true;
+        }
 
         bulletPath.SetPosition(bulletPath.positionCount - 1, newPosition);
     }
@@ -122,7 +134,11 @@ public class Gun : MonoBehaviour
         // Create the new bullet
         Bullet bullet = Instantiate(bulletPrefab, parent).GetComponent<Bullet>();
         bullet.name = "Bullet";
-        bullet.Initialize(bulletSpawnPosition, speed * e1, maxDistance);
+        // Set the bullet velocity in the gun's reference frame
+        Vector3 bulletVelocity = speed * e1;
+        // Correct for the lab frame
+        bulletVelocity -= Vector3.Cross(simState ? simState.omega : omega, bulletSpawnPosition);
+        bullet.Initialize(bulletSpawnPosition, bulletVelocity, maxDistance);
 
         bullets.Add(bullet);
         currentBullet = bullet;

@@ -19,7 +19,7 @@ EditorBuildSettings:
     guid: fe45f13095dd241b6bdb96c00e33ce8a
   - enabled: 1
     path: Assets/Modules/Activities/Activity1/Activity1.unity
-    guid: b251f21d91dfa4764858bdef26dfe801
+    guid: 53316c52ac79d42dc97bd7f4036f1ecc
   - enabled: 1
     path: Assets/Modules/Activities/Activity2/Activity2.unity
     guid: 050a1580565a14ed38b27010c0128114

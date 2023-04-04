@@ -304,6 +304,12 @@ public class RotatingGunSimulation : Slides.Simulation
         SetTimeScale(isSlowMotion ? 0.2f : 1);
     }
 
+    // Useful when no SimulationState is available, e.g. in RotatingGunSlideController
+    public void SetGunOmegaFromAngularFrequency(float angularFrequency)
+    {
+        if (gun) gun.omega = angularFrequency * 2 * Mathf.PI * Vector3.up;
+    }
+
     // private IEnumerator MoveCamera(Vector3 targetPosition, Quaternion targetRotation, float moveTime)
     // {
     //     Pause();

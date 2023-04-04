@@ -31,6 +31,7 @@ public class RotatingGunSlideController : Slides.SimulationSlideController
     {
         sim = simulation as RotatingGunSimulation;
         sim.angularFrequency = angularFrequency;
+        sim.SetGunOmegaFromAngularFrequency(angularFrequency);
         sim.referenceFrame = referenceFrame;
         sim.traceBulletPath = traceBulletPath;
         sim.showPosition = showPosition;
