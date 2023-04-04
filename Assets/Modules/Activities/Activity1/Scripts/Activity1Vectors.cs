@@ -75,34 +75,27 @@ public class Activity1Vectors : MonoBehaviour
         ResetVector(centrifugalForce, initialCentrifugalPosition, initialCentrifugalComponents);
         ResetVector(coriolisForce, initialCoriolisPosition, initialCoriolisComponents);
 
-        if (fireButton)
-        {
-            fireButton.interactable = true;
-            if (fireButton.TryGetComponent(out CursorHoverUI cursor))
-            {
-                cursor.enabled = true;
-            }
-        }
-        if (checkButton)
-        {
-            checkButton.interactable = false;
-            if (checkButton.TryGetComponent(out CursorHoverUI cursor))
-            {
-                cursor.enabled = false;
-            }
-        }
-        if (omegaSlider)
-        {
-            omegaSlider.interactable = true;
-            if (omegaSlider.TryGetComponent(out CursorHoverUI cursor))
-            {
-                cursor.enabled = true;
-            }
-        }
+        SetAllVectorsInteractable();
+
+        if (fireButton) SetInteractability(fireButton, true);
+        if (checkButton) SetInteractability(checkButton, false);
+        if (omegaSlider) SetInteractability(omegaSlider, true);
 
         truthIsKnown = false;
 
         OnAllVectorsCorrect?.Invoke();
+    }
+
+    private void SetInteractability(Button button, bool interactable)
+    {
+        button.interactable = interactable;
+        if (button.TryGetComponent(out CursorHoverUI cursor)) cursor.enabled = interactable;
+    }
+
+    private void SetInteractability(Slider slider, bool interactable)
+    {
+        slider.interactable = interactable;
+        if (slider.TryGetComponent(out CursorHoverUI cursor)) cursor.enabled = interactable;
     }
 
     private void CheckForWin(bool velocityCorrect, bool centrifugalCorrect, bool coriolisCorrect)
@@ -190,10 +183,21 @@ public class Activity1Vectors : MonoBehaviour
 
         // TODO What if Omega = 0?
 
+        velocity.SetInteractable(false);
+        centrifugalForce.SetInteractable(false);
+        coriolisForce.SetInteractable(false);
+
         bool velocityCorrect = Vector3.Angle(velocityDirection, velocity.components) == 0;
         bool centrifugalCorrect = Vector3.Angle(centrifugalDirection, centrifugalForce.components) == 0;
         bool coriolisCorrect = Vector3.Angle(coriolisDirection, coriolisForce.components) == 0;
 
         CheckForWin(velocityCorrect, centrifugalCorrect, coriolisCorrect);
+    }
+
+    public void SetAllVectorsInteractable()
+    {
+        velocity.MakeInteractable();
+        centrifugalForce.MakeInteractable();
+        coriolisForce.MakeInteractable();
     }
 }
