@@ -42,6 +42,10 @@ public class GunFrameSimulation : MonoBehaviour
     [Header("Options")]
     public bool traceBulletPath;
 
+    [Header("Sound Effects")]
+    public SoundEffect cannonFire;
+    private AudioSource audioSource;
+
     // Bullets
     private List<Bullet> bullets;
     private Bullet currentBullet;
@@ -59,6 +63,8 @@ public class GunFrameSimulation : MonoBehaviour
         // Initialize
         SetTimeScale(timeScale);
         SetPerspective(perspective);
+
+        TryGetComponent(out audioSource);
     }
 
     private void OnEnable()
@@ -172,6 +178,8 @@ public class GunFrameSimulation : MonoBehaviour
         currentBullet = bullet;
 
         hasPausedOnCurrentBullet = false;
+
+        if (audioSource && cannonFire) cannonFire.Play(audioSource);
     }
 
     public void SetTimeScale(float value)

@@ -18,6 +18,8 @@ public class Activity1Vectors : MonoBehaviour
 
     [Header("Celebration")]
     public ParticleSystem particles;
+    public SoundEffect celebration;
+    private AudioSource audioSource;
 
     private Vector3 initialVelocityPosition;
     private Vector3 initialVelocityComponents;
@@ -57,6 +59,8 @@ public class Activity1Vectors : MonoBehaviour
         if (losePanel) losePanel.gameObject.SetActive(false);
 
         if (particles) particles.gameObject.SetActive(false);
+
+        TryGetComponent(out audioSource);
     }
 
     private void OnEnable()
@@ -119,6 +123,7 @@ public class Activity1Vectors : MonoBehaviour
         if (losePanel) losePanel.gameObject.SetActive(!allCorrect);
 
         if (particles) particles.gameObject.SetActive(allCorrect);
+        if (allCorrect && audioSource && celebration) celebration.Play(audioSource);
     }
 
     private void ResetVector(DraggableVector vector, Vector3 initialPosition, Vector3 initialComponents)

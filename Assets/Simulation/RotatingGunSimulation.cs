@@ -138,7 +138,8 @@ public class RotatingGunSimulation : Slides.Simulation
                           showPosition,
                           showVelocity,
                           showCentrifugalForce,
-                          showCoriolisForce);
+                          showCoriolisForce,
+                          !autoFire);
     }
 
     public void Reset(Vector3 cameraPosition, Quaternion cameraRotation)

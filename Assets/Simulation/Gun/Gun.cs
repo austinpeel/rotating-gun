@@ -15,6 +15,10 @@ public class Gun : MonoBehaviour
     public GameObject coriolisForceVectorPrefab;
     public float vectorScaleFactor = 1;
 
+    [Header("Sound Effects")]
+    public SoundEffect cannonFire;
+    private AudioSource audioSource;
+
     private List<Bullet> bullets;
 
     [HideInInspector] public bool inGunFrame;
@@ -28,6 +32,11 @@ public class Gun : MonoBehaviour
 
     // Use when no SimulationState is assigned
     [HideInInspector] public Vector3 omega;
+
+    private void Awake()
+    {
+        TryGetComponent(out audioSource);
+    }
 
     private void OnEnable()
     {
@@ -119,7 +128,8 @@ public class Gun : MonoBehaviour
                      bool showPosition = false,
                      bool showVelocity = false,
                      bool showCentrifugalForce = false,
-                     bool showCoriolisForce = false)
+                     bool showCoriolisForce = false,
+                     bool playSoundEffect = false)
     {
         if (bullets == null) bullets = new List<Bullet>();
 
@@ -178,6 +188,8 @@ public class Gun : MonoBehaviour
             coriolisForceVector.components = Vector3.zero;
             coriolisForceVector.Redraw();
         }
+
+        if (playSoundEffect && audioSource && cannonFire) cannonFire.Play(audioSource);
     }
 
     private Vector CreateVector(GameObject vectorPrefab, Transform parent)
