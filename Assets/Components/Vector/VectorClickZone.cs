@@ -15,6 +15,8 @@ public class VectorClickZone : MonoBehaviour
     public static event Action<VectorClickZone> OnZoneMouseDown;
     public static event Action<VectorClickZone> OnZoneMouseUp;
 
+    private bool mouseIsDown;
+
     private void Awake()
     {
         if (TryGetComponent(out mesh))
@@ -40,7 +42,7 @@ public class VectorClickZone : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if (!interactable) return;
+        if (!interactable || mouseIsDown) return;
 
         RestoreDefaultCursor();
     }
@@ -48,21 +50,26 @@ public class VectorClickZone : MonoBehaviour
     private void RestoreDefaultCursor()
     {
         // Restore the default cursor
-        if (customCursor != null)
-        {
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        }
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         if (mesh) mesh.enabled = false;
     }
 
     private void OnMouseDown()
     {
+        if (!interactable) return;
+
+        mouseIsDown = true;
         OnZoneMouseDown?.Invoke(this);
     }
 
     private void OnMouseUp()
     {
+        if (!interactable) return;
+
+        RestoreDefaultCursor();
+
+        mouseIsDown = false;
         OnZoneMouseUp?.Invoke(this);
     }
 

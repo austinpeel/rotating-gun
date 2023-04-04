@@ -94,7 +94,7 @@ public class GunFrameSimulation : MonoBehaviour
 
         if (currentBullet && !hasPausedOnCurrentBullet)
         {
-            if (currentBullet.Position.magnitude > bulletPauseDistance)
+            if (currentBullet.Position.magnitude > bulletPauseDistance * Mathf.Pow(1 + Mathf.Abs(Omega.y), 0.4f))
             {
                 Pause();
                 hasPausedOnCurrentBullet = true;

@@ -220,12 +220,12 @@ public class GunFrameAnimation : MonoBehaviour
 
         while (time < sliderMoveTime)
         {
-            time += Time.fixedDeltaTime;
+            time += Time.deltaTime;
 
             // Increment omega
             omega = Mathf.Lerp(0, omegaMax, time / sliderMoveTime);
             angularFrequency = omega / (2 * Mathf.PI);
-            float deltaTheta = omega * Mathf.Rad2Deg * Time.fixedDeltaTime;
+            float deltaTheta = omega * Mathf.Rad2Deg * Time.deltaTime;
             RotateLight(deltaTheta);
             RotateGround(deltaTheta);
 
@@ -240,8 +240,8 @@ public class GunFrameAnimation : MonoBehaviour
         float holdTime = 1;
         while (time < holdTime)
         {
-            time += Time.fixedDeltaTime;
-            float deltaTheta = omega * Mathf.Rad2Deg * Time.fixedDeltaTime;
+            time += Time.deltaTime;
+            float deltaTheta = omega * Mathf.Rad2Deg * Time.deltaTime;
             RotateLight(deltaTheta);
             RotateGround(deltaTheta);
             yield return null;
@@ -258,13 +258,13 @@ public class GunFrameAnimation : MonoBehaviour
         int numSubsteps = 10;
         while (time < holdTime)
         {
-            time += Time.fixedDeltaTime;
-            float deltaTheta = omega * Mathf.Rad2Deg * Time.fixedDeltaTime;
+            time += Time.deltaTime;
+            float deltaTheta = omega * Mathf.Rad2Deg * Time.deltaTime;
             RotateLight(deltaTheta);
             RotateGround(deltaTheta);
 
             // Move the bullet to its next position
-            float deltaTime = Time.fixedDeltaTime / numSubsteps;
+            float deltaTime = Time.deltaTime / numSubsteps;
             for (int i = 0; i < numSubsteps; i++)
             {
                 currentBullet.TakeLeapfrogStep(deltaTime);
@@ -307,8 +307,8 @@ public class GunFrameAnimation : MonoBehaviour
         Fire();
 
         int numSubsteps = 10;
-        float deltaTime = Time.fixedDeltaTime / numSubsteps;
-        float deltaTheta = omegaMax * Mathf.Rad2Deg * Time.fixedDeltaTime;
+        float deltaTime = Time.deltaTime / numSubsteps;
+        float deltaTheta = omegaMax * Mathf.Rad2Deg * Time.deltaTime;
         while (currentBullet.GetX().magnitude < bulletPauseDistance)
         {
             // Update the bullet position (its x variable) by a time step
@@ -348,7 +348,7 @@ public class GunFrameAnimation : MonoBehaviour
             Vector3 endPosition = currentBullet.transform.position;
             while (time < vectorMoveTime)
             {
-                time += Time.fixedDeltaTime;
+                time += Time.deltaTime;
                 velocity.transform.position = Vector3.Lerp(startPosition, endPosition, time / vectorMoveTime);
                 yield return null;
             }
@@ -365,7 +365,7 @@ public class GunFrameAnimation : MonoBehaviour
             endComponents = Quaternion.Euler(0, -25, 0) * endComponents;
             while (time < vectorRotateTime)
             {
-                time += Time.fixedDeltaTime;
+                time += Time.deltaTime;
                 velocity.components = Vector3.Slerp(startComponents, endComponents, time / vectorRotateTime);
                 velocity.Redraw();
                 yield return null;
