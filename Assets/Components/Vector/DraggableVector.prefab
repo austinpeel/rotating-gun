@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b1569a9e99947ebb806eff0a1cff11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickZoneName: head
+  interactable: 1
   defaultMaterial: {fileID: 2100000, guid: 1fc6b2d5939544bf1a95fc038ed98e63, type: 2}
   customCursor: {fileID: 11400000, guid: 684d79e95eecf4b9197ede40cef826b0, type: 2}
 --- !u!1 &3367963281930647693
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b1569a9e99947ebb806eff0a1cff11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickZoneName: tail
+  interactable: 1
   defaultMaterial: {fileID: 2100000, guid: 1fc6b2d5939544bf1a95fc038ed98e63, type: 2}
   customCursor: {fileID: 11400000, guid: 684d79e95eecf4b9197ede40cef826b0, type: 2}
 --- !u!1 &4608779176905620435
@@ -512,6 +512,15 @@ MonoBehaviour:
   components: {x: 1.5, y: 1, z: 0}
   color: {r: 1, g: 0.5568628, b: 0.41568628, a: 1}
   lineWidth: 0.2
+  interactable: 1
   dragPlaneDistance: 20
   tailClickZone: {fileID: 3367963281930647689}
   headClickZone: {fileID: 947133180912355698}
+  useStickyPoint: 0
+  stickyPoint: {x: 0, y: 0, z: 0}
+  stickyPointRadius: 0.5
+  useStickyDirections: 0
+  stickyDirections: []
+  clampMagnitude: 0
+  minMagnitude: 0.2
+  maxMagnitude: 3

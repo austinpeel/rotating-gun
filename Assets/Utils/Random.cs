@@ -4,7 +4,12 @@ namespace Utils
 {
     public static class Random
     {
-        // Marsaglia polar method for sampling from a Gaussian distribution
+        /// <summary>
+        /// Marsaglia polar method for sampling from a Gaussian distribution
+        /// </summary>
+        /// <param name="mu"></param>
+        /// <param name="sigma"></param>
+        /// <returns></returns>
         public static float NormalValue(float mu, float sigma)
         {
             float x1, x2, s;
@@ -18,9 +23,21 @@ namespace Utils
             s = Mathf.Sqrt(-2f * Mathf.Log(s) / s);
 
             return mu + x1 * s * sigma;
+        }
 
-            //float y = Mathf.Sqrt(-2f * Mathf.Log(x1)) * Mathf.Sin(2f * Mathf.PI * x2);
-            //return y * sigma + mu;
+        /// <summary>
+        /// Box-Muller algorithm for drawing a sample from a Gaussian distribution
+        /// </summary>
+        /// <param name="mu"></param>
+        /// <param name="sigma"></param>
+        /// <returns></returns>
+        public static float NormalValueBoxMuller(float mu, float sigma)
+        {
+            float u1 = UnityEngine.Random.value;
+            float u2 = UnityEngine.Random.value;
+            float z0 = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Cos(2.0f * Mathf.PI * u2);
+
+            return mu + sigma * z0;
         }
     }
 }

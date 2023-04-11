@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Sound Effect", fileName = "New Sound Effect", order = 55)]
+[CreateAssetMenu(menuName = "Sound Effect", fileName = "New Sound Effect", order = 60)]
 public class SoundEffect : ScriptableObject
 {
     [SerializeField] private AudioClip[] audioClips;

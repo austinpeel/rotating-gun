@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RotatingGunSimulation : Slides.Simulation
+public class RotatingGunSimulation : Simulation
 {
     public Gun gun;
     public GameObject bulletPrefab;

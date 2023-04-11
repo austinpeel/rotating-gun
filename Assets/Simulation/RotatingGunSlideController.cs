@@ -47,12 +47,12 @@ public class RotatingGunSlideController : Slides.SimulationSlideController
 
     private void OnEnable()
     {
-        Slides.CameraController.OnCameraFinishTransition += HandleCameraTransitionComplete;
+        CameraController.OnCameraFinishTransition += HandleCameraTransitionComplete;
     }
 
     private void OnDisable()
     {
-        Slides.CameraController.OnCameraFinishTransition -= HandleCameraTransitionComplete;
+        CameraController.OnCameraFinishTransition -= HandleCameraTransitionComplete;
 
         // Reset the positions and orientations of the camera and simulation
         if (hasInitialized) sim.Reset(cameraPosition, cameraRotation);
