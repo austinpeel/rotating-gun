@@ -2422,9 +2422,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bravo !
+  m_text: 'Well done!
 
-    Toutes les orientations de vecteurs sont correctes.'
+    All of the vector orientations are correct.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
@@ -5011,8 +5011,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Testez votre compr\xE9hension des forces d'inertie             en d\xE9terminant
-    leurs directions d'action."
+  m_text: Test your understanding of fictitious forces by determining their directions
+    of action.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
@@ -11728,8 +11728,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ne vous d\xE9couragez pas.\nCertaines des orientations de vecteurs sont
-    incorrectes."
+  m_text: 'Keep trying.
+
+    Some of the vector orientations are incorrect.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
@@ -12788,7 +12789,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Passer les instructions
+  m_text: Skip the instructions
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -13168,7 +13169,8 @@ MonoBehaviour:
   winPanel: {fileID: 4004103223241187504}
   losePanel: {fileID: 4004103224054200975}
   particles: {fileID: 4004103223440360615}
-  celebration: {fileID: 11400000, guid: 76684f5cada4f4430b399f168b2b76fc, type: 2}
+  successEffect: {fileID: 11400000, guid: 76684f5cada4f4430b399f168b2b76fc, type: 2}
+  tryAgainEffect: {fileID: 11400000, guid: 134d5067e3aa64381b081f07b0ad884c, type: 2}
 --- !u!82 &4004103224188910706
 AudioSource:
   m_ObjectHideFlags: 0

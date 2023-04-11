@@ -16,9 +16,10 @@ public class Activity1Vectors : MonoBehaviour
     public RectTransform winPanel;
     public RectTransform losePanel;
 
-    [Header("Celebration")]
+    [Header("Effects")]
     public ParticleSystem particles;
-    public SoundEffect celebration;
+    public SoundEffect successEffect;
+    public SoundEffect tryAgainEffect;
     private AudioSource audioSource;
 
     private Vector3 initialVelocityPosition;
@@ -123,7 +124,19 @@ public class Activity1Vectors : MonoBehaviour
         if (losePanel) losePanel.gameObject.SetActive(!allCorrect);
 
         if (particles) particles.gameObject.SetActive(allCorrect);
-        if (allCorrect && audioSource && celebration) celebration.Play(audioSource);
+
+        if (audioSource)
+        {
+            if (allCorrect)
+            {
+                if (successEffect) successEffect.Play(audioSource);
+            }
+            else
+            {
+                if (tryAgainEffect) tryAgainEffect.Play(audioSource);
+            }
+
+        }
     }
 
     private void ResetVector(DraggableVector vector, Vector3 initialPosition, Vector3 initialComponents)
