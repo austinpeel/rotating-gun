@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
     private new Camera camera;
     private bool componentIsCamera;
 
-    public static event System.Action<Vector3, Quaternion> OnCameraFinishTransition;
+    public static event System.Action<Vector3, Quaternion> OnCameraMovementComplete;
 
     private void AssignCameraReferences()
     {
@@ -130,7 +130,8 @@ public class CameraController : MonoBehaviour
         cameraTransform.position = targetPosition;
         cameraTransform.rotation = finalRotation;
 
-        OnCameraFinishTransition?.Invoke(targetPosition, Quaternion.Euler(targetRotation));
+        // Alert other scripts (e.g. SlideControllers) that the camera has finished moving
+        OnCameraMovementComplete?.Invoke(targetPosition, finalRotation);
     }
 
     private IEnumerator ChangeBackgroundColor(Color targetColor, float transitionTime)

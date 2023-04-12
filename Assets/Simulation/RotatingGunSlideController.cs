@@ -22,14 +22,15 @@ public class RotatingGunSlideController : Slides.SimulationSlideController
     public bool showGround;
 
     private RotatingGunSimulation sim;
-    private bool hasInitialized;
+    private bool slideHasInitialized;
 
     private Vector3 cameraPosition;
     private Quaternion cameraRotation;
 
     public override void InitializeSlide()
     {
-        sim = simulation as RotatingGunSimulation;
+        Debug.Log("Initializing " + transform.name);
+
         sim.angularFrequency = angularFrequency;
         sim.SetGunOmegaFromAngularFrequency(angularFrequency);
         sim.referenceFrame = referenceFrame;
@@ -42,31 +43,52 @@ public class RotatingGunSlideController : Slides.SimulationSlideController
         if (insetCamera) insetCamera.gameObject.SetActive(false);
         if (ground) ground.gameObject.SetActive(showGround);
 
-        hasInitialized = true;
+        slideHasInitialized = true;
     }
 
     private void OnEnable()
     {
-        CameraController.OnCameraFinishTransition += HandleCameraTransitionComplete;
+        CameraController.OnCameraMovementComplete += HandleCameraMovementComplete;
+
+        sim = simulation as RotatingGunSimulation;
     }
 
     private void OnDisable()
     {
-        CameraController.OnCameraFinishTransition -= HandleCameraTransitionComplete;
+        CameraController.OnCameraMovementComplete -= HandleCameraMovementComplete;
 
         // Reset the positions and orientations of the camera and simulation
-        if (hasInitialized) sim.Reset(cameraPosition, cameraRotation);
+        if (slideHasInitialized) sim.Reset(cameraPosition, cameraRotation);
     }
 
-    public void HandleCameraTransitionComplete(Vector3 cameraPosition, Quaternion cameraRotation)
+    public void HandleCameraMovementComplete(Vector3 cameraPosition, Quaternion cameraRotation)
     {
-        if (enabled)
+        // Debug.Log(transform.name + " sim is not null ? " + (sim != null));
+
+        // if (enabled)
+        // {
+        //     this.cameraPosition = cameraPosition;
+        //     this.cameraRotation = cameraRotation;
+
+        //     if (sim) sim.Resume();
+
+        //     if (insetCamera) insetCamera.gameObject.SetActive(showInsetCamera);
+        // }
+
+        if (slideHasInitialized)
         {
+            Debug.Log(transform.name + " Handle...Complete()");
+
             this.cameraPosition = cameraPosition;
             this.cameraRotation = cameraRotation;
-            sim.Resume();
 
-            if (insetCamera) insetCamera.gameObject.SetActive(showInsetCamera);
+            if (sim) sim.Resume();
+
+            if (insetCamera)
+            {
+                Debug.Log(transform.name + " show InsetCamera ? " + showInsetCamera);
+                insetCamera.gameObject.SetActive(showInsetCamera);
+            }
         }
     }
 }

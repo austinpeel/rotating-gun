@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c98a13722264413967d62f56537f36, type: 3}
   m_Name: SimState
   m_EditorClassIdentifier: 
-  theta: 298.06982
-  omega: {x: -0, y: -1, z: -0}
-  referenceFrame: 1
-  perspective: 1
+  theta: 0
+  omega: {x: 0, y: 1, z: 0}
+  referenceFrame: 0
+  perspective: 0
