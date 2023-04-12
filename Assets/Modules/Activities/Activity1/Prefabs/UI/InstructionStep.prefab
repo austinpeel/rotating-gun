@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c1ad77eec7d734d9bb4eda419adbfe52, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4d22128bc48543a6b3d9008cb4f3c1c, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 1.5
 --- !u!1 &5674019099904006338
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e55c3842a6c344204ad55e5fe6217550, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d471e8b42f514b01b129a070865ded8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -195,19 +195,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5674019099904006343}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Activity1Instructions, Assembly-CSharp
-        m_MethodName: LoadNextStep
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5674019099904006361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +342,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Text...
+  m_text: Texte...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -435,10 +423,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441d0cd3b15db40fdad9b29a49044185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textEN: Text...
-  textFR: Texte...
-  transformsEN: {fileID: 0}
-  transformsFR: {fileID: 0}
+  tmp: {fileID: 5674019101039729147}
+  textData:
+  - language: 0
+    text: Text...
+    visibleUI: {fileID: 0}
+  - language: 1
+    text: Texte...
+    visibleUI: {fileID: 0}
 --- !u!1 &5674019101205300530
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,10 +578,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441d0cd3b15db40fdad9b29a49044185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textEN: Title
-  textFR: Titre
-  transformsEN: {fileID: 0}
-  transformsFR: {fileID: 0}
+  tmp: {fileID: 5674019101205300535}
+  textData:
+  - language: 0
+    text: Title
+    visibleUI: {fileID: 0}
+  - language: 1
+    text: Titre
+    visibleUI: {fileID: 0}
 --- !u!1 &6304415224627439297
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +599,7 @@ GameObject:
   - component: {fileID: 9045098602275754515}
   - component: {fileID: 6413451245770371919}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,10 +733,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441d0cd3b15db40fdad9b29a49044185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textEN: Skip
-  textFR: Passer
-  transformsEN: {fileID: 0}
-  transformsFR: {fileID: 0}
+  tmp: {fileID: 9045098602275754515}
+  textData:
+  - language: 0
+    text: Skip
+    visibleUI: {fileID: 0}
+  - language: 1
+    text: Sauter
+    visibleUI: {fileID: 0}
 --- !u!1 &6638780977523038131
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,19 +862,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9045098602275754515}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Activity1Instructions, Assembly-CSharp
-        m_MethodName: LoadNextStep
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2394376965482348444
 MonoBehaviour:
   m_ObjectHideFlags: 0
