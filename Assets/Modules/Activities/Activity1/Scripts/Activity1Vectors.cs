@@ -12,6 +12,7 @@ public class Activity1Vectors : MonoBehaviour
     [Header("UI")]
     public Button fireButton;
     public Button checkButton;
+    public Button resetButton;
     public Slider omegaSlider;
     public RectTransform winPanel;
     public RectTransform losePanel;
@@ -37,6 +38,7 @@ public class Activity1Vectors : MonoBehaviour
     private Vector3 coriolisDirection;
 
     public static event Action OnAllVectorsCorrect;
+    public static event Action OnReset;
 
     private void Awake()
     {
@@ -74,6 +76,23 @@ public class Activity1Vectors : MonoBehaviour
         GunFrameSimulation.OnPause -= HandleGunFrameSimulationPaused;
     }
 
+    public void Reset()
+    {
+        ResetVector(velocity, initialVelocityPosition, initialVelocityComponents);
+        ResetVector(centrifugalForce, initialCentrifugalPosition, initialCentrifugalComponents);
+        ResetVector(coriolisForce, initialCoriolisPosition, initialCoriolisComponents);
+
+        SetAllVectorsInteractable();
+
+        if (fireButton) SetInteractability(fireButton, true);
+        if (checkButton) SetInteractability(checkButton, false);
+        if (omegaSlider) SetInteractability(omegaSlider, true);
+
+        truthIsKnown = false;
+
+        OnReset?.Invoke();
+    }
+
     public void ResetFromWin()
     {
         ResetVector(velocity, initialVelocityPosition, initialVelocityComponents);
@@ -84,6 +103,8 @@ public class Activity1Vectors : MonoBehaviour
 
         if (fireButton) SetInteractability(fireButton, true);
         if (checkButton) SetInteractability(checkButton, false);
+        if (resetButton) resetButton.gameObject.SetActive(false);
+        // if (resetButton) SetInteractability(resetButton, false);
         if (omegaSlider) SetInteractability(omegaSlider, true);
 
         truthIsKnown = false;
@@ -135,7 +156,6 @@ public class Activity1Vectors : MonoBehaviour
             {
                 if (tryAgainEffect) tryAgainEffect.Play(audioSource);
             }
-
         }
     }
 
@@ -159,8 +179,8 @@ public class Activity1Vectors : MonoBehaviour
     public void HandleGunFrameSimulationPaused(Vector3 simPosition, Vector3 bulletPosition, Vector3 bulletVelocity, Vector3 omega)
     {
         velocityDirection = bulletVelocity.normalized;
-        // centrifugalDirection = (bulletPosition - simPosition).normalized;
-        centrifugalDirection = bulletPosition.normalized;
+        centrifugalDirection = (bulletPosition - simPosition).normalized;
+        // centrifugalDirection = bulletPosition.normalized;
         coriolisDirection = Vector3.Cross(omega, bulletVelocity).normalized;  // Unity is left-handed
         List<Vector3> stickyDirections = new List<Vector3>
         {

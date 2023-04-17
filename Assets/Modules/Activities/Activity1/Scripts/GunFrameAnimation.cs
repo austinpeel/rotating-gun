@@ -34,7 +34,7 @@ public class GunFrameAnimation : MonoBehaviour
     private bool isPaused;
 
     private enum InstructionsAnimation { Animation1, Animation2, Animation3, None }
-    private InstructionsAnimation anim = InstructionsAnimation.Animation1;
+    // private InstructionsAnimation anim = InstructionsAnimation.Animation1;
     private Coroutine currentAnimation;
 
     // Bullets

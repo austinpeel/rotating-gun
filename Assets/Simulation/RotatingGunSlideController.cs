@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RotatingGunSlideController : Slides.SimulationSlideController
 {
@@ -7,66 +8,79 @@ public class RotatingGunSlideController : Slides.SimulationSlideController
     public bool traceBulletPath;
     public bool showPosition;
 
+    [Header("Buttons")]
+    public Button fireButton;
+
     [Header("Lights")]
     public GameObject labFrameLight;
     public bool activateLabFrameLight;
     public GameObject gunFrameLight;
     public bool activateGunFrameLight;
 
-    [Header("Inset Camera")]
-    public Camera insetCamera;
-    public bool showInsetCamera;
-
     [Header("Ground")]
     public Transform ground;
     public bool showGround;
 
     private RotatingGunSimulation sim;
-    private bool hasInitialized;
+    private bool slideHasInitialized;
 
     private Vector3 cameraPosition;
     private Quaternion cameraRotation;
 
-    public override void InitializeSlide()
+    private void Awake()
     {
         sim = simulation as RotatingGunSimulation;
+    }
+
+    public override void InitializeSlide()
+    {
+        // Debug.Log("Initializing " + transform.name);
+
         sim.angularFrequency = angularFrequency;
         sim.SetGunOmegaFromAngularFrequency(angularFrequency);
         sim.referenceFrame = referenceFrame;
         sim.traceBulletPath = traceBulletPath;
         sim.showPosition = showPosition;
+
+        // Reset the positions and orientations of the camera and simulation
+        sim.Reset(cameraPosition, cameraRotation);
+
         sim.Pause();
 
         if (labFrameLight) labFrameLight.SetActive(activateLabFrameLight);
         if (gunFrameLight) gunFrameLight.SetActive(activateGunFrameLight);
-        if (insetCamera) insetCamera.gameObject.SetActive(false);
         if (ground) ground.gameObject.SetActive(showGround);
+        if (fireButton) fireButton.interactable = false;
 
-        hasInitialized = true;
+        slideHasInitialized = true;
     }
 
     private void OnEnable()
     {
-        Slides.CameraController.OnCameraFinishTransition += HandleCameraTransitionComplete;
+        CameraController.OnCameraMovementComplete += HandleCameraMovementComplete;
     }
 
     private void OnDisable()
     {
-        Slides.CameraController.OnCameraFinishTransition -= HandleCameraTransitionComplete;
-
-        // Reset the positions and orientations of the camera and simulation
-        if (hasInitialized) sim.Reset(cameraPosition, cameraRotation);
+        CameraController.OnCameraMovementComplete -= HandleCameraMovementComplete;
     }
 
-    public void HandleCameraTransitionComplete(Vector3 cameraPosition, Quaternion cameraRotation)
+    public void HandleCameraMovementComplete(Vector3 cameraPosition, Quaternion cameraRotation)
     {
-        if (enabled)
+        if (slideHasInitialized)
         {
-            this.cameraPosition = cameraPosition;
-            this.cameraRotation = cameraRotation;
-            sim.Resume();
+            // Debug.Log(transform.name + " Handle...Complete()");
 
-            if (insetCamera) insetCamera.gameObject.SetActive(showInsetCamera);
+            if (sim)
+            {
+                sim.Reset(cameraPosition, cameraRotation);
+                sim.Resume();
+            }
+
+            if (fireButton) fireButton.interactable = true;
         }
+
+        this.cameraPosition = cameraPosition;
+        this.cameraRotation = cameraRotation;
     }
 }

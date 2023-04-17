@@ -223,4 +223,10 @@ public class Gun : MonoBehaviour
     {
         if (bulletPath) bulletPath.positionCount = 0;
     }
+
+    public void ResetFictitiousForces()
+    {
+        if (centrifugalForceVector != null) Destroy(centrifugalForceVector.gameObject);
+        if (coriolisForceVector != null) Destroy(coriolisForceVector.gameObject);
+    }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RotatingGunSimulation : Slides.Simulation
+public class RotatingGunSimulation : Simulation
 {
     public Gun gun;
     public GameObject bulletPrefab;
@@ -139,7 +139,8 @@ public class RotatingGunSimulation : Slides.Simulation
                           showVelocity,
                           showCentrifugalForce,
                           showCoriolisForce,
-                          !autoFire);
+                          //   !autoFire,
+                          true);
     }
 
     public void Reset(Vector3 cameraPosition, Quaternion cameraRotation)
@@ -175,6 +176,8 @@ public class RotatingGunSimulation : Slides.Simulation
 
     public void HandleReferenceFrameChange()
     {
+        if (gun) gun.ResetFictitiousForces();
+
         if (!simState) return;
 
         // Debug.Log("Sim > heard reference : " + simState.referenceFrame);
@@ -281,7 +284,7 @@ public class RotatingGunSimulation : Slides.Simulation
         }
     }
 
-    public void SetQuantitiesTabVisibility(bool tabIsActive)
+    public void SetDynamicsTabVisibility(bool tabIsActive)
     {
         if (tabIsActive)
         {

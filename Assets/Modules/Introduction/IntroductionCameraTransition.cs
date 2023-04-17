@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class IntroductionCameraTransition : MonoBehaviour
 {
-    public Utils.CameraState cameraState;
+    public CameraState cameraState;
 
     private void Awake()
     {
