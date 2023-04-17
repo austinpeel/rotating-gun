@@ -4028,9 +4028,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bravo !
+  m_text: 'Well done!
 
-    Toutes les orientations des vecteurs sont correctes.'
+    All of the vector orientations are correct.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
@@ -11206,7 +11206,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ne vous d\xE9couragez pas.\nCertaines orientations des vecteurs sont incorrectes."
+  m_text: 'Keep trying.
+
+    Some of the vector orientations are incorrect.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}
   m_sharedMaterial: {fileID: -5584794868368336635, guid: 0de5a858dbd984e63aa82481dd8d6074, type: 2}

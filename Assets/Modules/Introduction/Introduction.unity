@@ -242,6 +242,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6257136877436723976, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
   m_PrefabInstance: {fileID: 28391525}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &81705111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+  m_PrefabInstance: {fileID: 430211106}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &228451835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -435,6 +446,22 @@ PrefabInstance:
       value: Fire Button
       objectReference: {fileID: 0}
     - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -558,8 +585,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465849216}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 22, z: 4}
+  m_LocalRotation: {x: 0.16317593, y: 0.3368241, z: -0.059391174, w: 0.9254166}
+  m_LocalPosition: {x: -12, y: 7, z: -12.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -588,8 +615,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 1
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -785,6 +812,22 @@ PrefabInstance:
       value: Fire Button
       objectReference: {fileID: 0}
     - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -974,6 +1017,22 @@ PrefabInstance:
       value: Fire Button
       objectReference: {fileID: 0}
     - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1049,13 +1108,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076689721}
-  m_LocalRotation: {x: 0.5735764, y: -0, z: -0, w: 0.8191521}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1171785620}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!108 &1076689723
 Light:
   m_ObjectHideFlags: 0
@@ -1258,14 +1317,24 @@ MonoBehaviour:
   referenceFrame: 0
   traceBulletPath: 0
   showPosition: 0
+  fireButton: {fileID: 1935494805}
   labFrameLight: {fileID: 809076553}
   activateLabFrameLight: 0
   gunFrameLight: {fileID: 1076689721}
   activateGunFrameLight: 1
-  insetCamera: {fileID: 0}
-  showInsetCamera: 0
   ground: {fileID: 1059481318}
   showGround: 0
+--- !u!114 &1363130601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+  m_PrefabInstance: {fileID: 1043397663}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1367265731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,7 +1531,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1801,6 +1870,22 @@ PrefabInstance:
       value: Fire Button
       objectReference: {fileID: 0}
     - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1847,6 +1932,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4757408489246835520, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
   m_PrefabInstance: {fileID: 1705521585}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1889093082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+  m_PrefabInstance: {fileID: 1705521585}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1935494805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
+  m_PrefabInstance: {fileID: 653815023}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1982161246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1857,7 +1964,7 @@ PrefabInstance:
     - target: {fileID: 5829630239975279427, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
       propertyPath: m_text
       value: To make things simpler, we neglect the weight of the bullet so that
-        it does not fall during its flight. Every short therefore hits the bullseye
+        it does not fall during its flight. Every shot therefore hits the bullseye
         as expected.
       objectReference: {fileID: 0}
     - target: {fileID: 5829630240493126432, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
@@ -1987,7 +2094,7 @@ PrefabInstance:
     - target: {fileID: 7750582857793131830, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
       propertyPath: textData.Array.data[0].text
       value: To make things simpler, we neglect the weight of the bullet so that
-        it does not fall during its flight. Every short therefore hits the bullseye
+        it does not fall during its flight. Every shot therefore hits the bullseye
         as expected.
       objectReference: {fileID: 0}
     - target: {fileID: 7750582857793131830, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
@@ -2206,7 +2313,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089628291649067636}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -2305,12 +2412,11 @@ MonoBehaviour:
   referenceFrame: 1
   traceBulletPath: 0
   showPosition: 0
+  fireButton: {fileID: 1363130601}
   labFrameLight: {fileID: 809076553}
   activateLabFrameLight: 1
   gunFrameLight: {fileID: 1076689721}
   activateGunFrameLight: 0
-  insetCamera: {fileID: 0}
-  showInsetCamera: 1
   ground: {fileID: 1059481318}
   showGround: 1
 --- !u!225 &2202547930536208553
@@ -2419,12 +2525,11 @@ MonoBehaviour:
   referenceFrame: 0
   traceBulletPath: 0
   showPosition: 0
+  fireButton: {fileID: 1889093082}
   labFrameLight: {fileID: 809076553}
   activateLabFrameLight: 1
   gunFrameLight: {fileID: 1076689721}
   activateGunFrameLight: 0
-  insetCamera: {fileID: 0}
-  showInsetCamera: 0
   ground: {fileID: 1059481318}
   showGround: 1
 --- !u!224 &2411838296493911427
@@ -2710,7 +2815,7 @@ MonoBehaviour:
   zoomTarget: {fileID: 0}
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 1
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 465849219}
 --- !u!1 &5144281311462460991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3263,11 +3368,10 @@ MonoBehaviour:
   referenceFrame: 1
   traceBulletPath: 0
   showPosition: 0
+  fireButton: {fileID: 81705111}
   labFrameLight: {fileID: 809076553}
   activateLabFrameLight: 0
   gunFrameLight: {fileID: 1076689721}
   activateGunFrameLight: 1
-  insetCamera: {fileID: 0}
-  showInsetCamera: 0
   ground: {fileID: 1059481318}
   showGround: 0
