@@ -46,12 +46,10 @@ public class CameraController : MonoBehaviour
         // Check if this object is the camera
         if (TryGetComponent(out camera))
         {
-            // Debug.Log(transform.name + " IS a camera");
             componentIsCamera = true;
         }
         else
         {
-            // Debug.Log(transform.name + " IS NOT a camera");
             camera = Camera.main;
             componentIsCamera = false;
         }
@@ -66,7 +64,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        // Slides in the introduction will not be cameras themselves
+        // Slides in the Introduction will not be cameras themselves
         // The SlideManager will handle triggering camera movement in that case
         if (componentIsCamera)
         {
@@ -129,6 +127,7 @@ public class CameraController : MonoBehaviour
 
         cameraTransform.position = targetPosition;
         cameraTransform.rotation = finalRotation;
+        UpdateCameraState();
 
         // Alert other scripts (e.g. SlideControllers) that the camera has finished moving
         OnCameraMovementComplete?.Invoke(targetPosition, finalRotation);
