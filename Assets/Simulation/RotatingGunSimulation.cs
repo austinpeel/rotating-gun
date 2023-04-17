@@ -175,6 +175,8 @@ public class RotatingGunSimulation : Simulation
 
     public void HandleReferenceFrameChange()
     {
+        if (gun) gun.ResetFictitiousForces();
+
         if (!simState) return;
 
         // Debug.Log("Sim > heard reference : " + simState.referenceFrame);
@@ -281,7 +283,7 @@ public class RotatingGunSimulation : Simulation
         }
     }
 
-    public void SetQuantitiesTabVisibility(bool tabIsActive)
+    public void SetDynamicsTabVisibility(bool tabIsActive)
     {
         if (tabIsActive)
         {

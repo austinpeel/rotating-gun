@@ -6,7 +6,7 @@ public class TheoryBasisVectors : MonoBehaviour
     public GameObject gunBasisVectors;
     public SimulationState simState;
 
-    private bool quantitiesTabIsActive;
+    private bool dynamicsTabIsActive;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class TheoryBasisVectors : MonoBehaviour
         }
     }
 
-    public void SetQuantitiesTabVisibility(bool tabIsActive)
+    public void SetDynamicsTabVisibility(bool tabIsActive)
     {
         HideAll();
 
@@ -46,12 +46,12 @@ public class TheoryBasisVectors : MonoBehaviour
             }
         }
 
-        quantitiesTabIsActive = tabIsActive;
+        dynamicsTabIsActive = tabIsActive;
     }
 
     public void UpdateReferenceFrame(bool frameIsLab)
     {
-        if (simState && quantitiesTabIsActive)
+        if (simState && dynamicsTabIsActive)
         {
             switch (simState.referenceFrame)
             {
