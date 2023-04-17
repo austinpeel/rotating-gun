@@ -285,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 963194228}
     - target: {fileID: 8838608479934171985, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
       propertyPath: angularFrequency
-      value: 0.15
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 8838608479934171985, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
       propertyPath: maxBulletDistance
@@ -469,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3441579149249449729, guid: 98e002be1f884481783bcd0677148757, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3441579149249449729, guid: 98e002be1f884481783bcd0677148757, type: 3}
       propertyPath: m_AnchorMax.x
@@ -825,7 +825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 545728733377202594, guid: 59fa57a953dcf46f48cb7e03cbd6df0b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 545728733377202594, guid: 59fa57a953dcf46f48cb7e03cbd6df0b, type: 3}
       propertyPath: m_AnchorMax.x
