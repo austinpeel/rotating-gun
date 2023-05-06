@@ -4971,7 +4971,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5726399185342156952, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: "\u2022 Texte..."
+      value: "\u2022 Nous n\xE9gligeons la gravit\xE9 et le frottement de l'air\n\u2022
+        L'appareil du canon tourne \xE0 vitesse angulaire constante\n\u2022 La trajectoire
+        de la balle est purement plane (c'est-\xE0-dire en deux dimensions)"
       objectReference: {fileID: 0}
     - target: {fileID: 5726399185342156957, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: m_text
@@ -9152,7 +9154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283820, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: Tirez
+      value: Feu
       objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283823, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_text
