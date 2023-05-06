@@ -58,8 +58,27 @@ public class Activity1Vectors : MonoBehaviour
             initialCoriolisComponents = coriolisForce.components;
         }
 
-        if (winPanel) winPanel.gameObject.SetActive(false);
-        if (losePanel) losePanel.gameObject.SetActive(false);
+        if (winPanel)
+        {
+            // winPanel.gameObject.SetActive(false);
+            if (winPanel.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+            }
+        }
+
+        if (losePanel)
+        {
+            // losePanel.gameObject.SetActive(false);
+            if (losePanel.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+            }
+        }
 
         if (particles) particles.gameObject.SetActive(false);
 
@@ -86,6 +105,15 @@ public class Activity1Vectors : MonoBehaviour
 
         if (fireButton) SetInteractability(fireButton, true);
         if (checkButton) SetInteractability(checkButton, false);
+        if (resetButton)
+        {
+            if (resetButton.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+            }
+        }
         if (omegaSlider) SetInteractability(omegaSlider, true);
 
         truthIsKnown = false;
@@ -103,7 +131,16 @@ public class Activity1Vectors : MonoBehaviour
 
         if (fireButton) SetInteractability(fireButton, true);
         if (checkButton) SetInteractability(checkButton, false);
-        if (resetButton) resetButton.gameObject.SetActive(false);
+        if (resetButton)
+        {
+            // resetButton.gameObject.SetActive(false);
+            if (resetButton.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+            }
+        }
         // if (resetButton) SetInteractability(resetButton, false);
         if (omegaSlider) SetInteractability(omegaSlider, true);
 
@@ -141,8 +178,27 @@ public class Activity1Vectors : MonoBehaviour
             ResetVector(coriolisForce, initialCoriolisPosition, initialCoriolisComponents);
         }
 
-        if (winPanel) winPanel.gameObject.SetActive(allCorrect);
-        if (losePanel) losePanel.gameObject.SetActive(!allCorrect);
+        if (winPanel)
+        {
+            // winPanel.gameObject.SetActive(allCorrect);
+            if (winPanel.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = allCorrect ? 1 : 0;
+                canvasGroup.interactable = allCorrect;
+                canvasGroup.blocksRaycasts = allCorrect;
+            }
+        }
+
+        if (losePanel)
+        {
+            // losePanel.gameObject.SetActive(!allCorrect);
+            if (losePanel.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = allCorrect ? 0 : 1;
+                canvasGroup.interactable = !allCorrect;
+                canvasGroup.blocksRaycasts = !allCorrect;
+            }
+        }
 
         if (particles) particles.gameObject.SetActive(allCorrect);
 

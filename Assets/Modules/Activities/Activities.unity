@@ -142,7 +142,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: Texte...
+      value: "Testez votre compr\xE9hension des forces d'inertie en d\xE9terminant
+        leurs orientations le long du chemin de vol de la balle."
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238529657200, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_Pivot.x
@@ -356,7 +357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1610463190247839496, guid: 930c101ab32c94575bce33c435193995, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1610463190247839496, guid: 930c101ab32c94575bce33c435193995, type: 3}
       propertyPath: m_AnchorMax.x
@@ -532,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: "\xC0 venir."
+      value: "En pr\xE9paration."
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238529657200, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_Pivot.x
