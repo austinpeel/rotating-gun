@@ -133,11 +133,49 @@ PrefabInstance:
     - target: {fileID: 6257136877173775410, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
       propertyPath: tmp
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 28391528}
     - target: {fileID: 6257136877173775410, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
       propertyPath: textData.Array.data[0].text
       value: Considering that our viewing angle doesn't change the physics, what
         could be causing the bullet to miss the target?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257136877173775410, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: textData.Array.data[1].text
+      value: "\xC9tant donn\xE9 que notre angle de vue ne modifie pas la physique,
+        qu'est-ce qui pourrait causer la balle \xE0 manquer la cible ?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257136877173775411, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: m_text
+      value: Considering that our viewing angle doesn't change the physics, what
+        could be causing the bullet to miss the target?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257136877173775413, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257136877173775413, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257136877173775413, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257136877173775413, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257136877173775413, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257136877173775413, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257136877173775413, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6257136877436723976, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
       propertyPath: m_Pivot.x
@@ -173,7 +211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257136877436723976, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 130
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6257136877436723976, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
       propertyPath: m_LocalPosition.x
@@ -227,13 +265,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 6257136878346834730, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: m_text
+      value: Think about it
+      objectReference: {fileID: 0}
     - target: {fileID: 6257136878346834733, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
       propertyPath: tmp
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 28391527}
     - target: {fileID: 6257136878346834733, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
       propertyPath: textData.Array.data[0].text
       value: Think about it
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257136878346834733, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+      propertyPath: textData.Array.data[1].text
+      value: Pensez-y bien
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
@@ -242,6 +288,98 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6257136877436723976, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
   m_PrefabInstance: {fileID: 28391525}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &28391527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6257136878346834730, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+  m_PrefabInstance: {fileID: 28391525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &28391528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6257136877173775411, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+  m_PrefabInstance: {fileID: 28391525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &28391529 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6257136877196715842, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+  m_PrefabInstance: {fileID: 28391525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &28391530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6257136877436723979, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
+  m_PrefabInstance: {fileID: 28391525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &28391531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28391529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!114 &28391532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28391530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
+--- !u!114 &28391533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28391530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 20
+    m_Right: 20
+    m_Top: 20
+    m_Bottom: 20
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &81705111 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
@@ -495,7 +633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283820, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: Tirez
+      value: Feu
       objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283823, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_text
@@ -861,7 +999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283820, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: Tirez
+      value: Feu
       objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283823, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_text
@@ -1066,7 +1204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283820, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: Tirez
+      value: Feu
       objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283823, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_text
@@ -1919,7 +2057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283820, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: Tirez
+      value: Feu
       objectReference: {fileID: 0}
     - target: {fileID: 4757408490314283823, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_text
@@ -2099,7 +2237,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7750582857793131830, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: Texte...
+      value: "Pour simplifier, nous n\xE9gligeons le poids de la balle afin qu'elle
+        ne tombe pas pendant son vol. Chaque tir atteint donc le centre de la cible
+        comme pr\xE9vu."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
@@ -2474,7 +2614,7 @@ MonoBehaviour:
   zoomTarget: {fileID: 0}
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 1
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 465849219}
 --- !u!114 &2202547930536208558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2598,8 +2738,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A parameter of the simulation has now been changed. Try firing again. What
-    difference do you notice?
+  m_text: "Un param\xE8tre de la simulation a \xE9t\xE9 modifi\xE9. Essayez de tirer
+    \xE0 nouveau. Quelle diff\xE9rence remarquez-vous ?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -2687,7 +2827,8 @@ MonoBehaviour:
       difference do you notice?
     visibleUI: {fileID: 0}
   - language: 1
-    text: Texte...
+    text: "Un param\xE8tre de la simulation a \xE9t\xE9 modifi\xE9. Essayez de tirer
+      \xE0 nouveau. Quelle diff\xE9rence remarquez-vous ?"
     visibleUI: {fileID: 0}
 --- !u!1 &3226714051025152175
 GameObject:
@@ -2876,7 +3017,11 @@ MonoBehaviour:
       to properly account for the bullet's motion.
     visibleUI: {fileID: 0}
   - language: 1
-    text: Texte...
+    text: "Ce qu'il est important de retenir, c'est que la trajectoire physique de
+      la balle dans le monde ne change pas en fonction de notre r\xE9f\xE9rentiel.
+      Ce qui <i>change</i>, c'est notre description de la physique, \xE0 savoir les
+      \xE9quations que nous \xE9crivons pour prendre en compte correctement le mouvement
+      de la balle."
     visibleUI: {fileID: 0}
 --- !u!114 &5558148871470800104
 MonoBehaviour:
@@ -3116,7 +3261,9 @@ MonoBehaviour:
       an external force deflecting the bullet.
     visibleUI: {fileID: 0}
   - language: 1
-    text: Texte...
+    text: "En fait, l'appareil du canon tourne simplement \xE0 vitesse constante
+      par rapport au sol. Dans le r\xE9f\xE9rentiel du canon, cependant, il semble
+      y avoir une force externe qui d\xE9vie la balle."
     visibleUI: {fileID: 0}
 --- !u!1 &6396344727223047238
 GameObject:
@@ -3159,7 +3306,9 @@ MonoBehaviour:
       yourself!'
     visibleUI: {fileID: 0}
   - language: 1
-    text: Texte...
+    text: "Dans cette simulation id\xE9alis\xE9e, un canon est pos\xE9 sur une table
+      et tire horizontalement. Il est directement vis\xE9 sur une cible \xE0 travers
+      la pi\xE8ce. Essayez de tirer vous-m\xEAme avec le canon !"
     visibleUI: {fileID: 0}
 --- !u!114 &6396344727223047240
 MonoBehaviour:
@@ -3181,10 +3330,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'In this idealized simulation, a cannon sits on a table and fires horizontally.
-    It is aimed directly at a target across the room.
-
-    Try firing the gun yourself!'
+  m_text: "Dans cette simulation id\xE9alis\xE9e, un canon est pos\xE9 sur une table
+    et tire horizontalement. Il est directement vis\xE9 sur une cible \xE0 travers
+    la pi\xE8ce. Essayez de tirer vous-m\xEAme avec le canon !"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
