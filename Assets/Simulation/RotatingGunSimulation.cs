@@ -139,8 +139,8 @@ public class RotatingGunSimulation : Simulation
                           showVelocity,
                           showCentrifugalForce,
                           showCoriolisForce,
-                          //   !autoFire,
-                          true);
+                          !autoFire //true
+                          );
     }
 
     public void Reset(Vector3 cameraPosition, Quaternion cameraRotation)
