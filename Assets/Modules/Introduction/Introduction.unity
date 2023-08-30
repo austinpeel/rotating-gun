@@ -141,8 +141,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257136877173775410, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: "\xC9tant donn\xE9 que notre angle de vue ne modifie pas la physique,
-        qu'est-ce qui pourrait causer la balle \xE0 manquer la cible ?"
+      value: "\xC9tant donn\xE9 que la physique n'est pas modifi\xE9e par l'angle
+        de vue, pourquoi la balle manque-t-elle la cible ?"
       objectReference: {fileID: 0}
     - target: {fileID: 6257136877173775411, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
       propertyPath: m_text
@@ -279,7 +279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257136878346834733, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: Pensez-y bien
+      value: Reflexion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc12b8ffc56a4453829f75b0e33d480, type: 3}
@@ -723,8 +723,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465849216}
-  m_LocalRotation: {x: 0.16317593, y: 0.3368241, z: -0.059391174, w: 0.9254166}
-  m_LocalPosition: {x: -12, y: 7, z: -12.5}
+  m_LocalRotation: {x: 0.06975647, y: 0, z: 0, w: 0.9975641}
+  m_LocalPosition: {x: 0, y: 3.5, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1989,7 +1989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757408489246835520, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -225
+      value: -240
       objectReference: {fileID: 0}
     - target: {fileID: 4757408489246835520, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2099,6 +2099,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5144281311462460988}
     m_Modifications:
+    - target: {fileID: 2591178720430785379, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
+      propertyPath: textData.Array.data[1].text
+      value: Plus d'informations
+      objectReference: {fileID: 0}
     - target: {fileID: 5829630239975279427, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
       propertyPath: m_text
       value: To make things simpler, we neglect the weight of the bullet so that
@@ -2229,15 +2233,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooltip
       objectReference: {fileID: 0}
+    - target: {fileID: 6393806507093642154, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
+      propertyPath: m_text
+      value: More details
+      objectReference: {fileID: 0}
     - target: {fileID: 7750582857793131830, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
       propertyPath: textData.Array.data[0].text
-      value: To make things simpler, we neglect the weight of the bullet so that
+      value: To make things simpler, we neglect the weight of the bullet. As such,
         it does not fall during its flight. Every shot therefore hits the bullseye
         as expected.
       objectReference: {fileID: 0}
     - target: {fileID: 7750582857793131830, guid: 86ffc1480fc5842db82e7a5e628ae535, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: "Pour simplifier, nous n\xE9gligeons le poids de la balle afin qu'elle
+      value: "Pour simplifier, nous n\xE9gligeons le poids de la balle. Ainsi, elle
         ne tombe pas pendant son vol. Chaque tir atteint donc le centre de la cible
         comme pr\xE9vu."
       objectReference: {fileID: 0}
@@ -2567,7 +2575,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2202547930536208556}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -2688,8 +2696,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: -70}
-  m_SizeDelta: {x: 240, y: 150}
+  m_AnchoredPosition: {x: 95, y: -70}
+  m_SizeDelta: {x: 255, y: 150}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &2528294374405267291
 RectTransform:
@@ -2707,7 +2715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: -80}
   m_SizeDelta: {x: 600, y: 70}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3226714051025152160
@@ -2738,8 +2746,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Un param\xE8tre de la simulation a \xE9t\xE9 modifi\xE9. Essayez de tirer
-    \xE0 nouveau. Quelle diff\xE9rence remarquez-vous ?"
+  m_text: A parameter of the simulation has now been changed. Try firing again. What
+    difference do you notice?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -2828,7 +2836,7 @@ MonoBehaviour:
     visibleUI: {fileID: 0}
   - language: 1
     text: "Un param\xE8tre de la simulation a \xE9t\xE9 modifi\xE9. Essayez de tirer
-      \xE0 nouveau. Quelle diff\xE9rence remarquez-vous ?"
+      \xE0 nouveau. Quelle changement remarquez-vous ?"
     visibleUI: {fileID: 0}
 --- !u!1 &3226714051025152175
 GameObject:
@@ -3011,17 +3019,20 @@ MonoBehaviour:
   tmp: {fileID: 5558148871470800104}
   textData:
   - language: 0
-    text: The important thing to remember is that the bullet's physical path through
-      the world doesn't change depending on our reference frame. What <i>does</i>
-      change is our description of the physics, namely the equations we write down
-      to properly account for the bullet's motion.
+    text: It is important to remember is that the bullet's trajectory does not change
+      depending on the reference frame. The laws of physics are the same, and so
+      are the mathematical equations that describe them. It is the <i>interpretation</i>
+      of the terms in these equations that changes. Effects in the room's reference
+      frame (acceleration) are interpreted as causes (forces) in the canon's reference
+      frame.
     visibleUI: {fileID: 0}
   - language: 1
-    text: "Ce qu'il est important de retenir, c'est que la trajectoire physique de
-      la balle dans le monde ne change pas en fonction de notre r\xE9f\xE9rentiel.
-      Ce qui <i>change</i>, c'est notre description de la physique, \xE0 savoir les
-      \xE9quations que nous \xE9crivons pour prendre en compte correctement le mouvement
-      de la balle."
+    text: "Il est important de retenir que la trajectoire de la balle ne change pas
+      en fonction du r\xE9f\xE9rentiel. Les lois physiques sont les m\xEAmes et les
+      \xE9quations math\xE9matiques qui les d\xE9crivent aussi. C'est <i>l'interpr\xE9tation</i>
+      des termes dans ces \xE9quations qui change. Les effets dans le r\xE9f\xE9rentiel
+      de la salle (acc\xE9l\xE9ration) sont interpr\xE9t\xE9s comme des causes (forces)
+      dans le r\xE9f\xE9rentiel du canon."
     visibleUI: {fileID: 0}
 --- !u!114 &5558148871470800104
 MonoBehaviour:
@@ -3043,10 +3054,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The important thing to remember is that the bullet's physical path through
-    the world doesn't change depending on our reference frame. What <i>does</i> change
-    is our description of the physics, namely the equations we write down to properly
-    account for the bullet's motion.
+  m_text: "Il est important de retenir que la trajectoire de la balle ne change pas
+    en fonction du r\xE9f\xE9rentiel. Les lois physiques sont les m\xEAmes et les
+    \xE9quations math\xE9matiques qui les d\xE9crivent aussi. C'est <i>l'interpr\xE9tation</i>
+    des termes dans ces \xE9quations qui change. Les effets dans le r\xE9f\xE9rentiel
+    de la salle (acc\xE9l\xE9ration) sont interpr\xE9t\xE9s comme des causes (forces)
+    dans le r\xE9f\xE9rentiel du canon."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -3143,9 +3156,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: In fact, the cannon apparatus is simply rotating at constant speed relative
-    to the ground. In the cannon's reference frame, however, there seems to be an
-    external force deflecting the bullet.
+  m_text: The cannon is in fact rotating at constant angular speed relative to the
+    ground. In the cannon's reference frame, however, there seems to be one or more
+    additional forces deflecting the bullet.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
@@ -3256,14 +3269,14 @@ MonoBehaviour:
   tmp: {fileID: 5714045944915947056}
   textData:
   - language: 0
-    text: In fact, the cannon apparatus is simply rotating at constant speed relative
-      to the ground. In the cannon's reference frame, however, there seems to be
-      an external force deflecting the bullet.
+    text: The cannon is in fact rotating at constant angular speed relative to the
+      ground. In the cannon's reference frame, however, there seems to be one or
+      more additional forces deflecting the bullet.
     visibleUI: {fileID: 0}
   - language: 1
-    text: "En fait, l'appareil du canon tourne simplement \xE0 vitesse constante
-      par rapport au sol. Dans le r\xE9f\xE9rentiel du canon, cependant, il semble
-      y avoir une force externe qui d\xE9vie la balle."
+    text: "Le canon tourne \xE0 vitesse angulaire constante par rapport au sol. Dans
+      le r\xE9f\xE9rentiel du canon, cependant, il semble y avoir une ou plusieurs
+      forces suppl\xE9mentaires qui d\xE9vient la balle."
     visibleUI: {fileID: 0}
 --- !u!1 &6396344727223047238
 GameObject:
@@ -3299,16 +3312,16 @@ MonoBehaviour:
   tmp: {fileID: 6396344727223047240}
   textData:
   - language: 0
-    text: 'In this idealized simulation, a cannon sits on a table and fires horizontally.
-      It is aimed directly at a target across the room.
+    text: 'In this simulation, a cannon sits on a table and fires horizontally. It
+      is aimed directly at a target.
 
-      Try firing the gun
-      yourself!'
+      Shoot the cannon by clicking on the fire
+      button!'
     visibleUI: {fileID: 0}
   - language: 1
-    text: "Dans cette simulation id\xE9alis\xE9e, un canon est pos\xE9 sur une table
-      et tire horizontalement. Il est directement vis\xE9 sur une cible \xE0 travers
-      la pi\xE8ce. Essayez de tirer vous-m\xEAme avec le canon !"
+    text: "Dans cette simulation, un canon est pos\xE9 sur une table et tire horizontalement.
+      Il est orient\xE9 vers une cible.\nTirez le canon en cliquant sur le bouton
+      de mise \xE0 feu !"
     visibleUI: {fileID: 0}
 --- !u!114 &6396344727223047240
 MonoBehaviour:
@@ -3330,9 +3343,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Dans cette simulation id\xE9alis\xE9e, un canon est pos\xE9 sur une table
-    et tire horizontalement. Il est directement vis\xE9 sur une cible \xE0 travers
-    la pi\xE8ce. Essayez de tirer vous-m\xEAme avec le canon !"
+  m_text: 'In this simulation, a cannon sits on a table and fires horizontally. It
+    is aimed directly at a target.
+
+    Shoot the cannon by clicking on the fire
+    button!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
   m_sharedMaterial: {fileID: 4303336837466598660, guid: ea838625e000443bb85ccb2eff18976f, type: 2}
