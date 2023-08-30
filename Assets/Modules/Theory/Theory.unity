@@ -1176,7 +1176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: -30}
+  m_AnchoredPosition: {x: 20, y: -10}
   m_SizeDelta: {x: 280, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &100680164
@@ -2302,7 +2302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 65.68698, y: -34.562973}
+  m_AnchoredPosition: {x: 65.68698, y: -14.56297}
   m_SizeDelta: {x: 50, y: 5}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &281057480
@@ -2644,8 +2644,8 @@ MonoBehaviour:
   omegaSign: {fileID: 281057480}
   plus: {fileID: 21300000, guid: efc0b8e98c96645dcb2532e2502445ec, type: 3}
   minus: {fileID: 21300000, guid: 3629e2e2e119d46c7b121fd19adb8a09, type: 3}
-  fictitiousForces: {fileID: 1694754931}
-  noFictitiousForces: {fileID: 1309615115}
+  fictitiousForces: {fileID: 1694754935}
+  noFictitiousForces: {fileID: 1309615119}
   verticalDivider: {fileID: 1464817831}
 --- !u!1 &322083298
 GameObject:
@@ -2683,7 +2683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: -35}
+  m_AnchoredPosition: {x: 25, y: -15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &331730450
@@ -2722,7 +2722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: -35}
+  m_AnchoredPosition: {x: 25, y: -15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &337925990
@@ -2760,7 +2760,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
+  m_AnchoredPosition: {x: 50, y: 10}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &337925992
@@ -2831,7 +2831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 5}
+  m_AnchoredPosition: {x: 25, y: 15}
   m_SizeDelta: {x: 731, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &366620615
@@ -3481,7 +3481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 5}
+  m_AnchoredPosition: {x: 25, y: 15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &545793244
@@ -4664,10 +4664,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2457605394122368039, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
-      propertyPath: m_IsOn
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2457605394122368039, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -4745,10 +4741,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2457605394800959896, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2457605394800959897, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
-      propertyPath: m_IsOn
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2457605394800959897, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
@@ -4905,7 +4897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4852394578539361032, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 510
       objectReference: {fileID: 0}
     - target: {fileID: 4852394578539361032, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: m_SizeDelta.y
@@ -4941,11 +4933,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4852394578539361032, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -60
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 4852394578539361032, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 4852394578539361032, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4959,27 +4951,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4852394578539361033, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
+      propertyPath: yShowing
+      value: -45
+      objectReference: {fileID: 0}
     - target: {fileID: 4852394578539361039, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: m_Name
       value: TabGroupDrawer
       objectReference: {fileID: 0}
     - target: {fileID: 5726399185342156952, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: textData.Array.data[0].text
-      value: "\u2022 We neglect gravity and air resistance (friction)\n\u2022 The
-        cannon apparatus rotates at constant angular speed\n\u2022 The bullet's trajectory
-        is purely planar (i.e. 2-dimensional)"
+      value: "\u2022 The weight of the bullet and air resistance (friction) are negligible\n\u2022
+        The cannon apparatus rotates at constant angular speed\n\u2022 The bullet's
+        trajectory is purely planar (i.e. 2-dimensional)"
       objectReference: {fileID: 0}
     - target: {fileID: 5726399185342156952, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: "\u2022 Nous n\xE9gligeons la gravit\xE9 et le frottement de l'air\n\u2022
-        L'appareil du canon tourne \xE0 vitesse angulaire constante\n\u2022 La trajectoire
-        de la balle est purement plane (c'est-\xE0-dire en deux dimensions)"
+      value: "\u2022 Le poids et les frottements de l'air sont n\xE9glig\xE9s\n\u2022
+        Le canon tourne \xE0 vitesse angulaire constante\n\u2022 La trajectoire de
+        la balle est donc horizontale"
       objectReference: {fileID: 0}
     - target: {fileID: 5726399185342156957, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: m_text
-      value: "\u2022 We neglect gravity and air resistance (friction)\n\u2022 The
-        cannon apparatus rotates at constant angular speed\n\u2022 The bullet's trajectory
-        is purely planar (i.e. 2-dimensional)"
+      value: "\u2022 The weight of the bullet and air resistance (friction) are negligible\n\u2022
+        The cannon rotates at constant angular speed\n\u2022 The bullet's trajectory
+        is therefore horizontal"
       objectReference: {fileID: 0}
     - target: {fileID: 5726399185399779448, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: m_text
@@ -4992,10 +4988,6 @@ PrefabInstance:
     - target: {fileID: 5726399185399779451, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: textData.Array.data[1].text
       value: "Hypoth\xE8ses"
-      objectReference: {fileID: 0}
-    - target: {fileID: 5726399185873333446, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
-      propertyPath: m_IsOn
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5726399185873333446, guid: 3f4629edd9c874f65b280196d6f5f459, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
@@ -5911,7 +5903,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 5}
+  m_AnchoredPosition: {x: 25, y: 15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &932039852
@@ -6100,7 +6092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: -35}
+  m_AnchoredPosition: {x: -25, y: -15}
   m_SizeDelta: {x: 500, y: 156}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &952273006
@@ -6248,7 +6240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: -35}
+  m_AnchoredPosition: {x: 25, y: -15}
   m_SizeDelta: {x: 731, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &978836426
@@ -6740,7 +6732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 10}
+  m_AnchoredPosition: {x: 20, y: 20}
   m_SizeDelta: {x: 280, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1046933862
@@ -7476,7 +7468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 0}
+  m_AnchoredPosition: {x: 50, y: 10}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1163404695
@@ -8656,13 +8648,14 @@ GameObject:
   - component: {fileID: 1309615118}
   - component: {fileID: 1309615117}
   - component: {fileID: 1309615116}
+  - component: {fileID: 1309615119}
   m_Layer: 5
   m_Name: No Fictitious Forces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1309615115
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8679,7 +8672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_AnchoredPosition: {x: 0.000015258789, y: 15}
   m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309615116
@@ -8700,7 +8693,7 @@ MonoBehaviour:
     text: No fictitious forces
     visibleUI: {fileID: 0}
   - language: 1
-    text: Pas de force d'inertie
+    text: Aucune force d'inertie
     visibleUI: {fileID: 0}
 --- !u!114 &1309615117
 MonoBehaviour:
@@ -8799,6 +8792,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309615114}
   m_CullTransparentMesh: 1
+--- !u!225 &1309615119
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309615114}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1309689330
 GameObject:
   m_ObjectHideFlags: 0
@@ -9977,8 +9982,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -55, y: 7.500004}
-  m_SizeDelta: {x: 1, y: -45.000008}
+  m_AnchoredPosition: {x: -55, y: 12.5}
+  m_SizeDelta: {x: 1, y: -55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1464817832
 MonoBehaviour:
@@ -11980,8 +11985,9 @@ GameObject:
   - component: {fileID: 1694754934}
   - component: {fileID: 1694754933}
   - component: {fileID: 1694754932}
+  - component: {fileID: 1694754935}
   m_Layer: 5
-  m_Name: Fictitious Forces
+  m_Name: Show Fictitious Forces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12024,7 +12030,7 @@ MonoBehaviour:
     text: Show fictitious forces
     visibleUI: {fileID: 0}
   - language: 1
-    text: Visualiser les forces d'inertie
+    text: Montrer les forces d'inertie
     visibleUI: {fileID: 0}
 --- !u!114 &1694754933
 MonoBehaviour:
@@ -12123,6 +12129,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694754930}
   m_CullTransparentMesh: 1
+--- !u!225 &1694754935
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694754930}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1702847831
 GameObject:
   m_ObjectHideFlags: 0
@@ -12742,7 +12760,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 5}
+  m_AnchoredPosition: {x: -25, y: 15}
   m_SizeDelta: {x: 182, y: 80}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1798697094
@@ -13121,7 +13139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: -35}
+  m_AnchoredPosition: {x: 25, y: -15}
   m_SizeDelta: {x: 731, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1848495109
@@ -13723,7 +13741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25, y: 5}
+  m_AnchoredPosition: {x: 25, y: 15}
   m_SizeDelta: {x: 731, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1968397246
