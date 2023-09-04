@@ -137,8 +137,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: textData.Array.data[0].text
-      value: Test your understanding of fictitious forces by determining their directions
-        along the bullet's flight path.
+      value: "Test your understanding of inertial (i.e. fictitious) forces \nby determining
+        their directions along the bullet's trajectory."
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: textData.Array.data[1].text
@@ -527,6 +527,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4265403495773799367}
     m_Modifications:
+    - target: {fileID: 2030790502537946044, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6630728238506993888, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_text
       value: Coming soon.
@@ -706,6 +710,10 @@ PrefabInstance:
     - target: {fileID: 6630728239169010383, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: textData.Array.data[1].text
       value: "Activit\xE9 2"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378552977245234490, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
