@@ -285,6 +285,12 @@ public class Activity1Vectors : MonoBehaviour
         bool centrifugalCorrect = Vector3.Angle(centrifugalDirection, centrifugalForce.components) == 0;
         bool coriolisCorrect = Vector3.Angle(coriolisDirection, coriolisForce.components) == 0;
 
+        // Handle Omega = 0
+        if (coriolisDirection.magnitude == 0)
+        {
+            Debug.Log("Omega = 0");
+        }
+
         CheckForWin(velocityCorrect, centrifugalCorrect, coriolisCorrect);
     }
 
