@@ -4039,7 +4039,7 @@ PrefabInstance:
     - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7629922021180507277}
     - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -4051,7 +4051,7 @@ PrefabInstance:
     - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7629922021180507278}
     - target: {fileID: 4757408489246835523, guid: 11fb2afe94f4c4962ae2dbf996ea133b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
@@ -13433,7 +13433,7 @@ MonoBehaviour:
   fireButton: {fileID: 1393757102}
   checkButton: {fileID: 1385332626}
   resetButton: {fileID: 582745614}
-  omegaSlider: {fileID: 0}
+  omegaSlider: {fileID: 7629922021180507277}
   winPanel: {fileID: 4004103223241187504}
   losePanel: {fileID: 4004103224054200975}
   particles: {fileID: 4004103223440360615}
