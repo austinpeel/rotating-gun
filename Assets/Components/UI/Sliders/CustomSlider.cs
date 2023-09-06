@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
-public class CenteredSlider : Slider
+public class CustomSlider : Slider
 {
     public TextMeshProUGUI valueTMP;
     public bool snapToDecimal;
@@ -15,15 +15,12 @@ public class CenteredSlider : Slider
     protected override void OnEnable()
     {
         base.OnEnable();
-        onValueChanged.AddListener(UpdateFillArea);
         onValueChanged.AddListener(UpdateValue);
-        UpdateFillArea(value);
         ApplyColor();
     }
 
     protected override void OnDisable()
     {
-        onValueChanged.RemoveListener(UpdateFillArea);
         onValueChanged.RemoveListener(UpdateValue);
         base.OnDisable();
     }
@@ -31,27 +28,13 @@ public class CenteredSlider : Slider
     protected override void Start()
     {
         base.Start();
-        onValueChanged.AddListener(UpdateFillArea);
         onValueChanged.AddListener(UpdateValue);
-        UpdateFillArea(value);
         UpdateValue(value);
         ApplyColor();
     }
 
-    private void UpdateFillArea(float value)
-    {
-        float normalizedValue = (value - minValue) / (maxValue - minValue);
-        float zeroPoint = -minValue / (maxValue - minValue);
-        float offset = (normalizedValue - zeroPoint) * 2;
-
-        // Debug.Log("CenteredSlider > UpdateFillArea");
-        fillRect.anchorMin = new Vector2(offset < 0 ? zeroPoint + offset / 2 : zeroPoint, 0);
-        fillRect.anchorMax = new Vector2(offset < 0 ? zeroPoint : zeroPoint + offset / 2, 1);
-    }
-
     protected override void OnDestroy()
     {
-        onValueChanged.RemoveListener(UpdateFillArea);
         onValueChanged.RemoveListener(UpdateValue);
         base.OnDestroy();
     }

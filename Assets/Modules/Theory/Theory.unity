@@ -10208,7 +10208,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8838591167844466959, guid: c50de693132ed4fdfb30b45ef127b70c, type: 3}
       propertyPath: textData.Array.data[0].text
-      value: Reference Frame
+      value: Reference frame
       objectReference: {fileID: 0}
     - target: {fileID: 8838591167844466959, guid: c50de693132ed4fdfb30b45ef127b70c, type: 3}
       propertyPath: textData.Array.data[1].text
@@ -15098,6 +15098,7 @@ MonoBehaviour:
   components: {x: 0, y: 0.9, z: 0}
   color: {r: 0.8352941, g: 0.366901, b: 0.91764706, a: 1}
   lineWidth: 0.18
+  sortOrder: 0
 --- !u!4 &7990572035620292479
 Transform:
   m_ObjectHideFlags: 0

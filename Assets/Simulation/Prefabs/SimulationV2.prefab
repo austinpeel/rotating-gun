@@ -149,6 +149,7 @@ MonoBehaviour:
   components: {x: 1.5, y: 0, z: 0}
   color: {r: 0.6745098, g: 0.6745098, b: 0.6745098, a: 1}
   lineWidth: 0.18
+  sortOrder: 0
 --- !u!1 &1690950798571969965
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +201,7 @@ MonoBehaviour:
   components: {x: 0, y: 1.5, z: 0}
   color: {r: 0.6745098, g: 0.6745098, b: 0.6745098, a: 1}
   lineWidth: 0.18
+  sortOrder: 0
 --- !u!1 &1690950799334133699
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +253,7 @@ MonoBehaviour:
   components: {x: 0, y: 0, z: 1.5}
   color: {r: 0.6745098, g: 0.6745098, b: 0.6745098, a: 1}
   lineWidth: 0.18
+  sortOrder: 0
 --- !u!1 &2007649714920341333
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2190,7 @@ MonoBehaviour:
   cameraAboveRotation: {x: 90, y: 0, z: 0}
   autoFire: 0
   fireFrequency: 1
-  angularFrequency: 0.05
+  angularFrequency: 0
   bulletSpeed: 20
   maxNumBullets: 10
   maxBulletDistance: 10

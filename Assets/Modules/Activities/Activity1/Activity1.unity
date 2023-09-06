@@ -4958,11 +4958,6 @@ MonoBehaviour:
   targetPosition: {x: 3, y: 16, z: 0}
   targetRotation: {x: 90, y: 0, z: -90}
   moveTime: 1.5
-  canZoom: 0
-  minZoom: 1
-  maxZoom: 10
-  zoomSpeed: 1
-  zoomTarget: {fileID: 0}
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 1
   cameraTransform: {fileID: 1934764044}

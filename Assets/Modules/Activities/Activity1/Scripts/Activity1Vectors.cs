@@ -275,20 +275,22 @@ public class Activity1Vectors : MonoBehaviour
             return;
         }
 
-        // TODO What if Omega = 0?
-
         velocity.SetInteractable(false);
         centrifugalForce.SetInteractable(false);
         coriolisForce.SetInteractable(false);
 
         bool velocityCorrect = Vector3.Angle(velocityDirection, velocity.components) == 0;
         bool centrifugalCorrect = Vector3.Angle(centrifugalDirection, centrifugalForce.components) == 0;
-        bool coriolisCorrect = Vector3.Angle(coriolisDirection, coriolisForce.components) == 0;
 
-        // Handle Omega = 0
-        if (coriolisDirection.magnitude == 0)
+        bool omegaIsZero = coriolisDirection.magnitude == 0;
+        bool coriolisCorrect;
+        if (omegaIsZero)
         {
-            Debug.Log("Omega = 0");
+            coriolisCorrect = coriolisForce.transform.position == initialCoriolisPosition;
+        }
+        else
+        {
+            coriolisCorrect = Vector3.Angle(coriolisDirection, coriolisForce.components) == 0;
         }
 
         CheckForWin(velocityCorrect, centrifugalCorrect, coriolisCorrect);
