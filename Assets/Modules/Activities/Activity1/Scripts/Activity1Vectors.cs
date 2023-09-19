@@ -281,16 +281,18 @@ public class Activity1Vectors : MonoBehaviour
         coriolisForce.SetInteractable(false);
 
         bool velocityCorrect = Vector3.Angle(velocityDirection, velocity.components) == 0;
-        bool centrifugalCorrect = Vector3.Angle(centrifugalDirection, centrifugalForce.components) == 0;
 
         bool omegaIsZero = coriolisDirection.magnitude == 0;
+        bool centrifugalCorrect;
         bool coriolisCorrect;
         if (omegaIsZero)
         {
+            centrifugalCorrect = centrifugalForce.transform.position == initialCentrifugalPosition;
             coriolisCorrect = coriolisForce.transform.position == initialCoriolisPosition;
         }
         else
         {
+            centrifugalCorrect = Vector3.Angle(centrifugalDirection, centrifugalForce.components) == 0;
             coriolisCorrect = Vector3.Angle(coriolisDirection, coriolisForce.components) == 0;
         }
 

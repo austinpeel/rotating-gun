@@ -14152,7 +14152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6332359487533507877, guid: 52791722cc23e431a86a16238740bf0f, type: 3}
       propertyPath: bulletSpeed
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6332359487533507877, guid: 52791722cc23e431a86a16238740bf0f, type: 3}
       propertyPath: bulletPauseDistance
