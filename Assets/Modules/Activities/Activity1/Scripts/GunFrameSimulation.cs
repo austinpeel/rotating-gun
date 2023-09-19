@@ -45,6 +45,7 @@ public class GunFrameSimulation : MonoBehaviour
     [Header("Sound Effects")]
     public SoundEffect cannonFire;
     private AudioSource audioSource;
+    private bool soundIsOn = true;
 
     // Bullets
     private List<Bullet> bullets;
@@ -102,7 +103,7 @@ public class GunFrameSimulation : MonoBehaviour
 
         if (currentBullet && !hasPausedOnCurrentBullet)
         {
-            if (currentBullet.Position.magnitude > bulletPauseDistance * Mathf.Pow(1 + Mathf.Abs(Omega.y), 0.4f))
+            if (currentBullet.Position.magnitude > bulletPauseDistance) // * Mathf.Pow(1 + Mathf.Abs(Omega.y), 0.05f))
             {
                 Pause();
                 hasPausedOnCurrentBullet = true;
@@ -181,7 +182,7 @@ public class GunFrameSimulation : MonoBehaviour
 
         hasPausedOnCurrentBullet = false;
 
-        if (audioSource && cannonFire) cannonFire.Play(audioSource);
+        if (audioSource && cannonFire && soundIsOn) cannonFire.Play(audioSource);
     }
 
     public void SetTimeScale(float value)
@@ -248,5 +249,10 @@ public class GunFrameSimulation : MonoBehaviour
         HandleBulletOutOfBounds(currentBullet);
 
         Resume();
+    }
+
+    public void SetSoundOn(bool isOn)
+    {
+        soundIsOn = isOn;
     }
 }

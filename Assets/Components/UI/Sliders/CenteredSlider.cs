@@ -15,9 +15,8 @@ public class CenteredSlider : Slider
     protected override void OnEnable()
     {
         base.OnEnable();
-        onValueChanged.AddListener(UpdateFillArea);
         onValueChanged.AddListener(UpdateValue);
-        UpdateFillArea(value);
+        onValueChanged.AddListener(UpdateFillArea);
         ApplyColor();
     }
 
@@ -31,29 +30,21 @@ public class CenteredSlider : Slider
     protected override void Start()
     {
         base.Start();
-        onValueChanged.AddListener(UpdateFillArea);
-        onValueChanged.AddListener(UpdateValue);
-        UpdateFillArea(value);
+
+        // Make sure the slider is rendered properly to start
         UpdateValue(value);
+        UpdateFillArea(value);
         ApplyColor();
     }
 
-    private void UpdateFillArea(float value)
+    protected void UpdateFillArea(float value)
     {
         float normalizedValue = (value - minValue) / (maxValue - minValue);
         float zeroPoint = -minValue / (maxValue - minValue);
         float offset = (normalizedValue - zeroPoint) * 2;
 
-        // Debug.Log("CenteredSlider > UpdateFillArea");
         fillRect.anchorMin = new Vector2(offset < 0 ? zeroPoint + offset / 2 : zeroPoint, 0);
         fillRect.anchorMax = new Vector2(offset < 0 ? zeroPoint : zeroPoint + offset / 2, 1);
-    }
-
-    protected override void OnDestroy()
-    {
-        onValueChanged.RemoveListener(UpdateFillArea);
-        onValueChanged.RemoveListener(UpdateValue);
-        base.OnDestroy();
     }
 
     public void ApplyColor()

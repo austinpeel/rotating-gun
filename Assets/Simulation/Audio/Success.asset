@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Success
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 1d6f4cd6b91894869a2b5630650dfaf9, type: 3}
+  - {fileID: 8300000, guid: b222fa1d1132443798f9973d863985e0, type: 3}
   clipIndex: 0
-  pitch: 1
+  pitch: 1.15
   pitchDelta: 0
-  volume: 2
+  volume: 1

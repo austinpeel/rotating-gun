@@ -13,7 +13,7 @@ public class Activity1Vectors : MonoBehaviour
     public Button fireButton;
     public Button checkButton;
     public Button resetButton;
-    public Slider omegaSlider;
+    public Activity1OmegaSlider omegaSlider;
     public RectTransform winPanel;
     public RectTransform losePanel;
 
@@ -22,6 +22,7 @@ public class Activity1Vectors : MonoBehaviour
     public SoundEffect successEffect;
     public SoundEffect tryAgainEffect;
     private AudioSource audioSource;
+    private bool soundIsOn = true;
 
     private Vector3 initialVelocityPosition;
     private Vector3 initialVelocityComponents;
@@ -155,7 +156,7 @@ public class Activity1Vectors : MonoBehaviour
         if (button.TryGetComponent(out CursorHoverUI cursor)) cursor.enabled = interactable;
     }
 
-    private void SetInteractability(Slider slider, bool interactable)
+    private void SetInteractability(Activity1OmegaSlider slider, bool interactable)
     {
         slider.interactable = interactable;
         if (slider.TryGetComponent(out CursorHoverUI cursor)) cursor.enabled = interactable;
@@ -206,11 +207,11 @@ public class Activity1Vectors : MonoBehaviour
         {
             if (allCorrect)
             {
-                if (successEffect) successEffect.Play(audioSource);
+                if (successEffect && soundIsOn) successEffect.Play(audioSource);
             }
             else
             {
-                if (tryAgainEffect) tryAgainEffect.Play(audioSource);
+                if (tryAgainEffect && soundIsOn) tryAgainEffect.Play(audioSource);
             }
         }
     }
@@ -301,5 +302,10 @@ public class Activity1Vectors : MonoBehaviour
         velocity.MakeInteractable();
         centrifugalForce.MakeInteractable();
         coriolisForce.MakeInteractable();
+    }
+
+    public void SetSoundOn(bool isOn)
+    {
+        soundIsOn = isOn;
     }
 }

@@ -22,7 +22,7 @@ public class GunFrameAnimation : MonoBehaviour
     public DraggableVector velocity;
     public DraggableVector centrifugalForce;
     public DraggableVector coriolisForce;
-    public Slider omegaSlider;
+    public Activity1OmegaSlider omegaSlider;
     public Button fireButton;
     public Button checkButton;
 
@@ -362,7 +362,7 @@ public class GunFrameAnimation : MonoBehaviour
             float vectorRotateTime = 2;
             Vector3 startComponents = velocity.components;
             Vector3 endComponents = startComponents.magnitude * currentBullet.GetV().normalized;
-            endComponents = Quaternion.Euler(0, -25, 0) * endComponents;
+            endComponents = Quaternion.Euler(0, -35, 0) * endComponents;
             while (time < vectorRotateTime)
             {
                 time += Time.deltaTime;
