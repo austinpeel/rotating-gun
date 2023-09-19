@@ -13,6 +13,7 @@ public class Cannon : MonoBehaviour
 
     [Header("Sound Effects")]
     public SoundEffect cannonFire;
+    public SoundEffect targetCollision;
     private AudioSource audioSource;
 
     private float angle = 0;
@@ -78,11 +79,13 @@ public class Cannon : MonoBehaviour
     private void OnEnable()
     {
         Bullet.OnOutOfBounds += HandleBulletOutOfBounds;
+        Bullet.OnHitTarget += HandleBulletHitTarget;
     }
 
     private void OnDisable()
     {
         Bullet.OnOutOfBounds -= HandleBulletOutOfBounds;
+        Bullet.OnHitTarget -= HandleBulletHitTarget;
     }
 
     public void TakeAStep(float deltaTime)
@@ -175,6 +178,12 @@ public class Cannon : MonoBehaviour
 
         // Destroy the game object
         bullet.Destroy();
+    }
+
+    public void HandleBulletHitTarget(Bullet bullet)
+    {
+        // Destroy the bullet
+        HandleBulletOutOfBounds(bullet);
     }
 
     public void UpdateBulletPath()

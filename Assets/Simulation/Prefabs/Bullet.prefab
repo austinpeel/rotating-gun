@@ -91,7 +91,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3307435681122757228}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -108,5 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98980c9e2024d4de8bb08382377f9b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionVectorPrefab: {fileID: 832011209912423600, guid: d0df9e293ce934007beca06f772b49f9, type: 3}
   maxDistance: 12
+  gunFrameSim: 0
+  isAnimation: 0

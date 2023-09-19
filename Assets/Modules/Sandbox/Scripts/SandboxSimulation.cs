@@ -10,7 +10,6 @@ public class SandboxSimulation : Simulation
     [Tooltip("Bullets per second")] public float fireFrequency = 1;
     public CannonSettings cannonSettings;
 
-    // [Range(0, 1)] public float timeScale = 1f;
     private float autoFireClock;
     private Transform bulletContainer;
 
