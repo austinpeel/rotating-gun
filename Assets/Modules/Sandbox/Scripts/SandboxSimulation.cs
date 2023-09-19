@@ -130,4 +130,9 @@ public class SandboxSimulation : Simulation
     {
         cannonSettings.showBulletPath = isVisible;
     }
+
+    public void ToggleAutoFire(bool isOn)
+    {
+        autoFire = isOn;
+    }
 }

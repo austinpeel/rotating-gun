@@ -280,6 +280,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8838608479934171985, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
+      propertyPath: soundIsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838608479934171985, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 963194228}
@@ -440,11 +444,6 @@ MonoBehaviour:
   targetPosition: {x: -13, y: 4.2, z: 0}
   targetRotation: {x: 18, y: 90, z: 0}
   moveTime: 1.5
-  canZoom: 0
-  minZoom: 1
-  maxZoom: 10
-  zoomSpeed: 1
-  zoomTarget: {fileID: 0}
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 1
   cameraTransform: {fileID: 0}
