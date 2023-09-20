@@ -13,7 +13,7 @@ public class Activity1Vectors : MonoBehaviour
     public Button fireButton;
     public Button checkButton;
     public Button resetButton;
-    public Slider omegaSlider;
+    public Activity1OmegaSlider omegaSlider;
     public RectTransform winPanel;
     public RectTransform losePanel;
 
@@ -22,6 +22,7 @@ public class Activity1Vectors : MonoBehaviour
     public SoundEffect successEffect;
     public SoundEffect tryAgainEffect;
     private AudioSource audioSource;
+    private bool soundIsOn = true;
 
     private Vector3 initialVelocityPosition;
     private Vector3 initialVelocityComponents;
@@ -58,8 +59,27 @@ public class Activity1Vectors : MonoBehaviour
             initialCoriolisComponents = coriolisForce.components;
         }
 
-        if (winPanel) winPanel.gameObject.SetActive(false);
-        if (losePanel) losePanel.gameObject.SetActive(false);
+        if (winPanel)
+        {
+            // winPanel.gameObject.SetActive(false);
+            if (winPanel.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+            }
+        }
+
+        if (losePanel)
+        {
+            // losePanel.gameObject.SetActive(false);
+            if (losePanel.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+            }
+        }
 
         if (particles) particles.gameObject.SetActive(false);
 
@@ -86,6 +106,15 @@ public class Activity1Vectors : MonoBehaviour
 
         if (fireButton) SetInteractability(fireButton, true);
         if (checkButton) SetInteractability(checkButton, false);
+        if (resetButton)
+        {
+            if (resetButton.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+            }
+        }
         if (omegaSlider) SetInteractability(omegaSlider, true);
 
         truthIsKnown = false;
@@ -103,7 +132,16 @@ public class Activity1Vectors : MonoBehaviour
 
         if (fireButton) SetInteractability(fireButton, true);
         if (checkButton) SetInteractability(checkButton, false);
-        if (resetButton) resetButton.gameObject.SetActive(false);
+        if (resetButton)
+        {
+            // resetButton.gameObject.SetActive(false);
+            if (resetButton.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+            }
+        }
         // if (resetButton) SetInteractability(resetButton, false);
         if (omegaSlider) SetInteractability(omegaSlider, true);
 
@@ -118,7 +156,7 @@ public class Activity1Vectors : MonoBehaviour
         if (button.TryGetComponent(out CursorHoverUI cursor)) cursor.enabled = interactable;
     }
 
-    private void SetInteractability(Slider slider, bool interactable)
+    private void SetInteractability(Activity1OmegaSlider slider, bool interactable)
     {
         slider.interactable = interactable;
         if (slider.TryGetComponent(out CursorHoverUI cursor)) cursor.enabled = interactable;
@@ -141,8 +179,27 @@ public class Activity1Vectors : MonoBehaviour
             ResetVector(coriolisForce, initialCoriolisPosition, initialCoriolisComponents);
         }
 
-        if (winPanel) winPanel.gameObject.SetActive(allCorrect);
-        if (losePanel) losePanel.gameObject.SetActive(!allCorrect);
+        if (winPanel)
+        {
+            // winPanel.gameObject.SetActive(allCorrect);
+            if (winPanel.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = allCorrect ? 1 : 0;
+                canvasGroup.interactable = allCorrect;
+                canvasGroup.blocksRaycasts = allCorrect;
+            }
+        }
+
+        if (losePanel)
+        {
+            // losePanel.gameObject.SetActive(!allCorrect);
+            if (losePanel.TryGetComponent(out CanvasGroup canvasGroup))
+            {
+                canvasGroup.alpha = allCorrect ? 0 : 1;
+                canvasGroup.interactable = !allCorrect;
+                canvasGroup.blocksRaycasts = !allCorrect;
+            }
+        }
 
         if (particles) particles.gameObject.SetActive(allCorrect);
 
@@ -150,11 +207,11 @@ public class Activity1Vectors : MonoBehaviour
         {
             if (allCorrect)
             {
-                if (successEffect) successEffect.Play(audioSource);
+                if (successEffect && soundIsOn) successEffect.Play(audioSource);
             }
             else
             {
-                if (tryAgainEffect) tryAgainEffect.Play(audioSource);
+                if (tryAgainEffect && soundIsOn) tryAgainEffect.Play(audioSource);
             }
         }
     }
@@ -219,15 +276,25 @@ public class Activity1Vectors : MonoBehaviour
             return;
         }
 
-        // TODO What if Omega = 0?
-
         velocity.SetInteractable(false);
         centrifugalForce.SetInteractable(false);
         coriolisForce.SetInteractable(false);
 
         bool velocityCorrect = Vector3.Angle(velocityDirection, velocity.components) == 0;
-        bool centrifugalCorrect = Vector3.Angle(centrifugalDirection, centrifugalForce.components) == 0;
-        bool coriolisCorrect = Vector3.Angle(coriolisDirection, coriolisForce.components) == 0;
+
+        bool omegaIsZero = coriolisDirection.magnitude == 0;
+        bool centrifugalCorrect;
+        bool coriolisCorrect;
+        if (omegaIsZero)
+        {
+            centrifugalCorrect = centrifugalForce.transform.position == initialCentrifugalPosition;
+            coriolisCorrect = coriolisForce.transform.position == initialCoriolisPosition;
+        }
+        else
+        {
+            centrifugalCorrect = Vector3.Angle(centrifugalDirection, centrifugalForce.components) == 0;
+            coriolisCorrect = Vector3.Angle(coriolisDirection, coriolisForce.components) == 0;
+        }
 
         CheckForWin(velocityCorrect, centrifugalCorrect, coriolisCorrect);
     }
@@ -237,5 +304,10 @@ public class Activity1Vectors : MonoBehaviour
         velocity.MakeInteractable();
         centrifugalForce.MakeInteractable();
         coriolisForce.MakeInteractable();
+    }
+
+    public void SetSoundOn(bool isOn)
+    {
+        soundIsOn = isOn;
     }
 }

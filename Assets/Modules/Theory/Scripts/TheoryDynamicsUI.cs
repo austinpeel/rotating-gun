@@ -21,8 +21,8 @@ public class TheoryDynamicsUI : MonoBehaviour
     public Sprite minus;
 
     [Header("Texts")]
-    public RectTransform fictitiousForces;
-    public RectTransform noFictitiousForces;
+    public CanvasGroup fictitiousForces;
+    public CanvasGroup noFictitiousForces;
 
     [Header("Divider")]
     public RectTransform verticalDivider;
@@ -72,8 +72,8 @@ public class TheoryDynamicsUI : MonoBehaviour
         if (omegaGun) omegaGun.gameObject.SetActive(!frameIsLab);
         if (fCoriolis) fCoriolis.gameObject.SetActive(!frameIsLab);
         if (fCentrifugal) fCentrifugal.gameObject.SetActive(!frameIsLab);
-        if (fictitiousForces) fictitiousForces.gameObject.SetActive(!frameIsLab);
-        if (noFictitiousForces) noFictitiousForces.gameObject.SetActive(frameIsLab);
+        if (fictitiousForces) fictitiousForces.alpha = frameIsLab ? 0 : 1;
+        if (noFictitiousForces) noFictitiousForces.alpha = frameIsLab ? 1 : 0;
         if (verticalDivider) verticalDivider.gameObject.SetActive(!frameIsLab);
     }
 }

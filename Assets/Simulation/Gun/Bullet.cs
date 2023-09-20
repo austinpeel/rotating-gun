@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     public float maxDistance = 10;
 
     public static event Action<Bullet> OnOutOfBounds;
+    public static event Action<Bullet> OnHitTarget;
 
     public Vector3 Position => transform.position;
 
@@ -22,6 +23,12 @@ public class Bullet : MonoBehaviour
     private float[] xdot;
 
     private bool isPaused;
+
+    // Hit the target
+    private void OnTriggerEnter(Collider other)
+    {
+        OnHitTarget?.Invoke(this);
+    }
 
     public void Initialize(Vector3 position, Vector3 velocity, float maxDistance)
     {

@@ -22,6 +22,7 @@ public class RotatingGunSimulation : Simulation
     public int maxNumBullets = 10;
     public float maxBulletDistance = 10;
     [Range(0, 1)] public float timeScale = 1f;
+    public bool soundIsOn = true;
     private float runningAngle;
     private float autoFireClock;
 
@@ -139,8 +140,8 @@ public class RotatingGunSimulation : Simulation
                           showVelocity,
                           showCentrifugalForce,
                           showCoriolisForce,
-                          //   !autoFire,
-                          true);
+                          soundIsOn
+                          );
     }
 
     public void Reset(Vector3 cameraPosition, Quaternion cameraRotation)
@@ -338,4 +339,9 @@ public class RotatingGunSimulation : Simulation
 
     //     Resume();
     // }
+
+    public void SetSoundOn(bool isOn)
+    {
+        soundIsOn = isOn;
+    }
 }

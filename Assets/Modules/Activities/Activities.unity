@@ -137,12 +137,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: textData.Array.data[0].text
-      value: Test your understanding of fictitious forces by determining their orientations
-        along the bullet's flight path.
+      value: "Test your understanding of inertial (i.e. fictitious) forces \nby determining
+        their directions along the bullet's trajectory."
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: Texte...
+      value: "Testez votre compr\xE9hension des forces d'inertie en les orientant
+        par rapport \xE0 la trajectoire de la balle."
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238529657200, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_Pivot.x
@@ -231,6 +232,10 @@ PrefabInstance:
     - target: {fileID: 6630728238529657201, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_Name
       value: Activity1 Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630728238529657213, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238529657213, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -356,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1610463190247839496, guid: 930c101ab32c94575bce33c435193995, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1610463190247839496, guid: 930c101ab32c94575bce33c435193995, type: 3}
       propertyPath: m_AnchorMax.x
@@ -522,6 +527,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4265403495773799367}
     m_Modifications:
+    - target: {fileID: 2030790502537946044, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6630728238506993888, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_text
       value: Coming soon.
@@ -532,7 +541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238506993889, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: textData.Array.data[1].text
-      value: "\xC0 venir."
+      value: "En pr\xE9paration."
       objectReference: {fileID: 0}
     - target: {fileID: 6630728238529657200, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_Pivot.x
@@ -622,6 +631,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Activity2 Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6630728238529657201, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630728238529657213, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6630728238529657213, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -698,6 +715,10 @@ PrefabInstance:
       propertyPath: textData.Array.data[1].text
       value: "Activit\xE9 2"
       objectReference: {fileID: 0}
+    - target: {fileID: 7378552977245234490, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ee20eafb5f094ea6b6424bb51947619, type: 3}
 --- !u!224 &1168363186 stripped
@@ -761,6 +782,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8838608479934171985, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
+      propertyPath: soundIsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838608479934171985, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1916412904}
@@ -792,7 +817,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SimulationV2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7391761418215560947, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
 --- !u!1 &1916412901
 GameObject:
@@ -832,7 +858,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -847,7 +873,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 30
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -873,13 +899,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916412901}
   m_LocalRotation: {x: 0.05233596, y: 0, z: 0, w: 0.9986295}
-  m_LocalPosition: {x: 1.5, y: 1.5, z: -18}
+  m_LocalPosition: {x: 1.5, y: 2, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 965339234}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 18, y: 0, z: 0}
 --- !u!114 &1916412905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,18 +951,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa577bb779a2413b824a171838974d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraState: {fileID: 11400000, guid: 4142d516b6c8d45ab98b9075babf832f, type: 2}
-  targetPosition: {x: 1.5, y: 1.5, z: -18}
+  cameraState: {fileID: 0}
+  targetPosition: {x: 1.5, y: 1.5, z: -12}
   targetRotation: {x: 6, y: 0, z: 0}
-  moveTime: 1.5
-  canZoom: 0
-  minZoom: 1
-  maxZoom: 10
-  zoomSpeed: 1
-  zoomTarget: {fileID: 0}
+  moveTime: 1.2
   targetColor: {r: 1, g: 1, b: 1, a: 1}
   colorTransitionTime: 1
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 1916412904}
 --- !u!114 &1204847284443091014
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,11 +41,13 @@ public class Gun : MonoBehaviour
     private void OnEnable()
     {
         Bullet.OnOutOfBounds += HandleBulletOutOfBounds;
+        Bullet.OnHitTarget += HandleBulletHitTarget;
     }
 
     private void OnDisable()
     {
         Bullet.OnOutOfBounds -= HandleBulletOutOfBounds;
+        Bullet.OnHitTarget -= HandleBulletHitTarget;
     }
 
     private void LateUpdate()
@@ -217,6 +219,12 @@ public class Gun : MonoBehaviour
             if (centrifugalForceVector != null) Destroy(centrifugalForceVector.gameObject);
             if (coriolisForceVector != null) Destroy(coriolisForceVector.gameObject);
         }
+    }
+
+    public void HandleBulletHitTarget(Bullet bullet)
+    {
+        // Destroy the bullet
+        HandleBulletOutOfBounds(bullet);
     }
 
     public void ResetBulletPath()
