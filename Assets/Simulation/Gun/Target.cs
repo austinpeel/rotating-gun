@@ -54,7 +54,7 @@ public class Target : MonoBehaviour
                 hitPosition.x -= slope * hitPosition.z;
             }
 
-            hitPosition.z = -0.55f;
+            hitPosition.z = -0.6f;
             bulletHole.localPosition = hitPosition;
         }
     }
