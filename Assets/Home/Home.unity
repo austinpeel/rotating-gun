@@ -231,6 +231,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 97592538927684061, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
+      propertyPath: bulletHole
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925505127116051224, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7391761418215560947, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -292,8 +300,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194228}
     - target: {fileID: 8838608479934171985, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
+      propertyPath: bulletSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838608479934171985, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
       propertyPath: angularFrequency
-      value: 0.16
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8838608479934171985, guid: acb3dcf240d02414fa51fa9e938bc90a, type: 3}
       propertyPath: maxBulletDistance
